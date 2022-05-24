@@ -473,7 +473,7 @@ class Play extends Component {
                                         title="Espera pelo fim da jogada!"
                                         points={this.state.points}
                                         rank={this.state.rank}
-                                        storeButton={true}
+                                        storeButton={false}
                                         onStoreClick={this.handleStoreClick}
                                       />
                                     )}
@@ -493,7 +493,7 @@ class Play extends Component {
                 title="Espera pela tua vez!"
                 points={this.state.points}
                 rank={this.state.rank}
-                storeButton={false}
+                storeButton={true}
                 onStoreClick={this.handleStoreClick}
               />
             )}
