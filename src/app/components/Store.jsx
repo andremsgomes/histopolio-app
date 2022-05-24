@@ -9,7 +9,7 @@ function Store(props) {
         {props.badges.map((badge) => {
           return (
             <div className="col-sm-12 col-md-6 col-lg-3">
-              <div className="card m-2">
+              <div className="card m-2 p-3">
                 <img
                   src={badge.image}
                   className="card-img-top"
