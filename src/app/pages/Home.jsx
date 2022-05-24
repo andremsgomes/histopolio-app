@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="text-center m-4">
       <h1>Olá {user.name}</h1>
-      <Link to="/play" style={{ textDecoration: "none" }}>
+      <Link to="/Histopolio/saves" style={{ textDecoration: "none" }}>
         <button className="btn btn-primary btn-lg mt-4">
           Jogar Histopólio
         </button>

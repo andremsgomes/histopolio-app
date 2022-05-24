@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import "react-dice-complete/dist/react-dice-complete.css";
 
 import Wait from "../components/Wait";
@@ -10,6 +10,16 @@ import Question from "../components/Question";
 import Store from "../components/Store";
 import Content from "../components/Content";
 import Continue from "../components/Continue";
+
+function withParams(Component) {
+  return (props) => (
+    <Component
+      {...props}
+      params={useParams()}
+      save={useSearchParams()[0].get("save")}
+    />
+  );
+}
 
 class Play extends Component {
   constructor(props) {
@@ -30,6 +40,7 @@ class Play extends Component {
   }
 
   state = {
+    save: "",
     gameStarted: false,
     playerTurn: false,
     showDice: false,
@@ -49,6 +60,12 @@ class Play extends Component {
   };
 
   componentDidMount() {
+    if (this.props.save) {
+      this.setState({
+        save: this.props.save,
+      });
+    }
+
     this.client.onopen = () => {
       console.log("WebSocket Client Connected");
 
@@ -83,8 +100,8 @@ class Play extends Component {
     const dataToSend = {
       type: "game status",
       userId: user.id,
-      board: "Histopolio", // TODO: ter no url
-      saveFile: "Turma1.json", // TODO: retirar
+      board: this.props.params.board,
+      saveFile: this.state.save,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -93,7 +110,7 @@ class Play extends Component {
   loadBadges() {
     const dataToSend = {
       type: "load badges",
-      board: "Histopolio", // TODO: ter no url
+      board: this.props.params.board,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -137,21 +154,27 @@ class Play extends Component {
   }
 
   handleGameStatusReceived(dataReceived) {
-    this.setState({
-      gameStarted: dataReceived["gameStarted"],
-    });
-
-    if (dataReceived["playerData"]) {
+    if (
+      dataReceived["board"] === this.props.params.board &&
+      (this.state.save === "" || dataReceived["save"] === this.state.save)
+    ) {
       this.setState({
-        points: dataReceived["playerData"]["points"],
-        position: dataReceived["playerData"]["position"],
-        rank: dataReceived["playerData"]["rank"],
-        userBadges: dataReceived["playerData"]["badges"],
+        save: dataReceived["save"],
+        gameStarted: dataReceived["gameStarted"],
       });
-    }
 
-    if (this.state.gameStarted) {
-      this.sendJoinGameMessage();
+      if (dataReceived["playerData"]) {
+        this.setState({
+          points: dataReceived["playerData"]["points"],
+          position: dataReceived["playerData"]["position"],
+          rank: dataReceived["playerData"]["rank"],
+          userBadges: dataReceived["playerData"]["badges"],
+        });
+      }
+
+      if (this.state.gameStarted) {
+        this.sendJoinGameMessage();
+      }
     }
   }
 
@@ -166,7 +189,7 @@ class Play extends Component {
 
     const dataToSend = {
       type: "join game",
-      board: "Histopolio", // TODO: ter no url
+      board: this.props.params.board,
       userId: user.id,
       name: user.name,
       email: user.email,
@@ -309,8 +332,8 @@ class Play extends Component {
     const dataToSend = {
       type: "badge purchased",
       userId: user.id,
-      board: "Histopolio", // TODO: usar url
-      save: "Turma1", // TODO: usar url
+      board: this.props.params.board,
+      save: this.state.save,
       badgeId: badgeId,
     };
 
@@ -351,8 +374,17 @@ class Play extends Component {
             <li className="breadcrumb-item">
               <Link to="/">Home</Link>
             </li>
+            <li className="breadcrumb-item">
+              <Link to={`/${this.props.params.board}/saves`}>
+                {this.props.params.board}
+              </Link>
+            </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Histopolio
+              {this.state.save.length > 0 ? (
+                <>{this.state.save}</>
+              ) : (
+                <>Novo jogo</>
+              )}
             </li>
           </ol>
         </nav>
@@ -527,4 +559,4 @@ class Play extends Component {
   }
 }
 
-export default Play;
+export default withParams(Play);
