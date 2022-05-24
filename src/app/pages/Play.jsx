@@ -185,6 +185,7 @@ class Play extends Component {
 
   handleInfoShownReceived() {
     this.setState({
+      playerTurn: true,
       cardInfo: true,
     });
 
@@ -218,6 +219,7 @@ class Play extends Component {
 
   handleContentReceived(dataReceived) {
     this.setState({
+      playerTurn: true,
       content: dataReceived["content"],
     });
 
@@ -226,6 +228,7 @@ class Play extends Component {
 
   handleFinishTurnReceived(dataReceived) {
     this.setState({
+      playerTurn: true,
       finishTurn: true,
       finishTurnInfo: dataReceived["info"],
     });
