@@ -15,7 +15,7 @@ class Play extends Component {
   constructor(props) {
     super(props);
 
-    this.client = new w3cwebsocket("ws://histopolio-app-backend.herokuapp.com/");
+    this.client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
 
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);

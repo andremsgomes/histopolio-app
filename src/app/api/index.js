@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://histopolio-app-backend.herokuapp.com/",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export const login = (payload) => api.post("/api/auth/login", payload);
