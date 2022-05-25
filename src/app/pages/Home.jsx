@@ -23,7 +23,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="text-center m-4">
+    <div className="text-center page-center">
       <h1>Olá {user.name}</h1>
       <Link to="/Histopolio/saves" style={{ textDecoration: "none" }}>
         <button className="btn btn-primary btn-lg mt-4">
