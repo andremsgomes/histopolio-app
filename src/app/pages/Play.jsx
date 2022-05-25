@@ -499,29 +499,13 @@ class Play extends Component {
                                     onStoreClick={this.handleStoreClick}
                                   />
                                 ) : (
-                                  <div>
-                                    {this.state.storeOpen ? (
-                                      <Store
-                                        points={this.state.points}
-                                        badges={this.state.badges}
-                                        userBadges={this.state.userBadges}
-                                        onPurchaseClick={
-                                          this.handleBadgePurchased
-                                        }
-                                        onCloseClick={
-                                          this.handleCloseStoreClick
-                                        }
-                                      />
-                                    ) : (
-                                      <Wait
-                                        title="Espera pelo fim da jogada!"
-                                        points={this.state.points}
-                                        rank={this.state.rank}
-                                        storeButton={false}
-                                        onStoreClick={this.handleStoreClick}
-                                      />
-                                    )}
-                                  </div>
+                                  <Wait
+                                    title="Espera pelo fim da jogada!"
+                                    points={this.state.points}
+                                    rank={this.state.rank}
+                                    storeButton={false}
+                                    onStoreClick={this.handleStoreClick}
+                                  />
                                 )}
                               </div>
                             )}
@@ -533,13 +517,25 @@ class Play extends Component {
                 )}
               </div>
             ) : (
-              <Wait
-                title="Espera pela tua vez!"
-                points={this.state.points}
-                rank={this.state.rank}
-                storeButton={true}
-                onStoreClick={this.handleStoreClick}
-              />
+              <div>
+                {this.state.storeOpen ? (
+                  <Store
+                    points={this.state.points}
+                    badges={this.state.badges}
+                    userBadges={this.state.userBadges}
+                    onPurchaseClick={this.handleBadgePurchased}
+                    onCloseClick={this.handleCloseStoreClick}
+                  />
+                ) : (
+                  <Wait
+                    title="Espera pela tua vez!"
+                    points={this.state.points}
+                    rank={this.state.rank}
+                    storeButton={true}
+                    onStoreClick={this.handleStoreClick}
+                  />
+                )}
+              </div>
             )}
           </div>
         ) : (
