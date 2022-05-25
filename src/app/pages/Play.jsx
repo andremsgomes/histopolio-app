@@ -133,6 +133,9 @@ class Play extends Component {
       case "turn":
         this.handleTurnReceived();
         break;
+      case "dice":
+        this.handleDiceReceived();
+        break;
       case "info shown":
         this.handleInfoShownReceived();
         break;
@@ -200,6 +203,12 @@ class Play extends Component {
   }
 
   handleTurnReceived() {
+    this.setState({
+      playerTurn: true,
+    });
+  }
+
+  handleDiceReceived() {
     this.setState({
       playerTurn: true,
       showDice: true,
