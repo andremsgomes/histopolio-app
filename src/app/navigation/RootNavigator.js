@@ -9,7 +9,7 @@ function RootNavigator() {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   return (
-    <BrowserRouter>{user ? (user.admin ? <AdminNavigator /> : <AppNavigator />) : <AuthNavigator />}</BrowserRouter>
+    <BrowserRouter>{user ? (user.adminToken ? <AdminNavigator /> : <AppNavigator />) : <AuthNavigator />}</BrowserRouter>
   );
 }
 
