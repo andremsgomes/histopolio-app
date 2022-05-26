@@ -74,53 +74,67 @@ function Login() {
   };
 
   return (
-    <div className="row m-4">
-      <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-        {alertMessage.length > 0 && (
-          <div className="alert alert-danger" role="alert">
-            {alertMessage}
-          </div>
-        )}
-        <div className="form-group row">
-          <label for="email" className="col-sm-2 col-form-label">
-            Email
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="email"
-              className="form-control"
-              id="emailInput"
-              name="email"
-              onChange={handleEmailChange}
-              value={email}
-            />
-            <div className="text-danger">{emailErrorMessage}</div>
+    <div class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div className="page-center">
+          <div className="row m-4">
+            <div className="col-sm-12 col-md-8 col-lg-6 col-xl-4 mx-auto">
+              <div
+                class="card shadow-2-strong"
+                style={{ borderRadius: "1rem" }}
+              >
+                <div class="card-body p-5 text-center">
+                  {alertMessage.length > 0 && (
+                    <div className="alert alert-danger" role="alert">
+                      {alertMessage}
+                    </div>
+                  )}
+                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                  <p class="text-black-50 mb-5">
+                    Introduz o teu email e password
+                  </p>
+
+                  <div className="form-group row">
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="emailInput"
+                      name="email"
+                      onChange={handleEmailChange}
+                      value={email}
+                      placeholder="Email"
+                    />
+                    <div className="text-danger">{emailErrorMessage}</div>
+                  </div>
+                  <div className="form-group row mt-3">
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="passwordInput"
+                      name="password"
+                      onChange={handlePasswordChange}
+                      value={password}
+                      placeholder="Password"
+                    />
+                    <div className="text-danger">{passwordErrorMessage}</div>
+                  </div>
+                  <div className="text-center">
+                    <button
+                      className="btn btn-primary btn-lg mt-4 px-5"
+                      onClick={handleClick}
+                    >
+                      Login
+                    </button>
+                  </div>
+                  <p className="mt-5">
+                    Não tens uma conta? Regista-te{" "}
+                    <Link to="/signup" className="text-black text-decoration-none fw-bold">aqui</Link>.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="form-group row mt-3">
-          <label for="password" className="col-sm-2 col-form-label">
-            Password
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="password"
-              className="form-control"
-              id="passwordInput"
-              name="password"
-              onChange={handlePasswordChange}
-              value={password}
-            />
-            <div className="text-danger">{passwordErrorMessage}</div>
-          </div>
-        </div>
-        <div className="text-center">
-          <button className="btn btn-primary btn-lg mt-4" onClick={handleClick}>
-            Login
-          </button>
-        </div>
-        <p className="mt-4 text-center">
-          Não tens uma conta? Regista-te <Link to="/signup">aqui</Link>.
-        </p>
       </div>
     </div>
   );
