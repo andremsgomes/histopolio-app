@@ -77,7 +77,7 @@ function Login() {
     <div class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
         <div className="page-center">
-          <div className="row m-4">
+          <div className="row mx-1">
             <div className="col-sm-12 col-md-8 col-lg-6 col-xl-4 mx-auto">
               <div
                 class="card shadow-2-strong"
