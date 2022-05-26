@@ -7,6 +7,7 @@ import AdminNavigator from "./AdminNavigator";
 
 function RootNavigator() {
   const user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user);
 
   return (
     <BrowserRouter>{user ? ("adminToken" in user ? <AdminNavigator /> : <AppNavigator />) : <AuthNavigator />}</BrowserRouter>
