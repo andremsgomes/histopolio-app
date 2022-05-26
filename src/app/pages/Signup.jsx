@@ -134,117 +134,127 @@ function Signup() {
   };
 
   return (
-    <div className="row m-4">
-      <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-        {alertMessage.length > 0 && (
-          <div className="alert alert-danger" role="alert">
-            {alertMessage}
+    <div class="gradient-custom">
+      <div class="container py-5 h-100">
+        <div className="row mx-1">
+          <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto">
+            <div class="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
+              <div class="card-body p-5 text-center">
+                {alertMessage.length > 0 && (
+                  <div className="alert alert-danger" role="alert">
+                    {alertMessage}
+                  </div>
+                )}
+                <h2 class="fw-bold mb-2 text-uppercase">Registo</h2>
+                <p class="text-black-50 mb-5">Introduz os teus dados</p>
+                <div className="form-group row">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="nameInput"
+                    name="name"
+                    onChange={handleNameChange}
+                    value={name}
+                    placeholder="Nome"
+                  />
+                  <div className="text-danger">{nameErrorMessage}</div>
+                </div>
+                <div className="form-group row mt-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="avatarInput"
+                    name="avatar"
+                    onChange={handleAvatarChange}
+                    value={avatar}
+                    placeholder="Link do Avatar"
+                  />
+                </div>
+                <div className="text-center mt-3">
+                  {avatar.length > 0 ? (
+                    <img
+                      src={avatar}
+                      alt="Avatar"
+                      className="rounded-circle border"
+                      style={{
+                        objectFit: "cover",
+                        width: "250px",
+                        height: "250px",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src="https://www.linkpicture.com/q/user_21.png"
+                      alt="Avatar"
+                      className="rounded-circle border"
+                      style={{
+                        objectFit: "cover",
+                        width: "250px",
+                        height: "250px",
+                      }}
+                    />
+                  )}
+                </div>
+                <div className="form-group row mt-3">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="emailInput"
+                    name="email"
+                    onChange={handleEmailChange}
+                    value={email}
+                    placeholder="Email"
+                  />
+                  <div className="text-danger">{emailErrorMessage}</div>
+                </div>
+                <div className="form-group row mt-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="passwordInput"
+                    name="password"
+                    onChange={handlePasswordChange}
+                    value={password}
+                    placeholder="Password"
+                  />
+                  <div className="text-danger">{passwordErrorMessage}</div>
+                </div>
+                <div className="form-group row mt-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="confirmPasswordInput"
+                    name="confirmPassword"
+                    onChange={handleConfirmPasswordChange}
+                    value={confirmPassword}
+                    placeholder="Confirma a password"
+                  />
+                  <div className="text-danger">
+                    {confirmPasswordErrorMessage}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <button
+                    className="btn btn-primary btn-lg mt-4 px-5"
+                    onClick={handleClick}
+                  >
+                    Criar conta
+                  </button>
+                </div>
+                <p className="mt-5">
+                  Já tens uma conta? Faz o login{" "}
+                  <Link
+                    to="/login"
+                    className="text-black text-decoration-none fw-bold"
+                  >
+                    aqui
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
           </div>
-        )}
-        <div className="form-group row">
-          <label for="name" className="col-sm-3 col-form-label">
-            Nome
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              className="form-control"
-              id="nameInput"
-              name="name"
-              onChange={handleNameChange}
-              value={name}
-            />
-            <div className="text-danger">{nameErrorMessage}</div>
-          </div>
         </div>
-        <div className="form-group row mt-3">
-          <label for="avatar" className="col-sm-3 col-form-label">
-            Link do Avatar
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              className="form-control"
-              id="avatarInput"
-              name="avatar"
-              onChange={handleAvatarChange}
-              value={avatar}
-            />
-          </div>
-        </div>
-        <div className="text-center mt-3">
-          {avatar.length > 0 ? (
-            <img
-              src={avatar}
-              alt="Avatar"
-              className="rounded-circle border"
-              style={{ objectFit: "cover", width: "250px", height: "250px" }}
-            />
-          ) : (
-            <img
-              src="https://www.linkpicture.com/q/user_21.png"
-              alt="Avatar"
-              className="rounded-circle border"
-              style={{ objectFit: "cover", width: "250px", height: "250px" }}
-            />
-          )}
-        </div>
-        <div className="form-group row mt-3">
-          <label for="email" className="col-sm-3 col-form-label">
-            Email
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="email"
-              className="form-control"
-              id="emailInput"
-              name="email"
-              onChange={handleEmailChange}
-              value={email}
-            />
-            <div className="text-danger">{emailErrorMessage}</div>
-          </div>
-        </div>
-        <div className="form-group row mt-3">
-          <label for="password" className="col-sm-3 col-form-label">
-            Password
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="password"
-              className="form-control"
-              id="passwordInput"
-              name="password"
-              onChange={handlePasswordChange}
-              value={password}
-            />
-            <div className="text-danger">{passwordErrorMessage}</div>
-          </div>
-        </div>
-        <div className="form-group row mt-3">
-          <label for="confirmPassword" className="col-sm-3 col-form-label">
-            Confirma a Password
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="password"
-              className="form-control"
-              id="confirmPasswordInput"
-              name="confirmPassword"
-              onChange={handleConfirmPasswordChange}
-              value={confirmPassword}
-            />
-            <div className="text-danger">{confirmPasswordErrorMessage}</div>
-          </div>
-        </div>
-        <div className="text-center">
-          <button className="btn btn-primary btn-lg mt-4" onClick={handleClick}>
-            Criar conta
-          </button>
-        </div>
-        <p className="mt-4 text-center">
-          Já tens uma conta? Faz o login <Link to="/login">aqui</Link>.
-        </p>
       </div>
     </div>
   );
