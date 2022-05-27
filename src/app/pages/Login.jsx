@@ -75,62 +75,63 @@ function Login() {
 
   return (
     <div class="vh-100 gradient-custom">
-      <div class="container">
-        <div className="page-center py-5">
-          <div className="row mx-1">
-            <div className="col-sm-12 col-md-8 col-lg-6 col-xl-4 mx-auto">
-              <div
-                class="card shadow-2-strong"
-                style={{ borderRadius: "1rem" }}
-              >
-                <div class="card-body p-5 text-center">
-                  {alertMessage.length > 0 && (
-                    <div className="alert alert-danger" role="alert">
-                      {alertMessage}
-                    </div>
-                  )}
-                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                  <p class="text-black-50 mb-5">
-                    Introduz o teu email e password
-                  </p>
+      <div class="container py-5 h-100">
+        <div className="row mx-1">
+          <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto">
+            <div class="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
+              <div class="card-body p-5 text-center">
+                {alertMessage.length > 0 && (
+                  <div className="alert alert-danger" role="alert">
+                    {alertMessage}
+                  </div>
+                )}
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-black-50 mb-5">
+                  Introduz o teu email e password
+                </p>
 
-                  <div className="form-group row">
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="emailInput"
-                      name="email"
-                      onChange={handleEmailChange}
-                      value={email}
-                      placeholder="Email"
-                    />
-                    <div className="text-danger">{emailErrorMessage}</div>
-                  </div>
-                  <div className="form-group row mt-3">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="passwordInput"
-                      name="password"
-                      onChange={handlePasswordChange}
-                      value={password}
-                      placeholder="Password"
-                    />
-                    <div className="text-danger">{passwordErrorMessage}</div>
-                  </div>
-                  <div className="text-center">
-                    <button
-                      className="btn btn-primary btn-lg mt-4 px-5"
-                      onClick={handleClick}
-                    >
-                      Login
-                    </button>
-                  </div>
-                  <p className="mt-5">
-                    Não tens uma conta? Regista-te{" "}
-                    <Link to="/signup" className="text-black text-decoration-none fw-bold">aqui</Link>.
-                  </p>
+                <div className="form-group row">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="emailInput"
+                    name="email"
+                    onChange={handleEmailChange}
+                    value={email}
+                    placeholder="Email"
+                  />
+                  <div className="text-danger">{emailErrorMessage}</div>
                 </div>
+                <div className="form-group row mt-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="passwordInput"
+                    name="password"
+                    onChange={handlePasswordChange}
+                    value={password}
+                    placeholder="Password"
+                  />
+                  <div className="text-danger">{passwordErrorMessage}</div>
+                </div>
+                <div className="text-center">
+                  <button
+                    className="btn btn-primary btn-lg mt-4 px-5"
+                    onClick={handleClick}
+                  >
+                    Login
+                  </button>
+                </div>
+                <p className="mt-5">
+                  Não tens uma conta? Regista-te{" "}
+                  <Link
+                    to="/signup"
+                    className="text-black text-decoration-none fw-bold"
+                  >
+                    aqui
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </div>
