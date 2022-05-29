@@ -25,7 +25,7 @@ class Admin extends Component {
     return (
       <div className="row text-center m-4">
         <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <h1 className="mb-4">Histopolio</h1>
+          <h1 className="mb-4">Histopólio</h1>
           {this.state.saves.length > 0 && (
             <h4 className="mb-3">Dados guardados</h4>
           )}
@@ -48,7 +48,7 @@ class Admin extends Component {
               </Link>
             );
           })}
-          <Link to="/admin/Histopolio" style={{ textDecoration: "none" }}>
+          <Link to="/admin/Histopólio" style={{ textDecoration: "none" }}>
             <button className="btn btn-lg btn-primary my-4">
               Editar tabuleiro
             </button>

@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import TilesTable from "../components/TilesTable";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -25,9 +24,21 @@ class EditBoard extends Component {
     badges: [],
   };
 
+  types = {
+    go: "Casa da partida",
+    groupProperty: "Casa de perguntas",
+    community: "Decisões do senado",
+    pay: "Casa de azar",
+    train: "Estação de treino",
+    chance: "Sorte",
+    prison: "Prisão",
+    parking: "Estacionamento gratuito",
+    goToPrison: "Vá para a prisão",
+  };
+
   componentDidMount() {
     api
-      .boardData(this.props.params.board)
+      .board(this.props.params.board)
       .then((res) => {
         this.setState({
           board: res.data,
@@ -37,54 +48,27 @@ class EditBoard extends Component {
         console.log(error.message);
       });
 
-    api
-      .badgesData(this.props.params.board)
-      .then((res) => {
-        this.setState({
-          badges: res.data,
-        });
-      })
-      .catch((error) => {
+    api.badges(this.props.params.board).then((res) => {
+      this.setState({
+        badges: res.data,
+      }).catch((error) => {
         console.log(error.message);
       });
+    });
   }
 
-  handleNameChange(e) {
-    const tileId = parseInt(e.target.id.substring(4));
-
-    const newGroupPropertyTiles = this.state.board.groupPropertyTiles.map(
-      (tile) => {
-        if (tile.id === tileId) {
-          tile.tileName = e.target.value;
-        }
-
-        return tile;
-      }
-    );
-
-    let newBoard = this.state.board;
-    newBoard.groupPropertyTiles = newGroupPropertyTiles;
+  handleNameChange(e, boardPosition) {
+    const newBoard = this.state.board;
+    newBoard[boardPosition].name = e.target.value;
 
     this.setState({
       board: newBoard,
     });
   }
 
-  handlePointsChange(e) {
-    const tileId = parseInt(e.target.id.substring(6));
-
-    const newGroupPropertyTiles = this.state.board.groupPropertyTiles.map(
-      (tile) => {
-        if (tile.id === tileId) {
-          tile.points = parseInt(e.target.value);
-        }
-
-        return tile;
-      }
-    );
-
-    let newBoard = this.state.board;
-    newBoard.groupPropertyTiles = newGroupPropertyTiles;
+  handlePointsChange(e, boardPosition) {
+    const newBoard = this.state.board;
+    newBoard[boardPosition].name = e.target.value;
 
     this.setState({
       board: newBoard,
@@ -92,24 +76,9 @@ class EditBoard extends Component {
   }
 
   handleClick() {
-    let boardData = JSON.parse(JSON.stringify(this.state.board));
+    const board = JSON.parse(JSON.stringify(this.state.board));
 
-    boardData.groupPropertyTiles.forEach((tile) => {
-      delete tile.questions;
-    });
-
-    boardData.payTiles.forEach((tile) => {
-      delete tile.questions;
-    });
-
-    boardData.stationTiles.forEach((tile) => {
-      delete tile.cards;
-    });
-
-    delete boardData.communityCards;
-    delete boardData.chanceCards;
-
-    const payload = { boardData };
+    const payload = { board };
 
     api
       .updateBoard(payload)
@@ -125,121 +94,57 @@ class EditBoard extends Component {
         <h1>{this.props.params.board}</h1>
         {this.state.board && (
           <div>
-            <TilesTable
-              title="Casas de perguntas"
-              pointsCol="Pontos"
-              content="Perguntas"
-              tiles={this.state.board.groupPropertyTiles}
-              onNameChange={this.handleNameChange}
-              onPointsChange={this.handlePointsChange}
-              board={this.props.params.board}
-              contentLink="/questions"
-            />
-            <TilesTable
-              title="Casas de azar"
-              pointsCol="Pontos a retirar"
-              content="Perguntas"
-              tiles={this.state.board.payTiles}
-              onNameChange={this.handleNameChange}
-              onPointsChange={this.handlePointsChange}
-              board={this.props.params.board}
-              contentLink="/questions"
-            />
-            <TilesTable
-              title="Estações de treino"
-              pointsCol="Pontos"
-              content="Cartas"
-              tiles={this.state.board.stationTiles}
-              onNameChange={this.handleNameChange}
-              onPointsChange={this.handlePointsChange}
-              board={this.props.params.board}
-              contentLink="/train_cards"
-            />
+            <h4 className="mt-4">Tabuleiro</h4>
+            <table className="table table-hover mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Posição</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Pontos</th>
+                  <th scope="col">Conteúdo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.board.map((tile) => {
+                  return (
+                    <tr>
+                      <th scope="row">{tile.boardPosition}</th>
+                      <td>{this.types[tile.type]}</td>
+                      <td>
+                        <input
+                          onChange={(e) =>
+                            this.handleNameChange(e, tile.boardPosition)
+                          }
+                          type="text"
+                          value={tile.name}
+                        />
+                      </td>
+                      <td>
+                        {"points" in tile ? (
+                          <input
+                            onChange={(e) =>
+                              this.handlePointsChange(e, tile.boardPosition)
+                            }
+                            type="number"
+                            value={tile.points}
+                          />
+                        ) : (
+                          "-"
+                        )}
+                      </td>
+                      <td>-</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
             <button
               className="btn btn-lg btn-primary my-4"
               onClick={this.handleClick}
             >
               Guardar alterações
             </button>
-            <h4 className="mt-4">Cartas</h4>
-            {this.state.board.communityCards.length > 0 && (
-              <table className="table table-hover mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Pontos imediatos</th>
-                    <th scope="col">Ação</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.board.communityCards.map((card) => {
-                    return (
-                      <tr>
-                        <th scope="row">{card.id}</th>
-                        <td>Decisão do Senado</td>
-                        <td>{card.info}</td>
-                        <td>{card.points}</td>
-                        <td>
-                          {card.action === "none" ? (
-                            <div>Sem ação</div>
-                          ) : card.action === "move" ? (
-                            <div>Mover {card.actionValue}</div>
-                          ) : (
-                            <div>Mover para casa {card.actionValue}</div>
-                          )}
-                        </td>
-                        <td>
-                          <FontAwesomeIcon icon={faPencil} />
-                        </td>
-                        <td>
-                          <FontAwesomeIcon icon={faTrashCan} />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                  {this.state.board.chanceCards.map((card) => {
-                    return (
-                      <tr>
-                        <th scope="row">{card.id}</th>
-                        <td>Sorte</td>
-                        <td>{card.info}</td>
-                        <td>{card.points}</td>
-                        <td>
-                          {card.action === "none" ? (
-                            <div>Sem ação</div>
-                          ) : card.action === "move" ? (
-                            <div>
-                              Mover {card.actionValue} casa
-                              {parseInt(card.actionValue) !== 1 && "s"}
-                            </div>
-                          ) : (
-                            <div>Mover para a casa {card.actionValue}</div>
-                          )}
-                        </td>
-                        <td>
-                          <FontAwesomeIcon icon={faPencil} />
-                        </td>
-                        <td>
-                          <FontAwesomeIcon icon={faTrashCan} />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
-            <Link
-              to={"/admin/" + this.props.params.board + "/cards/deck/new"}
-              style={{ textDecoration: "none" }}
-            >
-              <button className="btn btn-lg btn-primary my-4">
-                Adicionar carta
-              </button>
-            </Link>
           </div>
         )}
         <h4 className="mt-4">Troféus</h4>
@@ -256,10 +161,10 @@ class EditBoard extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.badges.map((badge) => {
+              {this.state.badges.map((badge, i) => {
                 return (
                   <tr>
-                    <th scope="row">{badge.id}</th>
+                    <th scope="row">{i+1}</th>
                     <td>{badge.name}</td>
                     <td>x{badge.multiplier}</td>
                     <td>

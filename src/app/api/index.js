@@ -7,7 +7,7 @@ const api = axios.create({
 export const login = (payload) => api.post("/api/auth/login", payload);
 export const signup = (payload) => api.post("/api/auth/signup", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
-export const boardData = (board) => api.get(`/api/game/data/${board}`);
+export const board = (board) => api.get(`/api/game/data/${board}`);
 export const questionsData = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
 export const savedData = (board, save) =>
@@ -26,7 +26,7 @@ export const trainCardsData = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/train_cards`);
 export const newTrainCard = (payload) =>
   api.post("api/game/data/cards/train_cards/new", payload);
-export const badgesData = (board) => api.get(`/api/game/data/${board}/badges`);
+export const badges = (board) => api.get(`/api/game/data/${board}/badges`);
 export const newBadge = (payload) =>
   api.post("/api/game/data/badges/new", payload);
 
@@ -34,7 +34,7 @@ const apiRoutes = {
   login,
   signup,
   saves,
-  boardData,
+  board,
   questionsData,
   savedData,
   playerData,
@@ -44,7 +44,7 @@ const apiRoutes = {
   newDeckCard,
   trainCardsData,
   newTrainCard,
-  badgesData,
+  badges,
   newBadge,
 };
 
