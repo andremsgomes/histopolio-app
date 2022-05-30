@@ -133,7 +133,60 @@ class EditBoard extends Component {
                           "-"
                         )}
                       </td>
-                      <td>-</td>
+                      <td>
+                        {tile.type === "groupProperty" ||
+                        tile.type === "pay" ? (
+                          <Link
+                            to={`/admin/${this.props.params.board}/${tile.boardPosition}/questions`}
+                          >
+                            {tile.questions ? (
+                              <>
+                                {tile.questions} pergunta
+                                {tile.questions !== 1 && "s"}
+                              </>
+                            ) : (
+                              "0 perguntas"
+                            )}
+                          </Link>
+                        ) : (
+                          <>
+                            {tile.type === "community" ||
+                            tile.type === "chance" ? (
+                              <Link
+                                to={`/admin/${this.props.params.board}/cards/deck/new`}
+                              >
+                                {tile.cards ? (
+                                  <>
+                                    {tile.cards} carta
+                                    {tile.cards !== 1 && "s"}
+                                  </>
+                                ) : (
+                                  "0 cartas"
+                                )}
+                              </Link>
+                            ) : (
+                              <>
+                                {tile.type === "train" ? (
+                                  <Link
+                                    to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
+                                  >
+                                    {tile.cards ? (
+                                      <>
+                                        {tile.cards} carta
+                                        {tile.cards !== 1 && "s"}
+                                      </>
+                                    ) : (
+                                      "0 cartas"
+                                    )}
+                                  </Link>
+                                ) : (
+                                  "-"
+                                )}
+                              </>
+                            )}
+                          </>
+                        )}
+                      </td>
                     </tr>
                   );
                 })}
@@ -164,7 +217,7 @@ class EditBoard extends Component {
               {this.state.badges.map((badge, i) => {
                 return (
                   <tr>
-                    <th scope="row">{i+1}</th>
+                    <th scope="row">{i + 1}</th>
                     <td>{badge.name}</td>
                     <td>x{badge.multiplier}</td>
                     <td>

@@ -17,7 +17,7 @@ class EditTrainCards extends Component {
 
   componentDidMount() {
     api
-      .trainCardsData(this.props.params.board, this.props.params.tile)
+      .trainCards(this.props.params.board, this.props.params.tile)
       .then((res) => {
         console.log(res);
         this.setState({
@@ -35,7 +35,7 @@ class EditTrainCards extends Component {
         <h1>
           {this.props.params.board} - Casa {this.props.params.tile}
         </h1>
-        <h4>Tabela de cartas</h4>
+        <h4>Cartas de treino</h4>
         <table className="table table-hover mt-4">
           <thead>
             <tr>
@@ -47,10 +47,10 @@ class EditTrainCards extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.cards.map((card) => {
+            {this.state.cards.map((card, i) => {
               return (
                 <tr>
-                  <th scope="row">{card.id}</th>
+                  <th scope="row">{i+1}</th>
                   <td>{card.info}</td>
                   <td>{card.content}</td>
                   <td>
