@@ -10,7 +10,7 @@ class Admin extends Component {
 
   componentDidMount() {
     api
-      .saves("Histopolio")
+      .saves("Histopólio")
       .then((res) => {
         this.setState({
           saves: res.data,
@@ -30,18 +30,17 @@ class Admin extends Component {
             <h4 className="mb-3">Dados guardados</h4>
           )}
           {this.state.saves.map((save) => {
-            const saveName = save.file.substring(0, save.file.indexOf(".json"));
-
             return (
               <Link
-                to={"/admin/Histopolio/" + saveName}
+                to={"/admin/Histopólio/" + save.name}
                 style={{ textDecoration: "none" }}
+                key={save._id}
               >
                 <div className="card mb-2 mx-4 p-3">
                   <div className="card-body">
-                    <h4 className="card-title">{saveName}</h4>
-                    <p class="card-text">
-                      {save.numPlayers} jogador{save.numPlayers !== 1 && "es"}
+                    <h4 className="card-title">{save.name}</h4>
+                    <p className="card-text">
+                      {save.players} jogador{save.players !== 1 && "es"}
                     </p>
                   </div>
                 </div>

@@ -10,7 +10,7 @@ export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
 export const board = (board) => api.get(`/api/game/data/${board}`);
 export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
-export const savedData = (board, save) =>
+export const players = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
 export const playerData = (board, userId) =>
   api.get(`/api/game/data/${board}/${userId}/player`);
@@ -36,7 +36,7 @@ const apiRoutes = {
   saves,
   board,
   questions,
-  savedData,
+  players,
   playerData,
   updateSave,
   updateBoard,

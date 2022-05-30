@@ -29,7 +29,7 @@ class EditSave extends Component {
 
   componentDidMount() {
     api
-      .savedData(this.props.params.board, this.props.params.save)
+      .players(this.props.params.board, this.props.params.save)
       .then((res) => {
         this.setState({
           players: res.data,
@@ -164,7 +164,7 @@ class EditSave extends Component {
             <table className="table table-hover mt-4">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">#</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Email</th>
                   <th scope="col">Posição no tabuleiro</th>
@@ -176,7 +176,7 @@ class EditSave extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.players.map((player) => {
+                {this.state.players.map((player, i) => {
                   const percCorrect =
                     !player.totalAnswers || player.totalAnswers === 0
                       ? "-"
@@ -189,8 +189,8 @@ class EditSave extends Component {
                         "%";
 
                   return (
-                    <tr key={player.userId}>
-                      <th scope="row">{player.userId}</th>
+                    <tr key={player._id}>
+                      <th scope="row">{i+1}</th>
                       <td>{player.name}</td>
                       <td>{player.email}</td>
                       <td>
@@ -201,7 +201,7 @@ class EditSave extends Component {
                             this.handlePositionChange(e, player.userId)
                           }
                           type="number"
-                          value={player.position}
+                          value={player.boardPosition}
                         />
                       </td>
                       <td>
@@ -212,7 +212,7 @@ class EditSave extends Component {
                             this.handleNumTurnsChange(e, player.userId)
                           }
                           type="number"
-                          value={player.numTurns}
+                          value={player.turns}
                         />
                       </td>
                       <td>
