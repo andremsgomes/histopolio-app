@@ -17,9 +17,8 @@ class EditQuestions extends Component {
 
   componentDidMount() {
     api
-      .questionsData(this.props.params.board, this.props.params.tile)
+      .questions(this.props.params.board, this.props.params.tile)
       .then((res) => {
-        console.log(res);
         this.setState({
           questions: res.data,
         });
@@ -47,10 +46,10 @@ class EditQuestions extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.questions.map((question) => {
+            {this.state.questions.map((question, i) => {
               return (
                 <tr>
-                  <th scope="row">{question.id}</th>
+                  <th scope="row">{i+1}</th>
                   <td>{question.question}</td>
                   <td>{question.answers[question.correctAnswer - 1]}</td>
                   <td>

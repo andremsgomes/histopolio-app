@@ -8,7 +8,7 @@ export const login = (payload) => api.post("/api/auth/login", payload);
 export const signup = (payload) => api.post("/api/auth/signup", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
 export const board = (board) => api.get(`/api/game/data/${board}`);
-export const questionsData = (board, tile) =>
+export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
 export const savedData = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
@@ -35,7 +35,7 @@ const apiRoutes = {
   signup,
   saves,
   board,
-  questionsData,
+  questions,
   savedData,
   playerData,
   updateSave,
