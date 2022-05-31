@@ -36,12 +36,12 @@ class NewTrainCard extends Component {
   handleClick() {
     // TODO: validar tudo
 
-    const board = this.props.params.board;
-    const tileId = parseInt(this.props.params.tile);
+    const boardName = this.props.params.board;
+    const boardPosition = parseInt(this.props.params.tile);
     const info = this.state.info;
     const content = this.state.content;
 
-    const payload = { board, tileId, info, content };
+    const payload = { boardName, boardPosition, info, content };
 
     api
       .newTrainCard(payload)
