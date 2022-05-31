@@ -78,6 +78,11 @@ class EditBoard extends Component {
   handleClick() {
     const board = JSON.parse(JSON.stringify(this.state.board));
 
+    board.forEach(tile => {
+      if ("questions" in tile) delete tile.questions;
+      if ("cards" in tile) delete tile.cards;
+    });
+
     const payload = { board };
 
     api
