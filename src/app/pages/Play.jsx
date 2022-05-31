@@ -294,7 +294,7 @@ class Play extends Component {
   rollDoneCallback(num) {
     const dataToSend = {
       type: "dice result",
-      result: num,
+      result: 1,
       rollTime: this.state.rollTime * 1000,
     };
 

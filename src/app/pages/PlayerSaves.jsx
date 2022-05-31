@@ -39,13 +39,13 @@ function PlayerSaves() {
           <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
             {saves.map((save) => {
               return (
-                <Link to={`/${board}/play?save=${save.file}`} style={{ textDecoration: "none" }}>
+                <Link to={`/${board}/play?save=${save.saveName}`} style={{ textDecoration: "none" }}>
                   <div className="card mb-2 mx-4 p-3">
                     <div className="card-body">
-                      <h4 className="card-title">{save.file}</h4>
+                      <h4 className="card-title">{save.saveName}</h4>
                       <p class="card-text">
-                        {save.player.points} ponto
-                        {save.player.points !== 1 && "s"}
+                        {save.points} ponto
+                        {save.points !== 1 && "s"}
                       </p>
                     </div>
                   </div>

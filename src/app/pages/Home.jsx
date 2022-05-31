@@ -13,7 +13,7 @@ function Home() {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     api
-      .playerData("Histopolio", user.id)
+      .playerData("Histopólio", user.id)
       .then((res) => {
         setSaves(res.data);
       })
@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="text-center page-center">
       <h1>Olá {user.name}</h1>
-      <Link to="/Histopolio/saves" style={{ textDecoration: "none" }}>
+      <Link to="/Histopólio/saves" style={{ textDecoration: "none" }}>
         <button className="btn btn-primary btn-lg mt-4">
           Jogar Histopólio
         </button>
@@ -34,7 +34,7 @@ function Home() {
         {saves.map((save) => {
           return (
             <h6>
-              {save.file}: {save.player.points} pontos
+              {save.saveName}: {save.points} pontos
             </h6>
           );
         })}
