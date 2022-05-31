@@ -39,29 +39,31 @@ class NewBadge extends Component {
 
   handleMultiplierChange(e) {
     this.setState({
-      multiplier: e.target.value,
+      multiplier: parseInt(e.target.value),
     });
   }
 
   handleCostChange(e) {
     this.setState({
-      cost: e.target.value,
+      cost: parseInt(e.target.value),
     });
   }
 
   handleClick() {
     // TODO: validar tudo
 
-    const board = this.props.params.board;
+    const boardName = this.props.params.board;
     const name = this.state.name;
     const multiplier = this.state.multiplier;
     const cost = this.state.cost;
 
     // image validation
-    const imageToSend =
-      this.state.image.length > 0 ? this.state.image : "https://www.linkpicture.com/q/badge_9.png";
+    const image =
+      this.state.image.length > 0
+        ? this.state.image
+        : "https://www.linkpicture.com/q/badge_9.png";
 
-    const payload = { board, name, imageToSend, multiplier, cost };
+    const payload = { boardName, name, image, multiplier, cost };
 
     api
       .newBadge(payload)
