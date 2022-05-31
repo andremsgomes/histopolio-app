@@ -47,7 +47,7 @@ class EditSave extends Component {
   handlePositionChange(e, userId) {
     const newPlayers = this.state.players.map((player) => {
       if (player.userId === userId) {
-        player.position = parseInt(e.target.value);
+        player.boardPosition = parseInt(e.target.value);
       }
 
       return player;
@@ -75,7 +75,7 @@ class EditSave extends Component {
   handleNumTurnsChange(e, userId) {
     const newPlayers = this.state.players.map((player) => {
       if (player.userId === userId) {
-        player.numTurns = parseInt(e.target.value);
+        player.turns = parseInt(e.target.value);
       }
 
       return player;
@@ -115,13 +115,16 @@ class EditSave extends Component {
   }
 
   handleClick() {
-    const board = this.props.params.board;
-    const save = this.props.params.save;
-    const savedData = this.state.players;
-    const payload = { board, save, savedData };
+    const players = this.state.players;
+    players.forEach(player => {
+      delete player.name;
+      delete player.email;
+    });
+
+    const payload = { players };
 
     api
-      .updateSave(payload)
+      .updatePlayers(payload)
       .then(() => {
         this.setState({
           alertType: "success",

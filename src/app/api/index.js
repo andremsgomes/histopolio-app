@@ -14,7 +14,7 @@ export const players = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
 export const playerData = (board, userId) =>
   api.get(`/api/game/data/${board}/players/${userId}`);
-export const updateSave = (payload) =>
+export const updatePlayers = (payload) =>
   api.post("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
   api.post("api/game/data/board/update", payload);
@@ -38,7 +38,7 @@ const apiRoutes = {
   questions,
   players,
   playerData,
-  updateSave,
+  updatePlayers,
   updateBoard,
   newQuestion,
   newDeckCard,
