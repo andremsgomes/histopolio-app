@@ -48,15 +48,15 @@ class NewQuestion extends Component {
 
   handleSelectChange(e) {
     this.setState({
-      correctAnswer: e.target.value,
+      correctAnswer: parseInt(e.target.value),
     });
   }
 
   handleClick() {
     // TODO: validar tudo
 
-    const board = this.props.params.board;
-    const tileId = parseInt(this.props.params.tile);
+    const boardName = this.props.params.board;
+    const boardPosition = parseInt(this.props.params.tile);
     const question = this.state.question;
     const image = this.state.image;
     let answers = [];
@@ -66,7 +66,7 @@ class NewQuestion extends Component {
       if (answer.length > 0) answers.push(answer);
     });
 
-    const payload = { board, tileId, question, image, answers, correctAnswer };
+    const payload = { boardName, boardPosition, question, image, answers, correctAnswer };
 
     api
       .newQuestion(payload)
