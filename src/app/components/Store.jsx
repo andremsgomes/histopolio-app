@@ -14,7 +14,7 @@ function Store(props) {
                   src={badge.image}
                   className="card-img-top"
                   style={{objectFit: "cover", width: "100%", height: "450px"}}
-                  alt={"badge" + badge.id}
+                  alt={"badge" + badge._id}
                 />
                 <div className="card-body">
                   <h5 class="card-title">{badge.name}</h5>
@@ -26,7 +26,7 @@ function Store(props) {
                     Custo: <span className="fw-bold">{badge.cost} pontos</span>
                   </p>
                   {props.userBadges.find(
-                    (userBadge) => userBadge === badge.id
+                    (userBadge) => userBadge === badge._id
                   ) ? (
                     <p className="card-text mt-4 mb-4 fw-bold">Adquirido</p>
                   ) : (
@@ -34,7 +34,7 @@ function Store(props) {
                       className="btn btn-primary mt-4 purchase-button"
                       disabled={badge.cost > props.points}
                       onClick={() =>
-                        props.onPurchaseClick(badge.id, badge.cost)
+                        props.onPurchaseClick(badge._id, badge.cost)
                       }
                     >
                       Comprar
