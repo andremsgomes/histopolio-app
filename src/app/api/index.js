@@ -20,6 +20,8 @@ export const updateBoard = (payload) =>
   api.post("api/game/data/board/update", payload);
 export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
+export const deckCards = (board, deck) =>
+  api.get(`/api/game/data/${board}/deck_cards/${deck}`);
 export const newDeckCard = (payload) =>
   api.post("api/game/data/cards/deck/new", payload);
 export const trainCards = (board, tile) =>
@@ -41,6 +43,7 @@ const apiRoutes = {
   updatePlayers,
   updateBoard,
   newQuestion,
+  deckCards,
   newDeckCard,
   trainCards,
   newTrainCard,

@@ -78,7 +78,7 @@ class EditBoard extends Component {
   handleClick() {
     const board = JSON.parse(JSON.stringify(this.state.board));
 
-    board.forEach(tile => {
+    board.forEach((tile) => {
       if ("questions" in tile) delete tile.questions;
       if ("cards" in tile) delete tile.cards;
     });
@@ -155,10 +155,9 @@ class EditBoard extends Component {
                           </Link>
                         ) : (
                           <>
-                            {tile.type === "community" ||
-                            tile.type === "chance" ? (
+                            {tile.type === "community" ? (
                               <Link
-                                to={`/admin/${this.props.params.board}/cards/deck/new`}
+                                to={`/admin/${this.props.params.board}/deck_cards/community`}
                               >
                                 {tile.cards ? (
                                   <>
@@ -171,9 +170,9 @@ class EditBoard extends Component {
                               </Link>
                             ) : (
                               <>
-                                {tile.type === "train" ? (
+                                {tile.type === "chance" ? (
                                   <Link
-                                    to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
+                                    to={`/admin/${this.props.params.board}/deck_cards/chance`}
                                   >
                                     {tile.cards ? (
                                       <>
@@ -185,7 +184,24 @@ class EditBoard extends Component {
                                     )}
                                   </Link>
                                 ) : (
-                                  "-"
+                                  <>
+                                    {tile.type === "train" ? (
+                                      <Link
+                                        to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
+                                      >
+                                        {tile.cards ? (
+                                          <>
+                                            {tile.cards} carta
+                                            {tile.cards !== 1 && "s"}
+                                          </>
+                                        ) : (
+                                          "0 cartas"
+                                        )}
+                                      </Link>
+                                    ) : (
+                                      "-"
+                                    )}
+                                  </>
                                 )}
                               </>
                             )}
