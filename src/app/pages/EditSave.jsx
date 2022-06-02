@@ -115,8 +115,8 @@ class EditSave extends Component {
   }
 
   handleClick() {
-    const players = this.state.players;
-    players.forEach(player => {
+    const players = JSON.parse(JSON.stringify(this.state.players));
+    players.forEach((player) => {
       delete player.name;
       delete player.email;
     });
@@ -193,7 +193,7 @@ class EditSave extends Component {
 
                   return (
                     <tr key={player._id}>
-                      <th scope="row">{i+1}</th>
+                      <th scope="row">{i + 1}</th>
                       <td>{player.name}</td>
                       <td>{player.email}</td>
                       <td>
