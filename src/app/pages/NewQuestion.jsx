@@ -71,7 +71,7 @@ class NewQuestion extends Component {
     api
       .newQuestion(payload)
       .then(() => {
-        // TODO: window.location.href = `/admin/${board}/${tileId}/questions`;
+        window.location.href = `/admin/${this.props.params.board}/${this.props.params.tile}/questions`;
       })
       .catch((error) => {
         console.log(error.message);
