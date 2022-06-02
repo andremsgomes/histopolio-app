@@ -68,7 +68,7 @@ class EditBoard extends Component {
 
   handlePointsChange(e, boardPosition) {
     const newBoard = this.state.board;
-    newBoard[boardPosition].name = e.target.value;
+    newBoard[boardPosition].points = parseInt(e.target.value);
 
     this.setState({
       board: newBoard,
