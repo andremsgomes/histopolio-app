@@ -6,6 +6,7 @@ const api = axios.create({
 
 export const login = (payload) => api.post("/api/auth/login", payload);
 export const signup = (payload) => api.post("/api/auth/signup", payload);
+export const updateProfile = (payload) => api.post("/api/auth/update_profile", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
 export const board = (board) => api.get(`/api/game/data/${board}`);
 export const questions = (board, tile) =>
@@ -35,6 +36,7 @@ export const newBadge = (payload) =>
 const apiRoutes = {
   login,
   signup,
+  updateProfile,
   saves,
   board,
   questions,
