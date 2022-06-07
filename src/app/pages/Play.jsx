@@ -6,7 +6,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import "react-dice-complete/dist/react-dice-complete.css";
 
 import Wait from "../components/Wait";
-import Question from "../components/Question";
+import PlayQuestion from "../components/PlayQuestion";
 import Store from "../components/Store";
 import Content from "../components/Content";
 import Continue from "../components/Continue";
@@ -449,7 +449,7 @@ class Play extends Component {
                 ) : (
                   <div>
                     {this.state.question ? (
-                      <Question
+                      <PlayQuestion
                         question={this.state.question}
                         onAnswerClick={this.handleAnswer}
                         rank={this.state.rank}

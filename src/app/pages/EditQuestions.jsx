@@ -49,11 +49,15 @@ class EditQuestions extends Component {
             {this.state.questions.map((question, i) => {
               return (
                 <tr>
-                  <th scope="row">{i+1}</th>
+                  <th scope="row">{i + 1}</th>
                   <td>{question.question}</td>
                   <td>{question.answers[question.correctAnswer - 1]}</td>
                   <td>
-                    <FontAwesomeIcon icon={faPencil} />
+                    <Link
+                      to={`/admin/${this.props.params.board}/${this.props.params.tile}/question/${question._id}/edit`}
+                    >
+                      <FontAwesomeIcon icon={faPencil} />
+                    </Link>
                   </td>
                   <td>
                     <FontAwesomeIcon icon={faTrashCan} />

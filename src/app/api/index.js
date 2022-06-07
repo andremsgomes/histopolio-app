@@ -6,11 +6,13 @@ const api = axios.create({
 
 export const login = (payload) => api.post("/api/auth/login", payload);
 export const signup = (payload) => api.post("/api/auth/signup", payload);
-export const updateProfile = (payload) => api.post("/api/auth/update_profile", payload);
+export const updateProfile = (payload) =>
+  api.post("/api/auth/update_profile", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
 export const board = (board) => api.get(`/api/game/data/${board}`);
 export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
+export const question = (id) => api.get(`/api/game/data/question/${id}`);
 export const players = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
 export const playerData = (board, userId) =>
@@ -21,6 +23,8 @@ export const updateBoard = (payload) =>
   api.post("api/game/data/board/update", payload);
 export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
+export const updateQuestion = (payload) =>
+  api.post("api/game/data/question/update", payload);
 export const deckCards = (board, deck) =>
   api.get(`/api/game/data/${board}/deck_cards/${deck}`);
 export const newDeckCard = (payload) =>
@@ -40,11 +44,13 @@ const apiRoutes = {
   saves,
   board,
   questions,
+  question,
   players,
   playerData,
   updatePlayers,
   updateBoard,
   newQuestion,
+  updateQuestion,
   deckCards,
   newDeckCard,
   trainCards,

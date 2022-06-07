@@ -8,7 +8,7 @@ function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
 
-class NewQuestion extends Component {
+class EditQuestion extends Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +25,35 @@ class NewQuestion extends Component {
     answers: ["", "", "", "", "", "", "", "", "", ""],
     correctAnswer: 1,
   };
+
+  componentDidMount() {
+    api
+      .question(this.props.params.id)
+      .then((res) => {
+        this.setState({
+          question: res.data.question,
+          correctAnswer: res.data.correctAnswer,
+        });
+
+        if (res.data.image) {
+          this.setState({
+            image: res.data.image,
+          });
+        }
+
+        const answers = this.state.answers;
+        for (let i = 0; i < res.data.answers.length; i++) {
+          answers[i] = res.data.answers[i];
+        }
+
+        this.setState({
+          answers: answers,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
 
   handleQuestionChange(e) {
     this.setState({
@@ -57,8 +86,7 @@ class NewQuestion extends Component {
   handleClick() {
     // TODO: validar tudo
 
-    const boardName = this.props.params.board;
-    const boardPosition = parseInt(this.props.params.tile);
+    const id = this.props.params.id;
     const question = this.state.question;
     const image = this.state.image;
     let answers = [];
@@ -69,8 +97,7 @@ class NewQuestion extends Component {
     });
 
     const payload = {
-      boardName,
-      boardPosition,
+      id,
       question,
       image,
       answers,
@@ -78,7 +105,7 @@ class NewQuestion extends Component {
     };
 
     api
-      .newQuestion(payload)
+      .updateQuestion(payload)
       .then(() => {
         window.location.href = `/admin/${this.props.params.board}/${this.props.params.tile}/questions`;
       })
@@ -103,4 +130,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default withParams(NewQuestion);
+export default withParams(EditQuestion);
