@@ -123,6 +123,7 @@ class EditQuestion extends Component {
         image={this.state.image}
         answers={this.state.answers}
         onAnswerChange={this.handleAnswerChange}
+        correctAnswer={this.state.correctAnswer}
         onSelectChange={this.handleSelectChange}
         onClick={this.handleClick}
       />

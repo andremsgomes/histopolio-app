@@ -76,7 +76,7 @@ function Question(props) {
             >
               {props.answers.map((_, i) => {
                 return (
-                  <option selected={i === 0} value={i + 1}>
+                  <option selected={props.correctAnswer === i+1} value={i + 1}>
                     Resposta {i + 1}
                   </option>
                 );
