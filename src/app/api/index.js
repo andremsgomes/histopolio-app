@@ -25,6 +25,8 @@ export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
 export const updateQuestion = (payload) =>
   api.post("api/game/data/question/update", payload);
+export const deleteQuestion = (payload) =>
+  api.post("api/game/data/question/delete", payload);
 export const deckCards = (board, deck) =>
   api.get(`/api/game/data/${board}/deck_cards/${deck}`);
 export const newDeckCard = (payload) =>
@@ -51,6 +53,7 @@ const apiRoutes = {
   updateBoard,
   newQuestion,
   updateQuestion,
+  deleteQuestion,
   deckCards,
   newDeckCard,
   trainCards,

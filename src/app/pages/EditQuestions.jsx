@@ -11,6 +11,12 @@ function withParams(Component) {
 }
 
 class EditQuestions extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
   state = {
     questions: [],
   };
@@ -26,6 +32,20 @@ class EditQuestions extends Component {
       .catch((error) => {
         console.log(error.message);
       });
+  }
+
+  handleDelete(id) {
+    const payload = { id };
+
+    api.deleteQuestion(payload).then(() => {
+      const newQuestions = this.state.questions.filter((question) => {
+        return question._id !== id;
+      });
+
+      this.setState({
+        questions: newQuestions,
+      });
+    });
   }
 
   render() {
@@ -60,7 +80,13 @@ class EditQuestions extends Component {
                     </Link>
                   </td>
                   <td>
-                    <FontAwesomeIcon icon={faTrashCan} />
+                    <Link
+                      to="#"
+                      className="text-danger"
+                      onClick={() => this.handleDelete(question._id)}
+                    >
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </Link>
                   </td>
                 </tr>
               );
