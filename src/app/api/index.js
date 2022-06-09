@@ -9,7 +9,8 @@ export const signup = (payload) => api.post("/api/auth/signup", payload);
 export const updateProfile = (payload) =>
   api.post("/api/auth/update_profile", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
-export const board = (board) => api.get(`/api/game/data/${board}`);
+export const boards = () => api.get(`/api/game/data/boards`);
+export const board = (board) => api.get(`/api/game/data/board/${board}`);
 export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
 export const question = (id) => api.get(`/api/game/data/question/${id}`);
@@ -44,6 +45,7 @@ const apiRoutes = {
   signup,
   updateProfile,
   saves,
+  boards,
   board,
   questions,
   question,

@@ -7,15 +7,13 @@ import api from "../api";
 function Home() {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  const [saves, setSaves] = useState([]);
+  const [boards, setBoards] = useState([]);
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
-
     api
-      .playerData("Histopólio", user.id)
+      .boards()
       .then((res) => {
-        setSaves(res.data);
+        setBoards(res.data);
       })
       .catch((error) => {
         console.log(error.message);
@@ -26,7 +24,7 @@ function Home() {
     <div>
       <nav
         aria-label="breadcrumb"
-        className="navbar navbar-light bg-light px-4"
+        className="navbar navbar-light bg-white px-4"
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item active" aria-current="page">
@@ -34,7 +32,10 @@ function Home() {
           </li>
         </ol>
         <div>
-          <Link to="/profile/edit" className="text-black text-decoration-none fw-bold">
+          <Link
+            to="/profile/edit"
+            className="text-black text-decoration-none fw-bold"
+          >
             <span className="m-4">{user.name}</span>
             <img
               src="https://www.linkpicture.com/q/edit-profile.png"
@@ -46,18 +47,30 @@ function Home() {
         </div>
       </nav>
       <div className="text-center page-center">
-        <h1>Olá {user.name}</h1>
-        <Link to="/Histopólio/saves" style={{ textDecoration: "none" }}>
-          <button className="btn btn-primary btn-lg mt-4">
-            Jogar Histopólio
-          </button>
-        </Link>
-        <div className="mt-2">
-          {saves.map((save) => {
+        <div className="row justify-content-center m-4">
+          {boards.map((board) => {
             return (
-              <h6>
-                {save.saveName}: {save.points} pontos
-              </h6>
+              <div className="col-sm-12 col-md-6 col-lg-3">
+                <div className="card m-2 p-3">
+                  <img
+                    src={board.image}
+                    className="card-img-top mx-auto"
+                    style={{
+                      objectFit: "cover",
+                      width: "250px",
+                      height: "250px",
+                    }}
+                    alt={"board " + board.name}
+                  />
+                  <div className="card-body">
+                    <h2 class="card-title">{board.name}</h2>
+                    <p className="card-text mb-1 mt-3">{board.description}</p>
+                    <Link to={`/${board.name}/saves`}>
+                      <button className="btn btn-primary btn-lg mt-4">Jogar</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
