@@ -32,6 +32,6 @@
 
 .gradient-custom {
   background: #5000c9;
-  background: -webkit-linear-gradient(to right, #5000c9, #cc009b);
-  background: linear-gradient(to right, #5000c9, #cc009b);
+  background: -webkit-linear-gradient(to right, #cc009b, #5000c9);
+  background: linear-gradient(to right, #cc009b, #5000c9);
 }
