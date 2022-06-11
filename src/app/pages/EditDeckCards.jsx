@@ -28,6 +28,20 @@ class EditDeckCards extends Component {
       });
   }
 
+  handleDelete(id) {
+    const payload = { id };
+
+    api.deleteCard(payload).then(() => {
+      const newCards = this.state.cards.filter((card) => {
+        return card._id !== id;
+      });
+
+      this.setState({
+        cards: newCards,
+      });
+    });
+  }
+
   render() {
     return (
       <div className="text-center mt-4">
@@ -55,22 +69,34 @@ class EditDeckCards extends Component {
                   <th scope="row">{i + 1}</th>
                   <td>{card.info}</td>
                   <td>{card.points}</td>
-                  <td>{card.action === "none" ? (
-                      "Sem ação"
-                  ) : (
-                      <>
-                      {card.action === "move" ? (
-                          `Avançar ${card.actionValue} casa${card.actionValue !== "1" ? ("s") : ("")}`
-                      ) : (
-                          `Mover para a casa ${card.actionValue}`
-                      )}
-                      </>
-                  )}</td>
                   <td>
-                    <FontAwesomeIcon icon={faPencil} />
+                    {card.action === "none" ? (
+                      "Sem ação"
+                    ) : (
+                      <>
+                        {card.action === "move"
+                          ? `Avançar ${card.actionValue} casa${
+                              card.actionValue !== "1" ? "s" : ""
+                            }`
+                          : `Mover para a casa ${card.actionValue}`}
+                      </>
+                    )}
                   </td>
                   <td>
-                    <FontAwesomeIcon icon={faTrashCan} />
+                    <Link
+                      to={`/admin/${this.props.params.board}/cards/deck/${card._id}/edit`}
+                    >
+                      <FontAwesomeIcon icon={faPencil} />
+                    </Link>
+                  </td>
+                  <td>
+                    <Link
+                      to="#"
+                      className="text-danger"
+                      onClick={() => this.handleDelete(card._id)}
+                    >
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </Link>
                   </td>
                 </tr>
               );

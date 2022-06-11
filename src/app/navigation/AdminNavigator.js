@@ -13,6 +13,7 @@ import EditDeckCards from "../pages/EditDeckCards";
 import NewTrainCard from "../pages/NewTrainCard";
 import NewBadge from "../pages/NewBadge";
 import EditQuestion from "../pages/EditQuestion";
+import EditDeckCard from "../pages/EditDeckCard";
 
 function AdminNavigator() {
   return (
@@ -26,6 +27,7 @@ function AdminNavigator() {
       <Route path="/admin/:board/:tile/train_cards" element={<EditTrainCards />} />
       <Route path="/admin/:board/:tile/train_cards/new" element={<NewTrainCard />} />
       <Route path="/admin/:board/cards/deck/new" element={<NewDeckCard />} />
+      <Route path="/admin/:board/cards/deck/:id/edit" element={<EditDeckCard />} />
       <Route path="/admin/:board/badges/new" element={<NewBadge />} />
       <Route path="/admin/:board/:save" element={<EditSave />} />
       <Route path="/*" element={<Navigate replace to="/admin" />} />

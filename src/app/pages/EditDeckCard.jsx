@@ -8,7 +8,7 @@ function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
 
-class NewDeckCard extends Component {
+class EditDeckCard extends Component {
   constructor(props) {
     super(props);
 
@@ -27,6 +27,23 @@ class NewDeckCard extends Component {
     action: "none",
     actionValue: "",
   };
+
+  componentDidMount() {
+    api
+      .card(this.props.params.id)
+      .then((res) => {
+        this.setState({
+          deck: res.data.deck,
+          info: res.data.info,
+          points: res.data.points,
+          action: res.data.action,
+          actionValue: res.data.actionValue,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   handleDeckChange(e) {
     this.setState({
@@ -65,19 +82,19 @@ class NewDeckCard extends Component {
   handleClick() {
     // TODO: validar tudo
 
-    const boardName = this.props.params.board;
+    const id = this.props.params.id;
     const deck = this.state.deck;
     const info = this.state.info;
     const points = parseInt(this.state.points);
     const action = this.state.action;
     const actionValue = this.state.actionValue;
 
-    const payload = { boardName, deck, info, points, action, actionValue };
+    const payload = { id, deck, info, points, action, actionValue };
 
     api
-      .newDeckCard(payload)
+      .updateDeckCard(payload)
       .then(() => {
-        window.location.href = `/admin/${this.props.params.board}/deck_cards/${deck}`;
+        window.location.href = `/admin/${this.props.params.board}/deck_cards/${deck}`;;
       })
       .catch((error) => {
         console.log(error.message);
@@ -103,4 +120,4 @@ class NewDeckCard extends Component {
   }
 }
 
-export default withParams(NewDeckCard);
+export default withParams(EditDeckCard);
