@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import api from "../api";
 
-function Home() {
+function PlayerMenu() {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   const [boards, setBoards] = useState([]);
@@ -28,7 +28,7 @@ function Home() {
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item active" aria-current="page">
-            Home
+            Menu
           </li>
         </ol>
         <div>
@@ -80,4 +80,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default PlayerMenu;

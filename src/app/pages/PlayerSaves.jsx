@@ -26,7 +26,7 @@ function PlayerSaves() {
       <nav aria-label="breadcrumb" className="m-4">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
+            <Link to="/">Menu</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             {board}
