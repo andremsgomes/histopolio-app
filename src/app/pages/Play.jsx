@@ -48,10 +48,10 @@ class Play extends Component {
     diceRolled: false,
     question: null,
     content: "",
-    cardInfo: false,
+    showContinue: false,
     storeOpen: false,
     finishTurn: false,
-    finishTurnInfo: "",
+    continueInfo: "",
     badges: [],
     points: 0,
     position: 0,
@@ -218,7 +218,8 @@ class Play extends Component {
   handleInfoShownReceived() {
     this.setState({
       playerTurn: true,
-      cardInfo: true,
+      showContinue: true,
+      continueInfo: dataReceived["info"],
     });
 
     this.hideDice();
@@ -262,7 +263,7 @@ class Play extends Component {
     this.setState({
       playerTurn: true,
       finishTurn: true,
-      finishTurnInfo: dataReceived["info"],
+      continueInfo: dataReceived["info"],
     });
 
     this.hideDice();
@@ -351,7 +352,8 @@ class Play extends Component {
 
   handleContinueClick() {
     this.setState({
-      cardInfo: false,
+      showContinue: false,
+      continueInfo: "",
     });
 
     const dataToSend = {
@@ -364,7 +366,7 @@ class Play extends Component {
   handleFinishClick() {
     this.setState({
       finishTurn: false,
-      finishTurnInfo: "",
+      continueInfo: "",
       playerTurn: false,
     });
 
@@ -478,7 +480,7 @@ class Play extends Component {
                                   />
                                 ) : (
                                   <Continue
-                                    info={this.state.finishTurnInfo}
+                                    info={this.state.continueInfo}
                                     onContinueClick={this.handleFinishClick}
                                     points={this.state.points}
                                     rank={this.state.rank}
@@ -489,9 +491,9 @@ class Play extends Component {
                               </div>
                             ) : (
                               <div>
-                                {this.state.cardInfo ? (
+                                {this.state.showContinue ? (
                                   <Continue
-                                    info={this.state.finishTurnInfo}
+                                    info={this.state.continueInfo}
                                     onContinueClick={this.handleContinueClick}
                                     points={this.state.points}
                                     rank={this.state.rank}
