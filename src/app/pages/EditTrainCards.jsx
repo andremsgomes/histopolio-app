@@ -29,6 +29,20 @@ class EditTrainCards extends Component {
       });
   }
 
+  handleDelete(id) {
+    const payload = { id };
+
+    api.deleteCard(payload).then(() => {
+      const newCards = this.state.cards.filter((card) => {
+        return card._id !== id;
+      });
+
+      this.setState({
+        cards: newCards,
+      });
+    });
+  }
+
   render() {
     return (
       <div className="text-center mt-4">
@@ -50,14 +64,24 @@ class EditTrainCards extends Component {
             {this.state.cards.map((card, i) => {
               return (
                 <tr>
-                  <th scope="row">{i+1}</th>
+                  <th scope="row">{i + 1}</th>
                   <td>{card.info}</td>
                   <td>{card.content}</td>
                   <td>
-                    <FontAwesomeIcon icon={faPencil} />
+                    <Link
+                      to={`/admin/${this.props.params.board}/${this.props.params.tile}/train_cards/${card._id}/edit`}
+                    >
+                      <FontAwesomeIcon icon={faPencil} />
+                    </Link>
                   </td>
                   <td>
-                    <FontAwesomeIcon icon={faTrashCan} />
+                    <Link
+                      to="#"
+                      className="text-danger"
+                      onClick={() => this.handleDelete(card._id)}
+                    >
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </Link>
                   </td>
                 </tr>
               );

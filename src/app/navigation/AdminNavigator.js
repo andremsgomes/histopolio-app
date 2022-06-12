@@ -14,6 +14,7 @@ import NewTrainCard from "../pages/NewTrainCard";
 import NewBadge from "../pages/NewBadge";
 import EditQuestion from "../pages/EditQuestion";
 import EditDeckCard from "../pages/EditDeckCard";
+import EditTrainCard from "../pages/EditTrainCard";
 
 function AdminNavigator() {
   return (
@@ -26,6 +27,7 @@ function AdminNavigator() {
       <Route path="/admin/:board/deck_cards/:deck" element={<EditDeckCards />} />
       <Route path="/admin/:board/:tile/train_cards" element={<EditTrainCards />} />
       <Route path="/admin/:board/:tile/train_cards/new" element={<NewTrainCard />} />
+      <Route path="/admin/:board/:tile/train_cards/:id/edit" element={<EditTrainCard />} />
       <Route path="/admin/:board/cards/deck/new" element={<NewDeckCard />} />
       <Route path="/admin/:board/cards/deck/:id/edit" element={<EditDeckCard />} />
       <Route path="/admin/:board/badges/new" element={<NewBadge />} />

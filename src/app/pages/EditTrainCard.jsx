@@ -22,6 +22,20 @@ class NewTrainCard extends Component {
     content: "",
   };
 
+  componentDidMount() {
+    api
+      .card(this.props.params.id)
+      .then((res) => {
+        this.setState({
+          info: res.data.info,
+          content: res.data.content,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   handleInfoChange(e) {
     this.setState({
       info: e.target.value,
@@ -37,15 +51,14 @@ class NewTrainCard extends Component {
   handleClick() {
     // TODO: validar tudo
 
-    const boardName = this.props.params.board;
-    const boardPosition = parseInt(this.props.params.tile);
+    const id = this.props.params.id;
     const info = this.state.info;
     const content = this.state.content;
 
-    const payload = { boardName, boardPosition, info, content };
+    const payload = { id, info, content };
 
     api
-      .newTrainCard(payload)
+      .updateTrainCard(payload)
       .then(() => {
         window.location.href = `/admin/${this.props.params.board}/${this.props.params.tile}/train_cards`;
       })
