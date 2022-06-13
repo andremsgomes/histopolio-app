@@ -37,7 +37,7 @@ function PlayerSaves() {
           </li>
         </ol>
       </nav>
-      <div className={"text-center" + saves.length < 2 ? (" page-center") : "" }>
+      <div className={`text-center ${saves.length < 2 ? (" page-center") : "" }`}>
         <h2 className="m-4">Escolhe um dos dados guardados</h2>
         <div className="row g-0">
           <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
