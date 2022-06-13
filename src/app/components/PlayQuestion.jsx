@@ -4,6 +4,7 @@ function PlayQuestion(props) {
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto text-center mb-4">
+        <h5>{props.tile}</h5>
         <h2>{props.question.question}</h2>
         {props.question.image.length > 0 && (
           <img

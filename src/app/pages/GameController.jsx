@@ -47,6 +47,7 @@ class GameController extends Component {
     rollTime: 0,
     diceRolled: false,
     question: null,
+    tile: "",
     content: "",
     showContinue: false,
     storeOpen: false,
@@ -237,6 +238,7 @@ class GameController extends Component {
     this.setState({
       playerTurn: true,
       question: dataReceived["questionData"],
+      tile: dataReceived["tile"],
     });
 
     this.hideDice();
@@ -452,6 +454,7 @@ class GameController extends Component {
                   <div>
                     {this.state.question ? (
                       <PlayQuestion
+                        tile={this.state.tile}
                         question={this.state.question}
                         onAnswerClick={this.handleAnswer}
                         rank={this.state.rank}
