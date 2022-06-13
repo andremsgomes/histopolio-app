@@ -48,7 +48,7 @@ function PlayerMenu() {
       </nav>
       <div className={"text-center " + (boards.length === 1 ? ("page-center") : "")}>
         <div className="row justify-content-center m-4">
-        <h2 className="mb-4">Os teus jogos</h2>
+        <h2 className="mb-4">Os teus tabuleiros</h2>
           {boards.map((board) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-3">

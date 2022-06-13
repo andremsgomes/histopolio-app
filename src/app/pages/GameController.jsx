@@ -21,7 +21,7 @@ function withParams(Component) {
   );
 }
 
-class Play extends Component {
+class GameController extends Component {
   constructor(props) {
     super(props);
 
@@ -137,7 +137,7 @@ class Play extends Component {
         this.handleDiceReceived();
         break;
       case "info shown":
-        this.handleInfoShownReceived();
+        this.handleInfoShownReceived(dataReceived);
         break;
       case "question":
         this.handleQuestionReceived(dataReceived);
@@ -215,7 +215,7 @@ class Play extends Component {
     });
   }
 
-  handleInfoShownReceived() {
+  handleInfoShownReceived(dataReceived) {
     this.setState({
       playerTurn: true,
       showContinue: true,
@@ -295,7 +295,7 @@ class Play extends Component {
   rollDoneCallback(num) {
     const dataToSend = {
       type: "dice result",
-      result: num,
+      result: 1,
       rollTime: this.state.rollTime * 1000,
     };
 
@@ -566,4 +566,4 @@ class Play extends Component {
   }
 }
 
-export default withParams(Play);
+export default withParams(GameController);
