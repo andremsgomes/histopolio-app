@@ -295,7 +295,7 @@ class GameController extends Component {
   rollDoneCallback(num) {
     const dataToSend = {
       type: "dice result",
-      result: 1,
+      result: num,
       rollTime: this.state.rollTime * 1000,
     };
 
