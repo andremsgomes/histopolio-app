@@ -18,6 +18,8 @@ import EditTrainCard from "../pages/EditTrainCard";
 import EditBadge from "../pages/EditBadge";
 
 function AdminNavigator() {
+  document.body.style = "background: #f8f9fa;";
+
   return (
     <Routes>
       <Route path="/admin" element={<Admin />} />

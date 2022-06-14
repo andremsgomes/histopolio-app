@@ -8,6 +8,8 @@ import PlayerSaves from "../pages/PlayerSaves";
 import EditProfile from "../pages/EditProfile";
 
 function AppNavigator() {
+  document.body.style = "background: #f8f9fa;";
+
   return (
     <Routes>
       <Route path="/" element={<PlayerMenu />} />
