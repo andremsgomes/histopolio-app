@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
 
 function PlayerSaves() {
   const { board } = useParams();
@@ -26,7 +27,6 @@ function PlayerSaves() {
       <nav
         aria-label="breadcrumb"
         className="navbar navbar-light bg-white px-4"
-        style={{height:"3.5em"}}
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item" aria-current="page">
@@ -36,6 +36,9 @@ function PlayerSaves() {
             {board}
           </li>
         </ol>
+        <div>
+          <EditAndLogout />
+        </div>
       </nav>
       <div className={`text-center ${saves.length < 2 ? (" page-center") : "" }`}>
         <h2 className="m-4">Escolhe um dos dados guardados</h2>

@@ -31,7 +31,7 @@ class EditBoard extends Component {
     pay: "Casa de azar",
     train: "Estação de treino",
     chance: "Sorte",
-    prison: "Prisão",
+    prison: "Biblioteca",
     parking: "Estacionamento gratuito",
     goToPrison: "Vá para a prisão",
   };

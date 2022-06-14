@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
 
 function PlayerMenu() {
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -32,23 +33,15 @@ function PlayerMenu() {
           </li>
         </ol>
         <div>
-          <Link
-            to="/profile/edit"
-            className="text-black text-decoration-none fw-bold"
-          >
-            <span className="m-4">{user.name}</span>
-            <img
-              src="https://www.linkpicture.com/q/edit-profile.png"
-              width="40em"
-              height="40em"
-              alt="profile"
-            />
-          </Link>
+          <span className="m-3">{user.name}</span>
+          <EditAndLogout />
         </div>
       </nav>
-      <div className={"text-center " + (boards.length === 1 ? ("page-center") : "")}>
+      <div
+        className={"text-center " + (boards.length === 1 ? "page-center" : "")}
+      >
         <div className="row justify-content-center m-4">
-        <h2 className="mb-4">Os teus tabuleiros</h2>
+          <h2 className="mb-4">Os teus tabuleiros</h2>
           {boards.map((board) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-3">
@@ -67,7 +60,9 @@ function PlayerMenu() {
                     <h2 class="card-title">{board.name}</h2>
                     <p className="card-text mb-1 mt-3">{board.description}</p>
                     <Link to={`/${board.name}/saves`}>
-                      <button className="btn btn-primary btn-lg mt-4">Jogar</button>
+                      <button className="btn btn-primary btn-lg mt-4">
+                        Jogar
+                      </button>
                     </Link>
                   </div>
                 </div>
