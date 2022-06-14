@@ -35,9 +35,7 @@ class EditQuestions extends Component {
   }
 
   handleDelete(id) {
-    const payload = { id };
-
-    api.deleteQuestion(payload).then(() => {
+    api.deleteQuestion(id).then(() => {
       const newQuestions = this.state.questions.filter((question) => {
         return question._id !== id;
       });

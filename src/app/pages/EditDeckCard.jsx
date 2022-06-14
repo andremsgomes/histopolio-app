@@ -33,7 +33,7 @@ class EditDeckCard extends Component {
       .card(this.props.params.id)
       .then((res) => {
         this.setState({
-          deck: res.data.deck,
+          deck: res.data.subtype,
           info: res.data.info,
           points: res.data.points,
           action: res.data.action,

@@ -30,9 +30,7 @@ class EditTrainCards extends Component {
   }
 
   handleDelete(id) {
-    const payload = { id };
-
-    api.deleteCard(payload).then(() => {
+    api.deleteCard(id).then(() => {
       const newCards = this.state.cards.filter((card) => {
         return card._id !== id;
       });

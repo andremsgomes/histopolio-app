@@ -19,30 +19,30 @@ export const players = (board, save) =>
 export const playerData = (board, userId) =>
   api.get(`/api/game/data/${board}/players/${userId}`);
 export const updatePlayers = (payload) =>
-  api.post("api/game/data/save/update", payload);
+  api.put("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
-  api.post("api/game/data/board/update", payload);
+  api.put("api/game/data/board/update", payload);
 export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
 export const updateQuestion = (payload) =>
-  api.post("api/game/data/question/update", payload);
-export const deleteQuestion = (payload) =>
-  api.post("api/game/data/question/delete", payload);
+  api.put("api/game/data/question/update", payload);
+export const deleteQuestion = (id) =>
+  api.delete(`api/game/data/question/${id}`);
 export const deckCards = (board, deck) =>
   api.get(`api/game/data/${board}/deck_cards/${deck}`);
 export const newDeckCard = (payload) =>
   api.post("api/game/data/cards/deck/new", payload);
 export const updateDeckCard = (payload) =>
-  api.post("api/game/data/deck_card/update", payload);
+  api.put("api/game/data/deck_card/update", payload);
 export const trainCards = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/train_cards`);
 export const newTrainCard = (payload) =>
   api.post("api/game/data/cards/train_cards/new", payload);
 export const updateTrainCard = (payload) =>
-  api.post("api/game/data/train_card/update", payload);
+  api.put("api/game/data/train_card/update", payload);
 export const card = (id) => api.get(`api/game/data/card/${id}`);
-export const deleteCard = (payload) =>
-  api.post("api/game/data/card/delete", payload);
+export const deleteCard = (id) =>
+  api.delete(`api/game/data/card/${id}`);
 export const badges = (board) => api.get(`api/game/data/${board}/badges`);
 export const badge = (id) => api.get(`api/game/data/badge/${id}`);
 export const newBadge = (payload) =>

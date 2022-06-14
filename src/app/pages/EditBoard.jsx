@@ -33,7 +33,7 @@ class EditBoard extends Component {
     chance: "Sorte",
     prison: "Biblioteca",
     parking: "Associação de estudantes",
-    goToPrison: "Vá para a prisão",
+    goToPrison: "Vá para a biblioteca",
   };
 
   componentDidMount() {
