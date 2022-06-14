@@ -8,7 +8,7 @@ function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
 }
 
-class NewBadge extends Component {
+class EditBadge extends Component {
   constructor(props) {
     super(props);
 
@@ -25,6 +25,22 @@ class NewBadge extends Component {
     multiplier: 1,
     cost: 0,
   };
+
+  componentDidMount() {
+    api
+      .badge(this.props.params.id)
+      .then((res) => {
+        this.setState({
+          name: res.data.name,
+          image: res.data.image,
+          multiplier: res.data.multiplier,
+          cost: res.data.cost,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
 
   handleNameChange(e) {
     this.setState({
@@ -53,7 +69,7 @@ class NewBadge extends Component {
   handleClick() {
     // TODO: validar tudo
 
-    const boardName = this.props.params.board;
+    const id = this.props.params.id;
     const name = this.state.name;
     const multiplier = this.state.multiplier;
     const cost = this.state.cost;
@@ -64,10 +80,10 @@ class NewBadge extends Component {
         ? this.state.image
         : "https://www.linkpicture.com/q/badge_9.png";
 
-    const payload = { boardName, name, image, multiplier, cost };
+    const payload = { id, name, image, multiplier, cost };
 
     api
-      .newBadge(payload)
+      .updateBadge(payload)
       .then(() => {
         window.location.href = `/admin/${this.props.params.board}`;
       })
@@ -93,4 +109,4 @@ class NewBadge extends Component {
   }
 }
 
-export default withParams(NewBadge);
+export default withParams(EditBadge);

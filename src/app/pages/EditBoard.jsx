@@ -32,7 +32,7 @@ class EditBoard extends Component {
     train: "Estação de treino",
     chance: "Sorte",
     prison: "Biblioteca",
-    parking: "Estacionamento gratuito",
+    parking: "Associação de estudantes",
     goToPrison: "Vá para a prisão",
   };
 
@@ -91,6 +91,18 @@ class EditBoard extends Component {
       .catch((error) => {
         console.log(error.message);
       });
+  }
+
+  handleDelete(id) {
+    api.deleteBadge(id).then(() => {
+      const newBadges = this.state.badges.filter((badge) => {
+        return badge._id !== id;
+      });
+
+      this.setState({
+        badges: newBadges,
+      });
+    });
   }
 
   render() {
@@ -245,10 +257,20 @@ class EditBoard extends Component {
                       {badge.cost} ponto{badge.cost !== 1 && "s"}
                     </td>
                     <td>
-                      <FontAwesomeIcon icon={faPencil} />
+                      <Link
+                        to={`/admin/${this.props.params.board}/badge/${badge._id}/edit`}
+                      >
+                        <FontAwesomeIcon icon={faPencil} />
+                      </Link>
                     </td>
                     <td>
-                      <FontAwesomeIcon icon={faTrashCan} />
+                      <Link
+                        to="#"
+                        className="text-danger"
+                        onClick={() => this.handleDelete(badge._id)}
+                      >
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </Link>
                     </td>
                   </tr>
                 );
