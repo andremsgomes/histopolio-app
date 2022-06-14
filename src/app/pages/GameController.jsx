@@ -53,6 +53,7 @@ class GameController extends Component {
     storeOpen: false,
     finishTurn: false,
     continueInfo: "",
+    bodyColor: "#f8f9fa",
     badges: [],
     points: 0,
     position: 0,
@@ -223,6 +224,12 @@ class GameController extends Component {
       continueInfo: dataReceived["info"],
     });
 
+    if (dataReceived["bodyColor"]) {
+      this.setState({
+        bodyColor: dataReceived["bodyColor"],
+      });
+    }
+
     this.hideDice();
   }
 
@@ -267,6 +274,12 @@ class GameController extends Component {
       finishTurn: true,
       continueInfo: dataReceived["info"],
     });
+
+    if (dataReceived["bodyColor"]) {
+      this.setState({
+        bodyColor: dataReceived["bodyColor"],
+      });
+    }
 
     this.hideDice();
   }
@@ -321,6 +334,8 @@ class GameController extends Component {
     this.setState({
       storeOpen: true,
     });
+
+    document.body.style = "background: #f8f9fa;";
   }
 
   handleCloseStoreClick() {
@@ -356,7 +371,10 @@ class GameController extends Component {
     this.setState({
       showContinue: false,
       continueInfo: "",
+      bodyColor: "#f8f9fa",
     });
+
+    document.body.style = "background: #f8f9fa;";
 
     const dataToSend = {
       type: "continue",
@@ -370,7 +388,10 @@ class GameController extends Component {
       finishTurn: false,
       continueInfo: "",
       playerTurn: false,
+      bodyColor: "#f8f9fa",
     });
+
+    document.body.style = "background: #f8f9fa;";
 
     const dataToSend = {
       type: "next player",
@@ -483,6 +504,7 @@ class GameController extends Component {
                                   />
                                 ) : (
                                   <Continue
+                                    bodyColor={this.state.bodyColor}
                                     info={this.state.continueInfo}
                                     onContinueClick={this.handleFinishClick}
                                     points={this.state.points}
@@ -496,6 +518,7 @@ class GameController extends Component {
                               <div>
                                 {this.state.showContinue ? (
                                   <Continue
+                                    bodyColor={this.state.bodyColor}
                                     info={this.state.continueInfo}
                                     onContinueClick={this.handleContinueClick}
                                     points={this.state.points}
