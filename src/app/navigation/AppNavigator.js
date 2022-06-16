@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import PlayerMenu from "../pages/PlayerMenu";
 import GameController from "../pages/GameController";
-import PlayerSaves from "../pages/PlayerSaves";
+import EnterGameSession from "../pages/EnterGameSession";
 import EditProfile from "../pages/EditProfile";
 
 function AppNavigator() {
@@ -14,7 +14,7 @@ function AppNavigator() {
     <Routes>
       <Route path="/" element={<PlayerMenu />} />
       <Route path="/profile/edit" element={<EditProfile />} />
-      <Route path="/:board/saves" element={<PlayerSaves />} />
+      <Route path="/:board/enter" element={<EnterGameSession />} />
       <Route path="/:board/play" element={<GameController />} />
       <Route path="/*" element={<Navigate replace to="/" />} />
     </Routes>

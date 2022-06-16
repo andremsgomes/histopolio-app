@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
-
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
@@ -20,6 +18,17 @@ function PlayerMenu() {
         console.log(error.message);
       });
   }, []);
+
+  const startGame = (boardName) => {
+    api
+      .playerData(boardName, user.id)
+      .then(() => {
+        window.location.href = `/${boardName}/play`;
+      })
+      .catch(() => {
+        window.location.href = `/${boardName}/enter`;
+      });
+  };
 
   return (
     <div>
@@ -59,11 +68,12 @@ function PlayerMenu() {
                   <div className="card-body">
                     <h2 class="card-title">{board.name}</h2>
                     <p className="card-text mb-1 mt-3">{board.description}</p>
-                    <Link to={`/${board.name}/saves`}>
-                      <button className="btn btn-primary btn-lg mt-4">
-                        Jogar
-                      </button>
-                    </Link>
+                    <button
+                      className="btn btn-primary btn-lg mt-4"
+                      onClick={() => startGame(board.name)}
+                    >
+                      Jogar
+                    </button>
                   </div>
                 </div>
               </div>

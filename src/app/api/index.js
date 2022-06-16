@@ -18,6 +18,8 @@ export const players = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
 export const playerData = (board, userId) =>
   api.get(`/api/game/data/${board}/players/${userId}`);
+export const createPlayer = (payload) =>
+  api.post("/api/game/data/players/new", payload);
 export const updatePlayers = (payload) =>
   api.put("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
@@ -41,8 +43,7 @@ export const newTrainCard = (payload) =>
 export const updateTrainCard = (payload) =>
   api.put("api/game/data/train_card/update", payload);
 export const card = (id) => api.get(`api/game/data/card/${id}`);
-export const deleteCard = (id) =>
-  api.delete(`api/game/data/card/${id}`);
+export const deleteCard = (id) => api.delete(`api/game/data/card/${id}`);
 export const badges = (board) => api.get(`api/game/data/${board}/badges`);
 export const badge = (id) => api.get(`api/game/data/badge/${id}`);
 export const newBadge = (payload) =>
@@ -62,6 +63,7 @@ const apiRoutes = {
   question,
   players,
   playerData,
+  createPlayer,
   updatePlayers,
   updateBoard,
   newQuestion,

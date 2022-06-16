@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "react-dice-complete/dist/react-dice-complete.css";
 
 import Wait from "../components/Wait";
@@ -16,7 +16,6 @@ function withParams(Component) {
     <Component
       {...props}
       params={useParams()}
-      save={useSearchParams()[0].get("save")}
     />
   );
 }
@@ -62,12 +61,6 @@ class GameController extends Component {
   };
 
   componentDidMount() {
-    if (this.props.save) {
-      this.setState({
-        save: this.props.save,
-      });
-    }
-
     this.client.onopen = () => {
       console.log("WebSocket Client Connected");
 
@@ -408,11 +401,7 @@ class GameController extends Component {
             <li className="breadcrumb-item">
               <Link to="/">Menu</Link>
             </li>
-            <li className="breadcrumb-item">
-              <Link to={`/${this.props.params.board}/saves`}>
-                {this.props.params.board}
-              </Link>
-            </li>
+            <li className="breadcrumb-item">{this.props.params.board}</li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.state.save.length > 0 ? (
                 <>{this.state.save}</>
