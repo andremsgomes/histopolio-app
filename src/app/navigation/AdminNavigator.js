@@ -4,6 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import Admin from "../pages/Admin";
 import EditSave from "../pages/EditSave";
+import Board from "../pages/Board";
 import EditBoard from "../pages/EditBoard";
 import EditQuestions from "../pages/EditQuestions";
 import NewQuestion from "../pages/NewQuestion";
@@ -23,7 +24,8 @@ function AdminNavigator() {
   return (
     <Routes>
       <Route path="/admin" element={<Admin />} />
-      <Route path="/admin/:board" element={<EditBoard />} />
+      <Route path="/admin/:board" element={<Board />} />
+      <Route path="/admin/:board/edit" element={<EditBoard />} />
       <Route path="/admin/:board/:tile/questions" element={<EditQuestions />} />
       <Route path="/admin/:board/:tile/questions/new" element={<NewQuestion />} />
       <Route path="/admin/:board/:tile/question/:id/edit" element={<EditQuestion />} />

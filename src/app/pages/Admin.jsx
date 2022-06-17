@@ -1,61 +1,78 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
 
-class Admin extends Component {
-  state = {
-    saves: [],
-  };
+function Admin() {
+  const user = JSON.parse(sessionStorage.getItem("user"));
 
-  componentDidMount() {
+  const [boards, setBoards] = useState([]);
+
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
     api
-      .saves("Histopólio")
+      .adminBoards(user.id)
       .then((res) => {
-        this.setState({
-          saves: res.data,
-        });
+        setBoards(res.data);
       })
       .catch((error) => {
         console.log(error.message);
       });
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className="row text-center m-4">
-        <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <h1 className="mb-4">Histopólio</h1>
-          {this.state.saves.length > 0 && (
-            <h4 className="mb-3">Dados guardados</h4>
-          )}
-          {this.state.saves.map((save) => {
+  return (
+    <div>
+      <nav
+        aria-label="breadcrumb"
+        className="navbar navbar-light bg-white px-4"
+      >
+        <ol className="breadcrumb m-0">
+          <li className="breadcrumb-item active" aria-current="page">
+            Menu
+          </li>
+        </ol>
+        <div>
+          <span className="m-3">{user.name}</span>
+          <EditAndLogout />
+        </div>
+      </nav>
+      <div
+        className={"text-center " + (boards.length === 1 ? "page-center" : "")}
+      >
+        <div className="row justify-content-center m-4">
+          <h2 className="mb-4">Os seus tabuleiros</h2>
+          {boards.map((board) => {
             return (
-              <Link
-                to={"/admin/Histopólio/" + save.name}
-                style={{ textDecoration: "none" }}
-                key={save._id}
-              >
-                <div className="card mb-2 mx-4 p-3">
+              <div className="col-sm-12 col-md-6 col-lg-3">
+                <div className="card m-2 p-3">
+                  <img
+                    src={board.image}
+                    className="card-img-top mx-auto"
+                    style={{
+                      objectFit: "cover",
+                      width: "250px",
+                      height: "250px",
+                    }}
+                    alt={"board " + board.name}
+                  />
                   <div className="card-body">
-                    <h4 className="card-title">{save.name}</h4>
-                    <p className="card-text">
-                      {save.players} jogador{save.players !== 1 && "es"}
-                    </p>
+                    <h2 class="card-title">{board.name}</h2>
+                    <p className="card-text mb-1 mt-3">{board.description}</p>
+                    <Link to={`/admin/${board.name}`}>
+                      <button className="btn btn-primary btn-lg mt-4">
+                        Abrir
+                      </button>
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
-          <Link to="/admin/Histopólio" style={{ textDecoration: "none" }}>
-            <button className="btn btn-lg btn-primary my-4">
-              Editar tabuleiro
-            </button>
-          </Link>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Admin;
