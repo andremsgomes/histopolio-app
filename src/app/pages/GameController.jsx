@@ -10,14 +10,10 @@ import PlayQuestion from "../components/PlayQuestion";
 import Store from "../components/Store";
 import Content from "../components/Content";
 import Continue from "../components/Continue";
+import EditAndLogout from "../components/EditAndLogout";
 
 function withParams(Component) {
-  return (props) => (
-    <Component
-      {...props}
-      params={useParams()}
-    />
-  );
+  return (props) => <Component {...props} params={useParams()} />;
 }
 
 class GameController extends Component {
@@ -396,9 +392,12 @@ class GameController extends Component {
   render() {
     return (
       <div>
-        <nav aria-label="breadcrumb" className="m-4">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
+        >
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
               <Link to="/">Menu</Link>
             </li>
             <li className="breadcrumb-item">{this.props.params.board}</li>
@@ -410,6 +409,9 @@ class GameController extends Component {
               )}
             </li>
           </ol>
+          <div>
+            <EditAndLogout />
+          </div>
         </nav>
         {this.state.gameStarted ? (
           <div>

@@ -37,7 +37,6 @@ function EnterGameSession() {
       })
       .catch((error) => {
         console.log(error);
-        
       });
   };
 
