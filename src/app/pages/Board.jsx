@@ -35,7 +35,7 @@ class Board extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/">Menu</Link>
+              <Link to="/admin">Menu</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.board}

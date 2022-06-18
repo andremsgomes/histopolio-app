@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
+
 import { Link, useParams } from "react-router-dom";
 
 function withParams(Component) {
@@ -142,128 +144,149 @@ class EditSave extends Component {
 
   render() {
     return (
-      <div className="mt-4">
-        <nav aria-label="breadcrumb" className="m-4">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/admin">Admin</Link>
+      <div>
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
+        >
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to="/admin">Menu</Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to={`/admin/${this.props.params.board}`}>
+                {this.props.params.board}
+              </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.save}
             </li>
           </ol>
+          <div>
+            <EditAndLogout />
+          </div>
         </nav>
         <div className="text-center mt-4">
-          {this.state.alertMessage.length > 0 && (
-            <div className={"alert alert-" + this.state.alertType} role="alert">
-              {this.state.alertMessage}
-            </div>
-          )}
           <h1>
             {this.props.params.board} - {this.props.params.save}
           </h1>
-          <h4>Tabela de jogadores</h4>
-          <div className="table-responsive">
-            <table className="table table-hover mt-4">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Posição no tabuleiro</th>
-                  <th scope="col">Número de jogadas</th>
-                  <th scope="col">Pontuação</th>
-                  <th scope="col">Total de respostas</th>
-                  <th scope="col">Respostas corretas</th>
-                  <th scope="col">% de respostas corretas</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.players.map((player, i) => {
-                  const percCorrect =
-                    !player.totalAnswers || player.totalAnswers === 0
-                      ? "-"
-                      : Math.round(
-                          (player.correctAnswers / player.totalAnswers) *
-                            100 *
-                            100
-                        ) /
-                          100 +
-                        "%";
-
-                  return (
-                    <tr key={player._id}>
-                      <th scope="row">{i + 1}</th>
-                      <td>{player.name}</td>
-                      <td>{player.email}</td>
-                      <td>
-                        <input
-                          id={"position" + player.userId}
-                          className="table-input-number"
-                          onChange={(e) =>
-                            this.handlePositionChange(e, player.userId)
-                          }
-                          type="number"
-                          value={player.boardPosition}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"numTurns" + player.userId}
-                          className="table-input-number"
-                          onChange={(e) =>
-                            this.handleNumTurnsChange(e, player.userId)
-                          }
-                          type="number"
-                          value={player.turns}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"points" + player.userId}
-                          className="table-input-number"
-                          onChange={(e) =>
-                            this.handlePointsChange(e, player.userId)
-                          }
-                          type="number"
-                          value={player.points}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"answers" + player.userId}
-                          className="table-input-number"
-                          onChange={(e) =>
-                            this.handleAnswersChange(e, player.userId)
-                          }
-                          type="number"
-                          value={player.totalAnswers}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"correctAnswers" + player.userId}
-                          className="table-input-number"
-                          onChange={(e) =>
-                            this.handleCorrectAnswersChange(e, player.userId)
-                          }
-                          type="number"
-                          value={player.correctAnswers}
-                        />
-                      </td>
-                      <td>{percCorrect}</td>
+          <div className="card m-4 py-2 px-0">
+            <div className="card-body px-0">
+              {this.state.alertMessage.length > 0 && (
+                <div
+                  className={"m-4 alert alert-" + this.state.alertType}
+                  role="alert"
+                >
+                  {this.state.alertMessage}
+                </div>
+              )}
+              <h4 className="card-title">Tabela de jogadores</h4>
+              <div className="table-responsive">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Posição no tabuleiro</th>
+                      <th scope="col">Número de jogadas</th>
+                      <th scope="col">Pontuação</th>
+                      <th scope="col">Total de respostas</th>
+                      <th scope="col">Respostas corretas</th>
+                      <th scope="col">% de respostas corretas</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    {this.state.players.map((player, i) => {
+                      const percCorrect =
+                        !player.totalAnswers || player.totalAnswers === 0
+                          ? "-"
+                          : Math.round(
+                              (player.correctAnswers / player.totalAnswers) *
+                                100 *
+                                100
+                            ) /
+                              100 +
+                            "%";
+
+                      return (
+                        <tr key={player._id}>
+                          <th scope="row">{i + 1}</th>
+                          <td>{player.name}</td>
+                          <td>{player.email}</td>
+                          <td>
+                            <input
+                              id={"position" + player.userId}
+                              className="table-input-number"
+                              onChange={(e) =>
+                                this.handlePositionChange(e, player.userId)
+                              }
+                              type="number"
+                              value={player.boardPosition}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              id={"numTurns" + player.userId}
+                              className="table-input-number"
+                              onChange={(e) =>
+                                this.handleNumTurnsChange(e, player.userId)
+                              }
+                              type="number"
+                              value={player.turns}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              id={"points" + player.userId}
+                              className="table-input-number"
+                              onChange={(e) =>
+                                this.handlePointsChange(e, player.userId)
+                              }
+                              type="number"
+                              value={player.points}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              id={"answers" + player.userId}
+                              className="table-input-number"
+                              onChange={(e) =>
+                                this.handleAnswersChange(e, player.userId)
+                              }
+                              type="number"
+                              value={player.totalAnswers}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              id={"correctAnswers" + player.userId}
+                              className="table-input-number"
+                              onChange={(e) =>
+                                this.handleCorrectAnswersChange(
+                                  e,
+                                  player.userId
+                                )
+                              }
+                              type="number"
+                              value={player.correctAnswers}
+                            />
+                          </td>
+                          <td>{percCorrect}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <button
+                className="btn btn-lg btn-primary mt-4"
+                onClick={this.handleClick}
+              >
+                Guardar alterações
+              </button>
+            </div>
           </div>
-          <button
-            className="btn btn-lg btn-primary my-4"
-            onClick={this.handleClick}
-          >
-            Guardar alterações
-          </button>
         </div>
       </div>
     );
