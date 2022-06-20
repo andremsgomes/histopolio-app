@@ -387,9 +387,9 @@ class EditBoard extends Component {
             <div className="card my-5 mx-md-5 py-2 px-0">
               <div className="card-body px-0">
                 <h3 className="card-title">Outras definições</h3>
-                <div className="row mx-4">
+                <div className="row mx-4 mt-3">
                   <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-                    <div className="text-start mt-4 fw-bold">
+                    <div className="text-start fw-bold">
                       <label for="name" class="form-label">
                         Nome
                       </label>

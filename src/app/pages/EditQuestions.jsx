@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
+
 import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,63 +50,110 @@ class EditQuestions extends Component {
 
   render() {
     return (
-      <div className="text-center mt-4">
-        <h1>
-          {this.props.params.board} - Casa {this.props.params.tile}
-        </h1>
-        <h4>Tabela de perguntas</h4>
-        <table className="table table-hover mt-4">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Pergunta</th>
-              <th scope="col">Opção Correta</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.questions.map((question, i) => {
-              return (
-                <tr>
-                  <th scope="row">{i + 1}</th>
-                  <td>{question.question}</td>
-                  <td>{question.answers[question.correctAnswer - 1]}</td>
-                  <td>
-                    <Link
-                      to={`/admin/${this.props.params.board}/${this.props.params.tile}/question/${question._id}/edit`}
-                    >
-                      <FontAwesomeIcon icon={faPencil} />
-                    </Link>
-                  </td>
-                  <td>
-                    <Link
-                      to="#"
-                      className="text-danger"
-                      onClick={() => this.handleDelete(question._id)}
-                    >
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <Link
-          to={
-            "/admin/" +
-            this.props.params.board +
-            "/" +
-            this.props.params.tile +
-            "/questions/new"
-          }
-          style={{ textDecoration: "none" }}
+      <div>
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
         >
-          <button className="btn btn-lg btn-primary my-4">
-            Adicionar pergunta
-          </button>
-        </Link>
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to="/admin" className="text-decoration-none">
+                Menu
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}`}
+                className="text-decoration-none"
+              >
+                {this.props.params.board}
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}/edit`}
+                className="text-decoration-none"
+              >
+                Editar
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              Casa {this.props.params.tile}
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Perguntas
+            </li>
+          </ol>
+          <div>
+            <EditAndLogout />
+          </div>
+        </nav>
+        <div className="text-center mt-5">
+          <h1>
+            {this.props.params.board} - Casa {this.props.params.tile}
+          </h1>
+          <div className="card my-5 mx-md-5 py-2 px-0">
+            <div className="card-body px-0">
+              <h3 className="card-title">Perguntas</h3>
+              <div className="table-responsive mt-3">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Pergunta</th>
+                      <th scope="col">Opção Correta</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.questions.map((question, i) => {
+                      return (
+                        <tr>
+                          <th scope="row">{i + 1}</th>
+                          <td>{question.question}</td>
+                          <td>
+                            {question.answers[question.correctAnswer - 1]}
+                          </td>
+                          <td>
+                            <Link
+                              to={`/admin/${this.props.params.board}/${this.props.params.tile}/question/${question._id}/edit`}
+                            >
+                              <FontAwesomeIcon icon={faPencil} />
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              to="#"
+                              className="text-danger"
+                              onClick={() => this.handleDelete(question._id)}
+                            >
+                              <FontAwesomeIcon icon={faTrashCan} />
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <Link
+                to={
+                  "/admin/" +
+                  this.props.params.board +
+                  "/" +
+                  this.props.params.tile +
+                  "/questions/new"
+                }
+                className="text-decoration-none"
+              >
+                <button className="btn btn-lg btn-primary mt-3">
+                  Adicionar pergunta
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
