@@ -151,10 +151,10 @@ class EditSave extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/admin">Menu</Link>
+              <Link to="/admin" className="text-decoration-none">Menu</Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              <Link to={`/admin/${this.props.params.board}`}>
+              <Link to={`/admin/${this.props.params.board}`} className="text-decoration-none">
                 {this.props.params.board}
               </Link>
             </li>
@@ -166,11 +166,11 @@ class EditSave extends Component {
             <EditAndLogout />
           </div>
         </nav>
-        <div className="text-center mt-4">
+        <div className="text-center mt-5">
           <h1>
             {this.props.params.board} - {this.props.params.save}
           </h1>
-          <div className="card m-4 py-2 px-0">
+          <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
               {this.state.alertMessage.length > 0 && (
                 <div
@@ -180,8 +180,8 @@ class EditSave extends Component {
                   {this.state.alertMessage}
                 </div>
               )}
-              <h4 className="card-title">Tabela de jogadores</h4>
-              <div className="table-responsive">
+              <h3 className="card-title">Tabela de jogadores</h3>
+              <div className="table-responsive mt-3">
                 <table className="table table-hover">
                   <thead>
                     <tr>
@@ -280,7 +280,7 @@ class EditSave extends Component {
                 </table>
               </div>
               <button
-                className="btn btn-lg btn-primary mt-4"
+                className="btn btn-lg btn-outline-success mt-3"
                 onClick={this.handleClick}
               >
                 Guardar alterações

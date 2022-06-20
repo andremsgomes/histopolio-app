@@ -35,7 +35,7 @@ class Board extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/admin">Menu</Link>
+              <Link to="/admin" className="text-decoration-none">Menu</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.board}
@@ -45,11 +45,11 @@ class Board extends Component {
             <EditAndLogout />
           </div>
         </nav>
-        <div className="row text-center m-4">
+        <div className="row text-center m-5">
           <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-            <h1 className="mb-4">{this.props.params.board}</h1>
+            <h1 className="mb-5">{this.props.params.board}</h1>
             {this.state.saves.length > 0 && (
-              <h4 className="mb-3">Dados guardados</h4>
+              <h3 className="mb-3">Dados guardados</h3>
             )}
             {this.state.saves.map((save) => {
               return (
@@ -73,7 +73,7 @@ class Board extends Component {
               to={`/admin/${this.props.params.board}/edit`}
               style={{ textDecoration: "none" }}
             >
-              <button className="btn btn-lg btn-primary my-4">
+              <button className="btn btn-lg btn-primary mt-4 mb-5">
                 Editar tabuleiro
               </button>
             </Link>

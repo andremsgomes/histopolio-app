@@ -398,7 +398,7 @@ class GameController extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/">Menu</Link>
+              <Link to="/" className="text-decoration-none">Menu</Link>
             </li>
             <li className="breadcrumb-item">{this.props.params.board}</li>
             <li className="breadcrumb-item active" aria-current="page">

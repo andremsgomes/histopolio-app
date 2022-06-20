@@ -40,8 +40,8 @@ function Admin() {
       <div
         className={"text-center " + (boards.length === 1 ? "page-center" : "")}
       >
-        <div className="row justify-content-center m-4">
-          <h2 className="mb-4">Os seus tabuleiros</h2>
+        <div className="row justify-content-center m-5">
+          <h1 className="mb-4">Os seus tabuleiros</h1>
           {boards.map((board) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-3">

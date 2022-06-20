@@ -10,7 +10,8 @@ export const updateProfile = (payload) =>
   api.put("/api/auth/update_profile", payload);
 export const saves = (board) => api.get(`/api/game/data/${board}/saves`);
 export const boards = () => api.get("/api/game/data/boards");
-export const adminBoards = (admin) => api.get(`/api/game/data/admin/${admin}/boards`);
+export const adminBoards = (admin) =>
+  api.get(`/api/game/data/admin/${admin}/boards`);
 export const board = (board) => api.get(`/api/game/data/board/${board}`);
 export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
@@ -25,6 +26,8 @@ export const updatePlayers = (payload) =>
   api.put("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
   api.put("api/game/data/board/update", payload);
+export const updateTiles = (payload) =>
+  api.put("api/game/data/board/tiles/update", payload);
 export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
 export const updateQuestion = (payload) =>
@@ -68,6 +71,7 @@ const apiRoutes = {
   createPlayer,
   updatePlayers,
   updateBoard,
+  updateTiles,
   newQuestion,
   updateQuestion,
   deleteQuestion,

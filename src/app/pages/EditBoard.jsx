@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
+
 import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,13 +16,20 @@ class EditBoard extends Component {
   constructor(props) {
     super(props);
 
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleTileNameChange = this.handleTileNameChange.bind(this);
     this.handlePointsChange = this.handlePointsChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleTilesSave = this.handleTilesSave.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleBoardSave = this.handleBoardSave.bind(this);
   }
 
   state = {
-    board: null,
+    name: "",
+    description: "",
+    image: "",
+    tiles: [],
     badges: [],
   };
 
@@ -41,7 +50,10 @@ class EditBoard extends Component {
       .board(this.props.params.board)
       .then((res) => {
         this.setState({
-          board: res.data,
+          name: res.data.name,
+          description: res.data.description,
+          image: res.data.image,
+          tiles: res.data.tiles,
         });
       })
       .catch((error) => {
@@ -57,36 +69,36 @@ class EditBoard extends Component {
     });
   }
 
-  handleNameChange(e, boardPosition) {
-    const newBoard = this.state.board;
-    newBoard[boardPosition].name = e.target.value;
+  handleTileNameChange(e, boardPosition) {
+    const newTiles = this.state.tiles;
+    newTiles[boardPosition].name = e.target.value;
 
     this.setState({
-      board: newBoard,
+      tiles: newTiles,
     });
   }
 
   handlePointsChange(e, boardPosition) {
-    const newBoard = this.state.board;
-    newBoard[boardPosition].points = parseInt(e.target.value);
+    const newTiles = this.state.tiles;
+    newTiles[boardPosition].points = parseInt(e.target.value);
 
     this.setState({
-      board: newBoard,
+      tiles: newTiles,
     });
   }
 
-  handleClick() {
-    const board = JSON.parse(JSON.stringify(this.state.board));
+  handleTilesSave() {
+    const tiles = JSON.parse(JSON.stringify(this.state.tiles));
 
-    board.forEach((tile) => {
+    tiles.forEach((tile) => {
       if ("questions" in tile) delete tile.questions;
       if ("cards" in tile) delete tile.cards;
     });
 
-    const payload = { board };
+    const payload = { tiles };
 
     api
-      .updateBoard(payload)
+      .updateTiles(payload)
       .then(() => {})
       .catch((error) => {
         console.log(error.message);
@@ -105,187 +117,343 @@ class EditBoard extends Component {
     });
   }
 
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value,
+    });
+  }
+
+  handleDescriptionChange(e) {
+    this.setState({
+      description: e.target.value,
+    });
+  }
+
+  handleImageChange(e) {
+    this.setState({
+      image: e.target.value,
+    });
+  }
+
+  handleBoardSave() {
+    const payload = {
+      boardName: this.props.params.board,
+      name: this.state.name,
+      description: this.state.description,
+      image: this.state.image,
+    };
+
+    api
+      .updateBoard(payload)
+      .then(() => {
+        if (this.state.name !== this.props.params.board)
+          window.location.href = `/admin/${this.state.name}/edit`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
-      <div className="text-center mt-4">
-        <h1>{this.props.params.board}</h1>
-        {this.state.board && (
-          <div>
-            <h4 className="mt-4">Tabuleiro</h4>
-            <table className="table table-hover mt-3">
-              <thead>
-                <tr>
-                  <th scope="col">Posição</th>
-                  <th scope="col">Tipo</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Pontos</th>
-                  <th scope="col">Conteúdo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.board.map((tile) => {
-                  return (
-                    <tr>
-                      <th scope="row">{tile.boardPosition}</th>
-                      <td>{this.types[tile.type]}</td>
-                      <td>
-                        <input
-                          onChange={(e) =>
-                            this.handleNameChange(e, tile.boardPosition)
-                          }
-                          type="text"
-                          value={tile.name}
-                        />
-                      </td>
-                      <td>
-                        {"points" in tile ? (
-                          <input
-                            onChange={(e) =>
-                              this.handlePointsChange(e, tile.boardPosition)
-                            }
-                            type="number"
-                            value={tile.points}
-                          />
-                        ) : (
-                          "-"
-                        )}
-                      </td>
-                      <td>
-                        {tile.type === "groupProperty" ||
-                        tile.type === "pay" ? (
-                          <Link
-                            to={`/admin/${this.props.params.board}/${tile.boardPosition}/questions`}
-                          >
-                            {tile.questions ? (
-                              <>
-                                {tile.questions} pergunta
-                                {tile.questions !== 1 && "s"}
-                              </>
-                            ) : (
-                              "0 perguntas"
-                            )}
-                          </Link>
-                        ) : (
-                          <>
-                            {tile.type === "community" ? (
-                              <Link
-                                to={`/admin/${this.props.params.board}/deck_cards/community`}
-                              >
-                                {tile.cards ? (
-                                  <>
-                                    {tile.cards} carta
-                                    {tile.cards !== 1 && "s"}
-                                  </>
-                                ) : (
-                                  "0 cartas"
-                                )}
-                              </Link>
-                            ) : (
-                              <>
-                                {tile.type === "chance" ? (
-                                  <Link
-                                    to={`/admin/${this.props.params.board}/deck_cards/chance`}
-                                  >
-                                    {tile.cards ? (
-                                      <>
-                                        {tile.cards} carta
-                                        {tile.cards !== 1 && "s"}
-                                      </>
-                                    ) : (
-                                      "0 cartas"
-                                    )}
-                                  </Link>
-                                ) : (
-                                  <>
-                                    {tile.type === "train" ? (
-                                      <Link
-                                        to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
-                                      >
-                                        {tile.cards ? (
-                                          <>
-                                            {tile.cards} carta
-                                            {tile.cards !== 1 && "s"}
-                                          </>
-                                        ) : (
-                                          "0 cartas"
-                                        )}
-                                      </Link>
-                                    ) : (
-                                      "-"
-                                    )}
-                                  </>
-                                )}
-                              </>
-                            )}
-                          </>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <button
-              className="btn btn-lg btn-primary my-4"
-              onClick={this.handleClick}
-            >
-              Guardar alterações
-            </button>
-          </div>
-        )}
-        <h4 className="mt-4">Troféus</h4>
-        {this.state.badges.length > 0 && (
-          <table className="table table-hover mt-3">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Multiplicador</th>
-                <th scope="col">Custo</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.badges.map((badge, i) => {
-                return (
-                  <tr>
-                    <th scope="row">{i + 1}</th>
-                    <td>{badge.name}</td>
-                    <td>x{badge.multiplier}</td>
-                    <td>
-                      {badge.cost} ponto{badge.cost !== 1 && "s"}
-                    </td>
-                    <td>
-                      <Link
-                        to={`/admin/${this.props.params.board}/badge/${badge._id}/edit`}
-                      >
-                        <FontAwesomeIcon icon={faPencil} />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to="#"
-                        className="text-danger"
-                        onClick={() => this.handleDelete(badge._id)}
-                      >
-                        <FontAwesomeIcon icon={faTrashCan} />
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
-        <Link
-          to={"/admin/" + this.props.params.board + "/badges/new"}
-          style={{ textDecoration: "none" }}
+      <div>
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
         >
-          <button className="btn btn-lg btn-primary my-4">
-            Adicionar troféu
-          </button>
-        </Link>
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to="/admin" className="text-decoration-none">
+                Menu
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}`}
+                className="text-decoration-none"
+              >
+                {this.props.params.board}
+              </Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Editar
+            </li>
+          </ol>
+          <div>
+            <EditAndLogout />
+          </div>
+        </nav>
+        <div className="text-center mt-5">
+          <h1>{this.props.params.board}</h1>
+          {this.state.tiles.length > 0 && (
+            <div className="card my-5 mx-md-5 py-2 px-0">
+              <div className="card-body px-0">
+                <h3 className="card-title">Tabuleiro</h3>
+                <div className="table-responsive mt-3">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Posição</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Pontos</th>
+                        <th scope="col">Conteúdo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.tiles.map((tile) => {
+                        return (
+                          <tr>
+                            <th scope="row">{tile.boardPosition}</th>
+                            <td>{this.types[tile.type]}</td>
+                            <td>
+                              <input
+                                onChange={(e) =>
+                                  this.handleTileNameChange(
+                                    e,
+                                    tile.boardPosition
+                                  )
+                                }
+                                type="text"
+                                value={tile.name}
+                              />
+                            </td>
+                            <td>
+                              {"points" in tile ? (
+                                <input
+                                  className="table-input-number"
+                                  onChange={(e) =>
+                                    this.handlePointsChange(
+                                      e,
+                                      tile.boardPosition
+                                    )
+                                  }
+                                  type="number"
+                                  value={tile.points}
+                                />
+                              ) : (
+                                "-"
+                              )}
+                            </td>
+                            <td>
+                              {tile.type === "groupProperty" ||
+                              tile.type === "pay" ? (
+                                <Link
+                                  to={`/admin/${this.props.params.board}/${tile.boardPosition}/questions`}
+                                  className="text-decoration-none"
+                                >
+                                  {tile.questions ? (
+                                    <>
+                                      {tile.questions} pergunta
+                                      {tile.questions !== 1 && "s"}
+                                    </>
+                                  ) : (
+                                    "0 perguntas"
+                                  )}
+                                </Link>
+                              ) : (
+                                <>
+                                  {tile.type === "community" ? (
+                                    <Link
+                                      to={`/admin/${this.props.params.board}/deck_cards/community`}
+                                      className="text-decoration-none"
+                                    >
+                                      {tile.cards ? (
+                                        <>
+                                          {tile.cards} carta
+                                          {tile.cards !== 1 && "s"}
+                                        </>
+                                      ) : (
+                                        "0 cartas"
+                                      )}
+                                    </Link>
+                                  ) : (
+                                    <>
+                                      {tile.type === "chance" ? (
+                                        <Link
+                                          to={`/admin/${this.props.params.board}/deck_cards/chance`}
+                                          className="text-decoration-none"
+                                        >
+                                          {tile.cards ? (
+                                            <>
+                                              {tile.cards} carta
+                                              {tile.cards !== 1 && "s"}
+                                            </>
+                                          ) : (
+                                            "0 cartas"
+                                          )}
+                                        </Link>
+                                      ) : (
+                                        <>
+                                          {tile.type === "train" ? (
+                                            <Link
+                                              to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
+                                              className="text-decoration-none"
+                                            >
+                                              {tile.cards ? (
+                                                <>
+                                                  {tile.cards} carta
+                                                  {tile.cards !== 1 && "s"}
+                                                </>
+                                              ) : (
+                                                "0 cartas"
+                                              )}
+                                            </Link>
+                                          ) : (
+                                            "-"
+                                          )}
+                                        </>
+                                      )}
+                                    </>
+                                  )}
+                                </>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <button
+                  className="btn btn-lg btn-outline-success mt-3"
+                  onClick={this.handleTilesSave}
+                >
+                  Guardar alterações
+                </button>
+              </div>
+            </div>
+          )}
+          {this.state.badges.length > 0 && (
+            <div className="card my-5 mx-md-5 py-2 px-0">
+              <div className="card-body px-0">
+                <h3 className="card-title">Troféus</h3>
+                <div className="table-responsive mt-3">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Multiplicador</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.badges.map((badge, i) => {
+                        return (
+                          <tr>
+                            <th scope="row">{i + 1}</th>
+                            <td>{badge.name}</td>
+                            <td>x{badge.multiplier}</td>
+                            <td>
+                              {badge.cost} ponto{badge.cost !== 1 && "s"}
+                            </td>
+                            <td>
+                              <Link
+                                to={`/admin/${this.props.params.board}/badge/${badge._id}/edit`}
+                              >
+                                <FontAwesomeIcon icon={faPencil} />
+                              </Link>
+                            </td>
+                            <td>
+                              <Link
+                                to="#"
+                                className="text-danger"
+                                onClick={() => this.handleDelete(badge._id)}
+                              >
+                                <FontAwesomeIcon icon={faTrashCan} />
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <Link
+                  to={"/admin/" + this.props.params.board + "/badges/new"}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button className="btn btn-lg btn-primary mt-3">
+                    Adicionar troféu
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
+          {this.state.name.length > 0 && (
+            <div className="card my-5 mx-md-5 py-2 px-0">
+              <div className="card-body px-0">
+                <h3 className="card-title">Outras definições</h3>
+                <div className="row mx-4">
+                  <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
+                    <div className="text-start mt-4 fw-bold">
+                      <label for="name" class="form-label">
+                        Nome
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        onChange={this.handleNameChange}
+                        value={this.state.name}
+                        placeholder="Nome"
+                      />
+                    </div>
+                    <div className="text-start mt-4 fw-bold">
+                      <label for="description" class="form-label">
+                        Descrição
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="description"
+                        onChange={this.handleDescriptionChange}
+                        value={this.state.description}
+                        placeholder="Descrição"
+                      />
+                    </div>
+                    <div className="text-start mt-4 fw-bold">
+                      <label for="image" class="form-label">
+                        Link da imagem
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="image"
+                        onChange={this.handleImageChange}
+                        value={this.state.image}
+                        placeholder="Link da imagem"
+                      />
+                    </div>
+                    {this.state.image.length > 0 && (
+                      <div className="text-center mt-3">
+                        <img
+                          src={this.state.image}
+                          className="rounded-circle border"
+                          style={{
+                            objectFit: "cover",
+                            width: "250px",
+                            height: "250px",
+                          }}
+                          alt="game board"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <button
+                  className="btn btn-lg btn-outline-success mt-3"
+                  onClick={this.handleBoardSave}
+                >
+                  Guardar alterações
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
