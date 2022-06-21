@@ -5,7 +5,7 @@ function TrainCardForm(props) {
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
-          <label for="question" className="form-label">
+          <label for="info" className="form-label">
             Descrição
           </label>
           <textarea
@@ -18,7 +18,7 @@ function TrainCardForm(props) {
           />
         </div>
         <div className="text-start fw-bold mt-4">
-          <label for="question" className="form-label">
+          <label for="content" className="form-label">
             Link para o conteúdo
           </label>
           <input

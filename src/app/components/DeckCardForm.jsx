@@ -5,7 +5,7 @@ function DeckCardForm(props) {
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
-          <label for="question" className="form-label">
+          <label for="deck" className="form-label">
             Baralho
           </label>
           <select class="form-select" name="deck" onChange={props.onDeckChange}>
@@ -18,7 +18,7 @@ function DeckCardForm(props) {
           </select>
         </div>
         <div className="text-start fw-bold mt-4">
-          <label for="question" className="form-label">
+          <label for="info" className="form-label">
             Descrição
           </label>
           <textarea
@@ -31,7 +31,7 @@ function DeckCardForm(props) {
           />
         </div>
         <div className="text-start fw-bold mt-4">
-          <label for="question" className="form-label">
+          <label for="points" className="form-label">
             Pontos imediatos
           </label>
           <input
@@ -44,7 +44,7 @@ function DeckCardForm(props) {
           />
         </div>
         <div className="text-start fw-bold mt-4">
-          <label for="question" className="form-label">
+          <label for="action" className="form-label">
             Ação
           </label>
           <select
@@ -65,7 +65,7 @@ function DeckCardForm(props) {
         </div>
         {props.action !== "none" && (
           <div className="text-start fw-bold mt-4">
-            <label for="question" className="form-label">
+            <label for="actionValue" className="form-label">
               {props.action === "move" ? (
                 <div>Casas a avançar (negativo para recuar)</div>
               ) : (

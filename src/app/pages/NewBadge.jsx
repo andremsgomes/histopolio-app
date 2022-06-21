@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
 import api from "../api";
-import { useParams } from "react-router-dom";
-import Badge from "../components/Badge";
+import { Link, useParams } from "react-router-dom";
+
+import EditAndLogout from "../components/EditAndLogout";
+import BadgeForm from "../components/BadgeForm";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -69,7 +71,7 @@ class NewBadge extends Component {
     api
       .newBadge(payload)
       .then(() => {
-        window.location.href = `/admin/${this.props.params.board}`;
+        window.location.href = `/admin/${this.props.params.board}/edit`;
       })
       .catch((error) => {
         console.log(error.message);
@@ -78,17 +80,66 @@ class NewBadge extends Component {
 
   render() {
     return (
-      <Badge
-        onNameChange={this.handleNameChange}
-        name={this.state.name}
-        onImageChange={this.handleImageChange}
-        image={this.state.image}
-        onMultiplierChange={this.handleMultiplierChange}
-        multiplier={this.state.multiplier}
-        onCostChange={this.handleCostChange}
-        cost={this.state.cost}
-        onClick={this.handleClick}
-      />
+      <div>
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
+        >
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to="/admin" className="text-decoration-none">
+                Menu
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}`}
+                className="text-decoration-none"
+              >
+                {this.props.params.board}
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}/edit`}
+                className="text-decoration-none"
+              >
+                Editar
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              Troféus
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Novo troféu
+            </li>
+          </ol>
+          <div>
+            <EditAndLogout />
+          </div>
+        </nav>
+        <div className="text-center mt-5">
+          <h1>
+            {this.props.params.board}
+          </h1>
+          <div className="card my-5 mx-md-5 py-2 px-0">
+            <div className="card-body px-0">
+              <h3 className="card-title">Novo troféu</h3>
+              <BadgeForm
+                onNameChange={this.handleNameChange}
+                name={this.state.name}
+                onImageChange={this.handleImageChange}
+                image={this.state.image}
+                onMultiplierChange={this.handleMultiplierChange}
+                multiplier={this.state.multiplier}
+                onCostChange={this.handleCostChange}
+                cost={this.state.cost}
+                onClick={this.handleClick}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
