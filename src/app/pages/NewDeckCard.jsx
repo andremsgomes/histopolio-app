@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
 import api from "../api";
-import { useParams } from "react-router-dom";
-import DeckCard from "../components/DeckCard";
+import { Link, useParams } from "react-router-dom";
+
+import EditAndLogout from "../components/EditAndLogout";
+import DeckCardForm from "../components/DeckCardForm";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -86,19 +88,68 @@ class NewDeckCard extends Component {
 
   render() {
     return (
-      <DeckCard
-        onDeckChange={this.handleDeckChange}
-        deck={this.state.deck}
-        onInfoChange={this.handleInfoChange}
-        info={this.state.info}
-        onPointsChange={this.handlePointsChange}
-        points={this.state.points}
-        onActionChange={this.handleActionChange}
-        action={this.state.action}
-        onActionValueChange={this.handleActionValueChange}
-        actionValue={this.state.actionValue}
-        onClick={this.handleClick}
-      />
+      <div>
+        <nav
+          aria-label="breadcrumb"
+          className="navbar navbar-light bg-white px-4"
+        >
+          <ol className="breadcrumb m-0">
+            <li className="breadcrumb-item" aria-current="page">
+              <Link to="/admin" className="text-decoration-none">
+                Menu
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}`}
+                className="text-decoration-none"
+              >
+                {this.props.params.board}
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              <Link
+                to={`/admin/${this.props.params.board}/edit`}
+                className="text-decoration-none"
+              >
+                Editar
+              </Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              Cartas
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Nova carta
+            </li>
+          </ol>
+          <div>
+            <EditAndLogout />
+          </div>
+        </nav>
+        <div className="text-center mt-5">
+          <h1>
+            {this.props.params.board}
+          </h1>
+          <div className="card my-5 mx-md-5 py-2 px-0">
+            <div className="card-body px-0">
+              <h3 className="card-title">Nova carta</h3>
+              <DeckCardForm
+                onDeckChange={this.handleDeckChange}
+                deck={this.state.deck}
+                onInfoChange={this.handleInfoChange}
+                info={this.state.info}
+                onPointsChange={this.handlePointsChange}
+                points={this.state.points}
+                onActionChange={this.handleActionChange}
+                action={this.state.action}
+                onActionValueChange={this.handleActionValueChange}
+                actionValue={this.state.actionValue}
+                onClick={this.handleClick}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

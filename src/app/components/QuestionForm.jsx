@@ -1,6 +1,6 @@
 import React from "react";
 
-function Question(props) {
+function QuestionForm(props) {
   return (
     <div className="row mx-4 mt-3">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
@@ -77,7 +77,7 @@ function Question(props) {
           </select>
         </div>
       </div>
-      <div className="text-center mt-4">
+      <div className="text-center">
         <button
           className="btn btn-lg btn-outline-success mt-3"
           onClick={props.onClick}
@@ -89,4 +89,4 @@ function Question(props) {
   );
 }
 
-export default Question;
+export default QuestionForm;
