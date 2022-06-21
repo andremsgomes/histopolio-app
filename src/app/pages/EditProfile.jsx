@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import api from "../api";
+import EditAndLogout from "../components/EditAndLogout";
 
-function Signup() {
+import { Link } from "react-router-dom";
+
+function EditProfile() {
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -60,7 +63,7 @@ function Signup() {
       emailInput.style.borderColor = "red";
     }
 
-    if (!(nameError || emailError )) {
+    if (!(nameError || emailError)) {
       const user = JSON.parse(sessionStorage.getItem("user"));
       user.name = name;
       user.avatar = avatarToSend;
@@ -98,8 +101,29 @@ function Signup() {
   };
 
   return (
-    <div class="vh-100 gradient-custom">
-      <div class="container py-5 h-100">
+    <div>
+      <nav
+        aria-label="breadcrumb"
+        className="navbar navbar-light bg-white px-4"
+      >
+        <ol className="breadcrumb m-0">
+          <li className="breadcrumb-item" aria-current="page">
+            <Link to="/admin" className="text-decoration-none">
+              Menu
+            </Link>
+          </li>
+          <li className="breadcrumb-item" aria-current="page">
+            Perfil
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Editar
+          </li>
+        </ol>
+        <div>
+          <EditAndLogout />
+        </div>
+      </nav>
+      <div class="container py-5">
         <div className="row">
           <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto">
             <div class="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
@@ -188,4 +212,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default EditProfile;

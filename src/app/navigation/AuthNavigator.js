@@ -6,7 +6,8 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
 function AuthNavigator() {
-  document.body.style = "background: #5000c9; background: -webkit-linear-gradient(to right, #cc009b, #5000c9); background: linear-gradient(to right, #cc009b, #5000c9);"
+  document.body.style =
+    "background: #5000c9; background: -webkit-linear-gradient(to right, #cc009b, #5000c9); background: linear-gradient(to right, #cc009b, #5000c9);";
 
   return (
     <Routes>

@@ -17,6 +17,7 @@ import EditQuestion from "../pages/EditQuestion";
 import EditDeckCard from "../pages/EditDeckCard";
 import EditTrainCard from "../pages/EditTrainCard";
 import EditBadge from "../pages/EditBadge";
+import EditProfile from "../pages/EditProfile";
 
 function AdminNavigator() {
   document.body.style = "background: #f8f9fa;";
@@ -24,17 +25,39 @@ function AdminNavigator() {
   return (
     <Routes>
       <Route path="/admin" element={<Admin />} />
+      <Route path="/profile/edit" element={<EditProfile />} />
       <Route path="/admin/:board" element={<Board />} />
       <Route path="/admin/:board/edit" element={<EditBoard />} />
       <Route path="/admin/:board/:tile/questions" element={<EditQuestions />} />
-      <Route path="/admin/:board/:tile/questions/new" element={<NewQuestion />} />
-      <Route path="/admin/:board/:tile/question/:id/edit" element={<EditQuestion />} />
-      <Route path="/admin/:board/deck_cards/:deck" element={<EditDeckCards />} />
-      <Route path="/admin/:board/:tile/train_cards" element={<EditTrainCards />} />
-      <Route path="/admin/:board/:tile/train_cards/new" element={<NewTrainCard />} />
-      <Route path="/admin/:board/:tile/train_cards/:id/edit" element={<EditTrainCard />} />
+      <Route
+        path="/admin/:board/:tile/questions/new"
+        element={<NewQuestion />}
+      />
+      <Route
+        path="/admin/:board/:tile/question/:id/edit"
+        element={<EditQuestion />}
+      />
+      <Route
+        path="/admin/:board/deck_cards/:deck"
+        element={<EditDeckCards />}
+      />
+      <Route
+        path="/admin/:board/:tile/train_cards"
+        element={<EditTrainCards />}
+      />
+      <Route
+        path="/admin/:board/:tile/train_cards/new"
+        element={<NewTrainCard />}
+      />
+      <Route
+        path="/admin/:board/:tile/train_cards/:id/edit"
+        element={<EditTrainCard />}
+      />
       <Route path="/admin/:board/cards/deck/new" element={<NewDeckCard />} />
-      <Route path="/admin/:board/cards/deck/:id/edit" element={<EditDeckCard />} />
+      <Route
+        path="/admin/:board/cards/deck/:id/edit"
+        element={<EditDeckCard />}
+      />
       <Route path="/admin/:board/badges/new" element={<NewBadge />} />
       <Route path="/admin/:board/badge/:id/edit" element={<EditBadge />} />
       <Route path="/admin/:board/:save" element={<EditSave />} />
