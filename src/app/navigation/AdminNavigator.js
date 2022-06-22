@@ -18,6 +18,7 @@ import EditDeckCard from "../pages/EditDeckCard";
 import EditTrainCard from "../pages/EditTrainCard";
 import EditBadge from "../pages/EditBadge";
 import EditProfile from "../pages/EditProfile";
+import NewBoard from "../pages/NewBoard";
 
 function AdminNavigator() {
   document.body.style = "background: #f8f9fa;";
@@ -26,6 +27,7 @@ function AdminNavigator() {
     <Routes>
       <Route path="/admin" element={<Admin />} />
       <Route path="/profile/edit" element={<EditProfile />} />
+      <Route path="/admin/boards/new" element={<NewBoard />} />
       <Route path="/admin/:board" element={<Board />} />
       <Route path="/admin/:board/edit" element={<EditBoard />} />
       <Route path="/admin/:board/:tile/questions" element={<EditQuestions />} />

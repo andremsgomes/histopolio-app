@@ -13,6 +13,7 @@ export const boards = () => api.get("/api/game/data/boards");
 export const adminBoards = (admin) =>
   api.get(`/api/game/data/admin/${admin}/boards`);
 export const board = (board) => api.get(`/api/game/data/board/${board}`);
+export const newBoard = (payload) => api.post("api/game/data/board/new", payload);
 export const questions = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
 export const question = (id) => api.get(`/api/game/data/question/${id}`);
@@ -64,6 +65,7 @@ const apiRoutes = {
   boards,
   adminBoards,
   board,
+  newBoard,
   questions,
   question,
   players,

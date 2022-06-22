@@ -48,7 +48,7 @@ function Admin() {
                 <div className="card m-2 p-3">
                   <img
                     src={board.image}
-                    className="card-img-top mx-auto"
+                    className="card-img-top mx-auto rounded-circle border"
                     style={{
                       objectFit: "cover",
                       width: "250px",
@@ -69,6 +69,11 @@ function Admin() {
               </div>
             );
           })}
+          <Link to="/admin/boards/new">
+            <button className="btn btn-lg btn-primary mt-4">
+              Criar tabuleiro
+            </button>
+          </Link>
         </div>
       </div>
     </div>

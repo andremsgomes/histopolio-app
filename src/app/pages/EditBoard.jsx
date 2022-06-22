@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
+import BoardForm from "../components/BoardForm";
 
 import { Link, useParams } from "react-router-dom";
 
@@ -324,10 +325,10 @@ class EditBoard extends Component {
               </div>
             </div>
           )}
-          {this.state.badges.length > 0 && (
-            <div className="card my-5 mx-md-5 py-2 px-0">
-              <div className="card-body px-0">
-                <h3 className="card-title">Troféus</h3>
+          <div className="card my-5 mx-md-5 py-2 px-0">
+            <div className="card-body px-0">
+              <h3 className="card-title">Troféus</h3>
+              {this.state.badges.length > 0 && (
                 <div className="table-responsive mt-3">
                   <table className="table table-hover">
                     <thead>
@@ -372,86 +373,29 @@ class EditBoard extends Component {
                     </tbody>
                   </table>
                 </div>
-                <Link
-                  to={"/admin/" + this.props.params.board + "/badges/new"}
-                  style={{ textDecoration: "none" }}
-                >
-                  <button className="btn btn-lg btn-primary mt-3">
-                    Adicionar troféu
-                  </button>
-                </Link>
-              </div>
-            </div>
-          )}
-          {this.state.name.length > 0 && (
-            <div className="card my-5 mx-md-5 py-2 px-0">
-              <div className="card-body px-0">
-                <h3 className="card-title">Outras definições</h3>
-                <div className="row mx-4 mt-3">
-                  <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-                    <div className="text-start fw-bold">
-                      <label for="name" class="form-label">
-                        Nome
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="name"
-                        onChange={this.handleNameChange}
-                        value={this.state.name}
-                        placeholder="Nome"
-                      />
-                    </div>
-                    <div className="text-start mt-4 fw-bold">
-                      <label for="description" class="form-label">
-                        Descrição
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="description"
-                        onChange={this.handleDescriptionChange}
-                        value={this.state.description}
-                        placeholder="Descrição"
-                      />
-                    </div>
-                    <div className="text-start mt-4 fw-bold">
-                      <label for="image" class="form-label">
-                        Link da imagem
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="image"
-                        onChange={this.handleImageChange}
-                        value={this.state.image}
-                        placeholder="Link da imagem"
-                      />
-                    </div>
-                    {this.state.image.length > 0 && (
-                      <div className="text-center mt-3">
-                        <img
-                          src={this.state.image}
-                          className="rounded-circle border"
-                          style={{
-                            objectFit: "cover",
-                            width: "250px",
-                            height: "250px",
-                          }}
-                          alt="game board"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <button
-                  className="btn btn-lg btn-outline-success mt-3"
-                  onClick={this.handleBoardSave}
-                >
-                  Guardar alterações
+              )}
+              <Link
+                to={"/admin/" + this.props.params.board + "/badges/new"}
+                style={{ textDecoration: "none" }}
+              >
+                <button className="btn btn-lg btn-primary mt-3">
+                  Adicionar troféu
                 </button>
-              </div>
+              </Link>
             </div>
+          </div>
+          {this.state.name.length > 0 && (
+            <BoardForm
+              title="Outras definições"
+              onNameChange={this.handleNameChange}
+              name={this.state.name}
+              onDescriptionChange={this.handleDescriptionChange}
+              description={this.state.description}
+              onImageChange={this.handleImageChange}
+              image={this.state.image}
+              onClick={this.handleBoardSave}
+              buttonText="Guardar alteraçoẽs"
+            />
           )}
         </div>
       </div>
