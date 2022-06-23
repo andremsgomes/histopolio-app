@@ -57,7 +57,7 @@ function PlayerMenu() {
                 <div className="card m-2 p-3">
                   <img
                     src={board.image}
-                    className="card-img-top mx-auto"
+                    className="card-img-top mx-auto rounded-circle border"
                     style={{
                       objectFit: "cover",
                       width: "250px",

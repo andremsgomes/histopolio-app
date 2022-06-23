@@ -36,6 +36,7 @@ class GameController extends Component {
 
   state = {
     save: "",
+    adminId: "",
     gameStarted: false,
     playerTurn: false,
     showDice: false,
@@ -167,6 +168,9 @@ class GameController extends Component {
       }
 
       if (this.state.gameStarted) {
+        this.setState({
+          adminId: dataReceived["adminId"],
+        });
         this.sendJoinGameMessage();
       }
     }
@@ -188,6 +192,7 @@ class GameController extends Component {
       name: user.name,
       email: user.email,
       avatar: user.avatar,
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -281,6 +286,7 @@ class GameController extends Component {
     const dataToSend = {
       type: "answer",
       answer: answer,
+      adminId: this.state.adminId
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -291,6 +297,7 @@ class GameController extends Component {
 
     const dataToSend = {
       type: "content viewed",
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -301,6 +308,7 @@ class GameController extends Component {
       type: "dice result",
       result: num,
       rollTime: this.state.rollTime * 1000,
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -367,6 +375,7 @@ class GameController extends Component {
 
     const dataToSend = {
       type: "continue",
+      adminId: this.state.adminId
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -384,6 +393,7 @@ class GameController extends Component {
 
     const dataToSend = {
       type: "next player",
+      adminId: this.state.adminId
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -398,7 +408,9 @@ class GameController extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/" className="text-decoration-none">Menu</Link>
+              <Link to="/" className="text-decoration-none">
+                Menu
+              </Link>
             </li>
             <li className="breadcrumb-item">{this.props.params.board}</li>
             <li className="breadcrumb-item active" aria-current="page">
