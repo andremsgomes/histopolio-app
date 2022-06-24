@@ -135,7 +135,10 @@ function EditProfile() {
                 )}
                 <h2 class="fw-bold mb-2 text-uppercase">Editar perfil</h2>
                 <p class="text-black-50 mb-5">Edita os teus dados</p>
-                <div className="form-group row">
+                <div className="text-start fw-bold">
+                  <label for="name" className="form-label">
+                    Nome
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -147,7 +150,10 @@ function EditProfile() {
                   />
                   <div className="text-danger">{nameErrorMessage}</div>
                 </div>
-                <div className="form-group row mt-3">
+                <div className="text-start fw-bold mt-3">
+                  <label for="avatar" className="form-label">
+                    Link do Avatar
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -183,7 +189,10 @@ function EditProfile() {
                     />
                   )}
                 </div>
-                <div className="form-group row mt-3">
+                <div className="text-start fw-bold mt-3">
+                  <label for="email" className="form-label">
+                    Email
+                  </label>
                   <input
                     type="email"
                     className="form-control"
@@ -197,7 +206,7 @@ function EditProfile() {
                 </div>
                 <div className="text-center">
                   <button
-                    className="btn btn-primary btn-lg mt-4 px-5"
+                    className="btn btn-lg btn-outline-success mt-3"
                     onClick={handleClick}
                   >
                     Guardar alterações
