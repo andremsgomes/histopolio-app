@@ -60,7 +60,7 @@ function EnterGameSession() {
       </nav>
       <div className="text-center page-center">
         <h2 className="m-4">
-          Introduz o código de acesso apresentado ecrã de jogo
+          Introduz o código de acesso apresentado no ecrã de jogo
         </h2>
         <div className="row m-4">
           <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto">

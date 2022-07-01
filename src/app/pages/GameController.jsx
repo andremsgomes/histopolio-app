@@ -22,6 +22,7 @@ class GameController extends Component {
 
     this.client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
 
+    this.checkWebSocktetState = this.checkWebSocktetState.bind(this);
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
     this.handleContentClick = this.handleContentClick.bind(this);
@@ -72,6 +73,32 @@ class GameController extends Component {
 
       this.processDataReceived(dataReceived);
     };
+
+    this.checkWebSocktetState();
+  }
+
+  async checkWebSocktetState() {
+    setInterval(async () => {
+      if (this.client.readyState !== this.client.OPEN) {
+        this.client.close();
+        this.client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+
+        this.client.onopen = () => {
+          console.log("WebSocket Client Connected");
+    
+          this.sendIdentificationMessage();
+          this.loadBadges();
+          this.sendRequestGameStatusMessage();
+        };
+    
+        this.client.onmessage = (message) => {
+          console.log(message.data);
+          const dataReceived = JSON.parse(message.data);
+    
+          this.processDataReceived(dataReceived);
+        };
+      }
+    }, 1000);
   }
 
   sendIdentificationMessage() {
@@ -286,7 +313,7 @@ class GameController extends Component {
     const dataToSend = {
       type: "answer",
       answer: answer,
-      adminId: this.state.adminId
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -375,7 +402,7 @@ class GameController extends Component {
 
     const dataToSend = {
       type: "continue",
-      adminId: this.state.adminId
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -393,7 +420,7 @@ class GameController extends Component {
 
     const dataToSend = {
       type: "next player",
-      adminId: this.state.adminId
+      adminId: this.state.adminId,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
