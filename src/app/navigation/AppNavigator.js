@@ -6,6 +6,7 @@ import PlayerMenu from "../pages/PlayerMenu";
 import GameController from "../pages/GameController";
 import EnterGameSession from "../pages/EnterGameSession";
 import EditProfile from "../pages/EditProfile";
+import Rules from "../pages/Rules";
 
 function AppNavigator() {
   document.body.style = "background: #f8f9fa;";
@@ -13,6 +14,7 @@ function AppNavigator() {
   return (
     <Routes>
       <Route path="/" element={<PlayerMenu />} />
+      <Route path="/rules" element={<Rules />} />
       <Route path="/profile/edit" element={<EditProfile />} />
       <Route path="/:board/enter" element={<EnterGameSession />} />
       <Route path="/:board/play" element={<GameController />} />

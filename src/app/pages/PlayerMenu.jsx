@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
@@ -79,6 +80,11 @@ function PlayerMenu() {
               </div>
             );
           })}
+          <Link to="/rules">
+            <button className="btn btn-lg btn-primary mt-4">
+              Consultar as regras
+            </button>
+          </Link>
         </div>
       </div>
     </div>
