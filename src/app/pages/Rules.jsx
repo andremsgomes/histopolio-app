@@ -38,7 +38,7 @@ class Rules extends Component {
                 termos de jogadas.
               </p>
               <p className="card-text text-start mb-0">
-                Se dois ou mais os jogadores tiverem o mesmo número de jogadas,
+                Se dois ou mais jogadores tiverem o mesmo número de jogadas,
                 a ordem para jogar é definida pela ordem de entrada dos
                 jogadores na sessão de jogo ativa.
               </p>
