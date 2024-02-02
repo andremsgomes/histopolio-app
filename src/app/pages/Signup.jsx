@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../api";
+import { isValidEmail } from "../utils/email-validation";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -12,10 +13,8 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [
-    confirmPasswordErrorMessage,
-    setConfirmPasswordErrorMessage,
-  ] = useState("");
+  const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
+    useState("");
   const [alertMessage, setAlertMessage] = useState("");
 
   const handleClick = () => {
@@ -59,15 +58,7 @@ function Signup() {
       avatar.length > 0 ? avatar : "https://www.linkpicture.com/q/user_21.png";
 
     // email validation
-    if (email.length === 0) {
-      emailError = true;
-      setEmailErrorMessage("Por favor introduz um email válido.");
-    } else if (!(/\w*@up.pt/.test(email) || /\w*@edu.\w.up.pt/.test(email))) {
-      emailError = true;
-      setEmailErrorMessage(
-        "Por favor introduz um email válido (formato: utilizador@up.pt ou utilizador@edu.instituição.up.pt)."
-      );
-    }
+    emailError = !isValidEmail(email, setEmailErrorMessage);
 
     if (emailError) {
       emailInput.style.borderColor = "red";
