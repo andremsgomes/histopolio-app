@@ -3,9 +3,9 @@ export const isValidEmail = (email, setEmailErrorMessage) => {
     setEmailErrorMessage("Por favor introduz um email válido.");
     return false;
   } 
-  if (!/\w*@edu.up.pt/.test(email)) {
+  if (!/\w+@\w+.\w+/.test(email)) {
     setEmailErrorMessage(
-      "Por favor introduz um email válido (formato: utilizador@edu.up.pt)."
+      "Por favor introduz um email válido."
     );
     return false;
   }
