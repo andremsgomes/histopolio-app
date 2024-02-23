@@ -70,10 +70,6 @@ function Signup() {
       nameInput.style.borderColor = "red";
     }
 
-    // avatar validation
-    const avatarToSend =
-      avatar.length > 0 ? avatar : "https://www.linkpicture.com/q/user_21.png";
-
     // email validation
     emailError = !isValidEmail(email, setEmailErrorMessage);
 
