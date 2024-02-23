@@ -4,10 +4,26 @@ import { Link } from "react-router-dom";
 import api from "../api";
 import { isValidEmail } from "../utils/email-validation";
 
+import Dropzone from "react-dropzone";
+import styled from "styled-components";
+
+const DropContainer = styled.div.attrs({
+  className: "dropzone",
+})`
+  border: 1px solid transparent;
+  background-color: #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 2.8rem;
+  font-size: 1rem;
+  display: grid;
+	align-items: center;
+`;
+
 function Signup() {
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(null);
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [password, setPassword] = useState("");
@@ -16,8 +32,9 @@ function Signup() {
   const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
     useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [preview, setPreview] = useState("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     let nameError = false;
     let emailError = false;
     let passwordError = false;
@@ -88,7 +105,15 @@ function Signup() {
     }
 
     if (!(nameError || emailError || passwordError || confirmPasswordError)) {
-      const payload = { name, avatarToSend, email, password };
+      const response = await fetch(preview);
+      const blob = await response.blob();
+
+
+      const payload = new FormData();
+      payload.append('avatar', blob, avatar.name);
+      payload.append('name', name);
+      payload.append('email', email);
+      payload.append('password', password);
 
       api
         .signup(payload)
@@ -108,8 +133,11 @@ function Signup() {
     setName(e.target.value);
   };
 
-  const handleAvatarChange = (e) => {
-    setAvatar(e.target.value);
+  const handleAvatarChange = (files) => {
+    const image = files[0];
+    setAvatar(image);
+    setPreview(URL.createObjectURL(image));
+    console.log(preview);
   };
 
   const handleEmailChange = (e) => {
@@ -149,32 +177,11 @@ function Signup() {
                 />
                 <div className="text-danger">{nameErrorMessage}</div>
               </div>
-              <div className="form-group row mt-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="avatarInput"
-                  name="avatar"
-                  onChange={handleAvatarChange}
-                  value={avatar}
-                  placeholder="Link do Avatar"
-                />
-              </div>
-              <div className="text-center mt-3">
-                {avatar.length > 0 ? (
+              <div className="row mt-3">Imagem de perfil/avatar:</div>
+              <div className="text-center mt-2">
+                {avatar && preview.length && (
                   <img
-                    src={avatar}
-                    alt="Avatar"
-                    className="rounded-circle border"
-                    style={{
-                      objectFit: "cover",
-                      width: "250px",
-                      height: "250px",
-                    }}
-                  />
-                ) : (
-                  <img
-                    src="https://www.linkpicture.com/q/user_21.png"
+                    src={preview}
                     alt="Avatar"
                     className="rounded-circle border"
                     style={{
@@ -184,6 +191,18 @@ function Signup() {
                     }}
                   />
                 )}
+              </div>
+              <div className="form-group row mt-3 text-white">
+                <div className="col-6 mx-auto">
+                  <Dropzone accept="image/*" multiple={false} onDropAccepted={handleAvatarChange}>
+                    {({ getRootProps, getInputProps }) => (
+                      <DropContainer {...getRootProps()}>
+                        <input {...getInputProps()} />
+                        Selecionar imagem
+                      </DropContainer>
+                    )}
+                  </Dropzone>
+                </div>
               </div>
               <div className="form-group row mt-3">
                 <input
