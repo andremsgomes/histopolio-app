@@ -23,7 +23,8 @@ class EditQuestion extends Component {
 
   state = {
     question: "",
-    image: "",
+    image: null,
+    preview: "",
     answers: ["", "", "", "", "", "", "", "", "", ""],
     correctAnswer: 1,
   };
@@ -39,7 +40,7 @@ class EditQuestion extends Component {
 
         if (res.data.image) {
           this.setState({
-            image: res.data.image,
+            preview: res.data.image,
           });
         }
 
@@ -63,11 +64,9 @@ class EditQuestion extends Component {
     });
   }
 
-  handleImageChange(e) {
-    // TODO: importar imagens do computador
-    this.setState({
-      image: e.target.value,
-    });
+  handleImageChange(files) {
+    const image = files[0];
+    this.setState({ image, preview: URL.createObjectURL(image) });
   }
 
   handleAnswerChange(e, i) {
@@ -85,9 +84,8 @@ class EditQuestion extends Component {
     });
   }
 
-  handleClick() {
+  async handleClick() {
     // TODO: validar tudo
-
     const id = this.props.params.id;
     const question = this.state.question;
     const image = this.state.image;
@@ -98,13 +96,21 @@ class EditQuestion extends Component {
       if (answer.length > 0) answers.push(answer);
     });
 
-    const payload = {
-      id,
-      question,
-      image,
-      answers,
-      correctAnswer,
-    };
+    const payload = new FormData();
+
+    if (image) {
+      const response = await fetch(this.state.preview, { mode: "no-cors" });
+      const blob = await response.blob();
+      payload.append("image", blob, image.name);
+    }
+    else {
+      payload.append("image", 'no-change');
+    }
+
+    payload.append("id", id);
+    payload.append("question", question);
+    payload.append("answers", answers);
+    payload.append("correctAnswer", correctAnswer);
 
     api
       .updateQuestion(payload)
@@ -175,7 +181,7 @@ class EditQuestion extends Component {
                 onQuestionChange={this.handleQuestionChange}
                 question={this.state.question}
                 onImageChange={this.handleImageChange}
-                image={this.state.image}
+                preview={this.state.preview}
                 answers={this.state.answers}
                 onAnswerChange={this.handleAnswerChange}
                 correctAnswer={this.state.correctAnswer}

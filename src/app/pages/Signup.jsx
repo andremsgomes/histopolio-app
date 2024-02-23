@@ -133,7 +133,6 @@ function Signup() {
     const image = files[0];
     setAvatar(image);
     setPreview(URL.createObjectURL(image));
-    console.log(preview);
   };
 
   const handleEmailChange = (e) => {

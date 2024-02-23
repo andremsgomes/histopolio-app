@@ -23,7 +23,8 @@ class NewQuestion extends Component {
 
   state = {
     question: "",
-    image: "",
+    image: null,
+    preview: "",
     answers: ["", "", "", "", "", "", "", "", "", ""],
     correctAnswer: 1,
   };
@@ -34,11 +35,9 @@ class NewQuestion extends Component {
     });
   }
 
-  handleImageChange(e) {
-    // TODO: importar imagens do computador
-    this.setState({
-      image: e.target.value,
-    });
+  handleImageChange(files) {
+    const image = files[0];
+    this.setState({ image, preview: URL.createObjectURL(image) });
   }
 
   handleAnswerChange(e, i) {
@@ -56,9 +55,8 @@ class NewQuestion extends Component {
     });
   }
 
-  handleClick() {
+  async handleClick() {
     // TODO: validar tudo
-
     const boardName = this.props.params.board;
     const boardPosition = parseInt(this.props.params.tile);
     const question = this.state.question;
@@ -70,14 +68,19 @@ class NewQuestion extends Component {
       if (answer.length > 0) answers.push(answer);
     });
 
-    const payload = {
-      boardName,
-      boardPosition,
-      question,
-      image,
-      answers,
-      correctAnswer,
-    };
+    const payload = new FormData();
+
+    if (image && this.state.preview.length > 0) {
+      const response = await fetch(this.state.preview);
+      const blob = await response.blob();
+      payload.append("image", blob, image.name);
+    }
+
+    payload.append("boardName", boardName);
+    payload.append("boardPosition", boardPosition);
+    payload.append("question", question);
+    payload.append("answers", answers);
+    payload.append("correctAnswer", correctAnswer);
 
     api
       .newQuestion(payload)
@@ -148,7 +151,7 @@ class NewQuestion extends Component {
                 onQuestionChange={this.handleQuestionChange}
                 question={this.state.question}
                 onImageChange={this.handleImageChange}
-                image={this.state.image}
+                preview={this.state.preview}
                 answers={this.state.answers}
                 onAnswerChange={this.handleAnswerChange}
                 correctAnswer={this.state.correctAnswer}

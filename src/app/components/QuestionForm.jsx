@@ -1,5 +1,21 @@
 import React from "react";
 
+import Dropzone from "react-dropzone";
+import styled from "styled-components";
+
+const DropContainer = styled.div.attrs({
+  className: "dropzone",
+})`
+  border: 1px dashed #6c757d;
+  background-color: #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 2.8rem;
+  font-size: 1rem;
+  display: grid;
+	align-items: center;
+`;
+
 function QuestionForm(props) {
   return (
     <div className="row mx-4 mt-3">
@@ -19,21 +35,27 @@ function QuestionForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="image" className="form-label">
-            Link da imagem
+            Imagem da pergunta
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="imageInput"
-            name="image"
-            onChange={props.onImageChange}
-            value={props.image}
-          />
+          <div className="col-6 mx-auto text-white text-center">
+            <Dropzone
+              accept="image/*"
+              multiple={false}
+              onDropAccepted={props.onImageChange}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <DropContainer {...getRootProps()}>
+                  <input {...getInputProps()} name="image" />
+                  Selecionar imagem
+                </DropContainer>
+              )}
+            </Dropzone>
+          </div>
         </div>
-        {props.image.length > 0 && (
+        {props.preview && props.preview.length > 0 && (
           <div className="text-center mt-3">
             <img
-              src={props.image}
+              src={props.preview}
               className="rounded"
               alt="question"
               width="100%"
