@@ -79,7 +79,7 @@ class NewQuestion extends Component {
     payload.append("boardName", boardName);
     payload.append("boardPosition", boardPosition);
     payload.append("question", question);
-    payload.append("answers", answers);
+    payload.append("answers", JSON.stringify(answers));
     payload.append("correctAnswer", correctAnswer);
 
     api

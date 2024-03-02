@@ -109,7 +109,7 @@ class EditQuestion extends Component {
 
     payload.append("id", id);
     payload.append("question", question);
-    payload.append("answers", answers);
+    payload.append("answers", JSON.stringify(answers));
     payload.append("correctAnswer", correctAnswer);
 
     api
