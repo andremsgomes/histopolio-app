@@ -507,7 +507,7 @@ class GameController extends Component {
                       <PlayQuestion
                         tile={this.state.tile}
                         question={this.state.question}
-                        onAnswerClick={this.handleAnswer}
+                        onAnswerConfirm={this.handleAnswer}
                         rank={this.state.rank}
                         points={this.state.points}
                       />
