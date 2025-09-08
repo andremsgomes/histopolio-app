@@ -1,4 +1,9 @@
 {
-  "welcome": "Welcome, {{name}}!",
-  "logout": "Logout"
+  "login.title": "Login",
+  "login.description": "Enter your email and password",
+  "login.button": "Login",
+  "login.register": "Don't have an account? Register <0>here</0>.",
+  "login.email.placeholder": "Email",
+  "login.password.error": "Please enter your password",
+  "login.password.placeholder": "Password"
 }

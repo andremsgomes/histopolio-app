@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Trans, useTranslation  } from "react-i18next";
 
 import api from "../api";
 import { isValidEmail } from "../utils/email-validation";
 
 function Login() {
+  const { t } = useTranslation(undefined, { keyPrefix: "login" });
+
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +37,7 @@ function Login() {
     // password validation
     if (password.length === 0) {
       passwordError = true;
-      setPasswordErrorMessage("Por favor introduz a tua password.");
+      setPasswordErrorMessage(t('password.error'));
     }
 
     if (passwordError) {
@@ -77,8 +80,8 @@ function Login() {
                   {alertMessage}
                 </div>
               )}
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-black-50 mb-5">Introduz o teu email e password</p>
+              <h2 class="fw-bold mb-2 text-uppercase">{t("title")}</h2>
+              <p class="text-black-50 mb-5">{t("description")}</p>
 
               <div className="form-group row">
                 <input
@@ -88,7 +91,7 @@ function Login() {
                   name="email"
                   onChange={handleEmailChange}
                   value={email}
-                  placeholder="Email"
+                  placeholder={t('email.placeholder')}
                 />
                 <div className="text-danger">{emailErrorMessage}</div>
               </div>
@@ -100,7 +103,7 @@ function Login() {
                   name="password"
                   onChange={handlePasswordChange}
                   value={password}
-                  placeholder="Password"
+                  placeholder={t('password.placeholder')}
                 />
                 <div className="text-danger">{passwordErrorMessage}</div>
               </div>
@@ -109,18 +112,14 @@ function Login() {
                   className="btn btn-primary btn-lg mt-4 px-5"
                   onClick={handleClick}
                 >
-                  Login
+                  {t("button")}
                 </button>
               </div>
               <p className="mt-5">
-                Não tens uma conta? Regista-te{" "}
-                <Link
-                  to="/signup"
-                  className="text-black text-decoration-none fw-bold"
-                >
-                  aqui
-                </Link>
-                .
+                <Trans i18nKey="login.register">
+                  <Link to="/signup"
+                  className="text-black text-decoration-none fw-bold" />
+                </Trans>
               </p>
             </div>
           </div>

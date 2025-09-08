@@ -1,4 +1,9 @@
 {
-  "welcome": "Bem-vindo, {{name}}!",
-  "logout": "Sair"
+  "login.title": "Login",
+  "login.description": "Introduz o teu email e password",
+  "login.button": "Login",
+  "login.register": "Não tens uma conta? Regista-te <0>aqui</0>.",
+  "login.email.placeholder": "Email",
+  "login.password.error": "Por favor introduz a tua password.",
+  "login.password.placeholder": "Password"
 }
