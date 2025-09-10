@@ -5,5 +5,10 @@
   "login.register": "Não tens uma conta? Regista-te <0>aqui</0>.",
   "login.email.placeholder": "Email",
   "login.password.error": "Por favor introduz a tua password.",
-  "login.password.placeholder": "Password"
+  "login.password.placeholder": "Password",
+  "badge-form.name": "Nome",
+  "badge-form.image-link": "Link da imagem",
+  "badge-form.multiplier": "Multiplicador",
+  "badge-form.cost": "Custo (pontos)",
+  "badge-form.save": "Guardar troféu"
 }

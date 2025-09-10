@@ -1,12 +1,14 @@
 import React from "react";
 
 function BadgeForm(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "badge-form" });
+
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
           <label for="name" className="form-label">
-            Nome
+            {t('name')}
           </label>
           <input
             type="text"
@@ -19,7 +21,7 @@ function BadgeForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="image" className="form-label">
-            Link da imagem
+            {t('image-link')}
           </label>
           <input
             type="text"
@@ -49,7 +51,7 @@ function BadgeForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="multiplier" className="form-label">
-            Multiplicador
+            {t('multiplier')}
           </label>
           <input
             type="number"
@@ -62,7 +64,7 @@ function BadgeForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="cost" className="form-label">
-            Custo (pontos)
+            {t('cost')}
           </label>
           <input
             type="text"
@@ -79,7 +81,7 @@ function BadgeForm(props) {
           className="btn btn-lg btn-outline-success mt-3"
           onClick={props.onClick}
         >
-          Guardar troféu
+          {t('save')}
         </button>
       </div>
     </div>
