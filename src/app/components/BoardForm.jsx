@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation  } from "react-i18next";
 
 function BoardForm(props) {
   return (
@@ -9,7 +10,7 @@ function BoardForm(props) {
           <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
             <div className="text-start fw-bold">
               <label for="name" class="form-label">
-                Nome
+                {t('name')}
               </label>
               <input
                 type="text"
@@ -17,12 +18,12 @@ function BoardForm(props) {
                 name="name"
                 onChange={props.onNameChange}
                 value={props.name}
-                placeholder="Nome"
+                placeholder={t('name')}
               />
             </div>
             <div className="text-start mt-4 fw-bold">
               <label for="description" class="form-label">
-                Descrição
+                {t('description')}
               </label>
               <input
                 type="text"
@@ -30,12 +31,12 @@ function BoardForm(props) {
                 name="description"
                 onChange={props.onDescriptionChange}
                 value={props.description}
-                placeholder="Descrição"
+                placeholder={t('description')}
               />
             </div>
             <div className="text-start mt-4 fw-bold">
               <label for="image" class="form-label">
-                Link da imagem
+                {t('image-link')}
               </label>
               <input
                 type="text"
@@ -43,7 +44,7 @@ function BoardForm(props) {
                 name="image"
                 onChange={props.onImageChange}
                 value={props.image}
-                placeholder="Link da imagem"
+                placeholder={t('image-link')}
               />
             </div>
             {props.image.length > 0 && (

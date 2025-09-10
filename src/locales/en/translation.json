@@ -10,5 +10,8 @@
   "badge-form.image-link": "Image link",
   "badge-form.multiplier": "Multiplier",
   "badge-form.cost": "Cost (points)",
-  "badge-form.save": "Save badge"
+  "badge-form.save": "Save badge",
+  "board-form.name": "Name",
+  "board-form.description": "Description",
+  "board-form.image-link": "Image link"
 }

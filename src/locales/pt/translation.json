@@ -10,5 +10,8 @@
   "badge-form.image-link": "Link da imagem",
   "badge-form.multiplier": "Multiplicador",
   "badge-form.cost": "Custo (pontos)",
-  "badge-form.save": "Guardar troféu"
+  "badge-form.save": "Guardar troféu",
+  "board-form.name": "Nome",
+  "board-form.description": "Descrição",
+  "board-form.image-link": "Link da imagem"
 }
