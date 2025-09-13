@@ -17,5 +17,9 @@
   "content.card": "Vê a carta que te saíu no ecrã de jogo!",
   "content.button": "Ver conteúdo",
   "content.rank": "Estás em {{rank}}º lugar",
-  "content.score": "Tens {{points}} ponto{{suffix}}"
+  "content.score": "Tens {{points}} ponto{{suffix}}",
+  "continue.button": "Continuar",
+  "continue.rank": "Estás em {{rank}}º lugar",
+  "continue.score": "Tens {{points}} ponto{{suffix}}",
+  "continue.badges.button": "Comprar troféus"
 }

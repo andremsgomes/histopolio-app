@@ -16,5 +16,9 @@
   "content.card": "Look at the card that came up on the game screen",
   "content.button": "See content",
   "content.rank": "You are in {{rank}}{{suffix}} place",
-  "content.score": "You have {{points}} point{{suffix}}"
+  "content.score": "You have {{points}} point{{suffix}}",
+  "continue.button": "Continue",
+  "continue.rank": "You are in {{rank}}{{suffix}} place",
+  "continue.score": "You have {{points}} point{{suffix}}",
+  "continue.badges.button": "Buy badges"
 }

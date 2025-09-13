@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation  } from "react-i18next";
 
 function Continue(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "continue" });
+
   document.body.style = `background: ${props.bodyColor};`;
 
   return (
@@ -10,12 +13,12 @@ function Continue(props) {
         className={`btn btn-primary btn-lg continue ${props.bodyColor !== "#f8f9fa" && ("border-white")}`}
         onClick={props.onContinueClick}
       >
-        Continuar
+       {t('button')}
       </button>
       <div>
-        {props.rank !== 0 && <h4 className={props.bodyColor !== "#f8f9fa" && ("text-white")}>Estás em {props.rank}º lugar</h4>}
+        {props.rank !== 0 && <h4 className={props.bodyColor !== "#f8f9fa" && ("text-white")}>{t('rank', { rank: props.rank, suffix: getOrdinalSuffix(props.rank) })}</h4>}
         <h5 className={props.bodyColor !== "#f8f9fa" && ("text-white")}>
-          Tens {props.points} ponto{props.points !== 1 && "s"}
+          {t('score', { points: props.points, suffix: props.points !== 1 ? 's' : '' })}
         </h5>
       </div>
       {props.storeButton && (
@@ -23,7 +26,7 @@ function Continue(props) {
           className={`btn btn-lg btn-primary mt-4 ${props.bodyColor !== "#f8f9fa" && ("border-white")}`}
           onClick={props.onStoreClick}
         >
-          Comprar troféus
+          {t('badges.button')}
         </button>
       )}
     </div>
