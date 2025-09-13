@@ -2,6 +2,8 @@ import React from "react";
 import { useTranslation  } from "react-i18next";
 
 function BoardForm(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "board-form" });
+
   return (
     <div className="card my-5 mx-md-5 py-2 px-0">
       <div className="card-body px-0">
