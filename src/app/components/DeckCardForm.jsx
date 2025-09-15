@@ -1,25 +1,28 @@
 import React from "react";
+import { useTranslation  } from "react-i18next";
 
 function DeckCardForm(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "deck-card-form" });
+
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
           <label for="deck" className="form-label">
-            Baralho
+            {t('deck.label')}
           </label>
           <select class="form-select" name="deck" onChange={props.onDeckChange}>
             <option selected={props.deck === "community"} value="community">
-              Decisões do Senado
+              {t('deck.community-option')}
             </option>
             <option selected={props.deck === "chance"} value="chance">
-              Sorte
+              {t('deck.chance-option')}
             </option>
           </select>
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="info" className="form-label">
-            Descrição
+            {t('description.label')}
           </label>
           <textarea
             className="form-control"
@@ -32,7 +35,7 @@ function DeckCardForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="points" className="form-label">
-            Pontos imediatos
+            {t('points.label')}
           </label>
           <input
             type="number"
@@ -45,7 +48,7 @@ function DeckCardForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="action" className="form-label">
-            Ação
+            {t('action.label')}
           </label>
           <select
             class="form-select"
@@ -53,13 +56,13 @@ function DeckCardForm(props) {
             onChange={props.onActionChange}
           >
             <option selected={props.action === "none"} value="none">
-              Sem ação
+              {t('action.none-option')}
             </option>
             <option selected={props.action === "move"} value="move">
-              Avançar
+              {t('action.move-option')}
             </option>
             <option selected={props.action === "tile"} value="tile">
-              Mover para casa
+              {t('action.tile-option')}
             </option>
           </select>
         </div>
@@ -67,9 +70,9 @@ function DeckCardForm(props) {
           <div className="text-start fw-bold mt-4">
             <label for="actionValue" className="form-label">
               {props.action === "move" ? (
-                <div>Casas a avançar (negativo para recuar)</div>
+                <div>{t('action-value.move')}</div>
               ) : (
-                <div>Casa</div>
+                <div>{t('action-value.tile')}</div>
               )}
             </label>
             <input
@@ -88,7 +91,7 @@ function DeckCardForm(props) {
           className="btn btn-lg btn-outline-success mt-3"
           onClick={props.onClick}
         >
-          Guardar carta
+          {t('save-button')}
         </button>
       </div>
     </div>

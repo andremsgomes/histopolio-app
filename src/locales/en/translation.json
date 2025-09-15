@@ -20,5 +20,17 @@
   "continue.button": "Continue",
   "continue.rank": "You are in {{rank}}{{suffix}} place",
   "continue.score": "You have {{points}} point{{suffix}}",
-  "continue.badges.button": "Buy badges"
+  "continue.badges.button": "Buy badges",
+  "deck-card-form.deck.label": "Deck",
+  "deck-card-form.deck.community-option": "Senate decisions",
+  "deck-card-form.deck.chance-option": "Chance",
+  "deck-card-form.description.label": "Description",
+  "deck-card-form.points.label": "Immediate points",
+  "deck-card-form.action.label": "Action",
+  "deck-card-form.action.none-option": "No action",
+  "deck-card-form.action.move-option": "Move forward",
+  "deck-card-form.action.tile-option": "Move to tile",
+  "deck-card-form.action-value.move": "Number of tiles to move forward (negative to move backwords)",
+  "deck-card-form.action-value.tile": "Tile",
+  "deck-card-form.save-button": "Save card"
 }

@@ -21,5 +21,17 @@
   "continue.button": "Continuar",
   "continue.rank": "Estás em {{rank}}º lugar",
   "continue.score": "Tens {{points}} ponto{{suffix}}",
-  "continue.badges.button": "Comprar troféus"
+  "continue.badges.button": "Comprar troféus",
+  "deck-card-form.deck.label": "Baralho",
+  "deck-card-form.deck.community-option": "Decisões do Senado",
+  "deck-card-form.deck.chance-option": "Sorte",
+  "deck-card-form.description.label": "Descrição",
+  "deck-card-form.points.label": "Pontos imediatos",
+  "deck-card-form.action.label": "Ação",
+  "deck-card-form.action.none-option": "Sem ação",
+  "deck-card-form.action.move-option": "Avançar",
+  "deck-card-form.action.tile-option": "Mover para casa",
+  "deck-card-form.action-value.move": "Casas a avançar (negativo para recuar)",
+  "deck-card-form.action-value.tile": "Casa",
+  "deck-card-form.save-button": "Guardar carta"
 }
