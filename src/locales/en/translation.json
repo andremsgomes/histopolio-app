@@ -32,5 +32,10 @@
   "deck-card-form.action.tile-option": "Move to tile",
   "deck-card-form.action-value.move": "Number of tiles to move forward (negative to move backwords)",
   "deck-card-form.action-value.tile": "Tile",
-  "deck-card-form.save-button": "Save card"
+  "deck-card-form.save-button": "Save card",
+  "play-question.confirm": "Confirm the following answer \"<0>{{answer}}</0>\"?",
+  "play-question.change-button": "Change answer",
+  "play-question.confirm-button": "Confirm answer",
+  "play-question.rank": "You are in {{rank}}{{suffix}} place",
+  "play-question.score": "You have {{points}} point{{suffix}}"
 }

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { Trans, useTranslation } from "react-i18next";
 
 function PlayQuestion(props) {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState();
+  const { t } = useTranslation(undefined, { keyPrefix: "play-question" });
 
   return (
     <>
@@ -17,8 +19,12 @@ function PlayQuestion(props) {
           <Modal.Title>{props.question.question}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Confirmar a seguinte resposta "
-          <b>{props.question.answers[selectedAnswerIndex]}</b>"?
+          <Trans
+            i18nKey="play-question.confirm"
+            values={{ answer: props.question.answers[selectedAnswerIndex] }}
+          >
+            <b />
+          </Trans>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -26,14 +32,14 @@ function PlayQuestion(props) {
             onClick={() => setSelectedAnswerIndex(undefined)}
             size="lg"
           >
-            Alterar resposta
+            {t("change-button")}
           </Button>
           <Button
             variant="primary"
             onClick={() => props.onAnswerConfirm(selectedAnswerIndex)}
             size="lg"
           >
-            Confirmar resposta
+            {t("confirm-button")}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -60,9 +66,19 @@ function PlayQuestion(props) {
           ))}
         </div>
         <div className="mt-4 text-center">
-          {props.rank !== 0 && <h4>Estás em {props.rank}º lugar</h4>}
+          {props.rank !== 0 && (
+            <h4>
+              {t("rank", {
+                rank: props.rank,
+                suffix: getOrdinalSuffix(props.rank),
+              })}
+            </h4>
+          )}
           <h5>
-            Tens {props.points} ponto{props.points !== 1 && "s"}
+            {t("score", {
+              points: props.points,
+              suffix: props.points !== 1 ? "s" : "",
+            })}
           </h5>
         </div>
       </div>

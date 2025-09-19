@@ -33,5 +33,10 @@
   "deck-card-form.action.tile-option": "Mover para casa",
   "deck-card-form.action-value.move": "Casas a avançar (negativo para recuar)",
   "deck-card-form.action-value.tile": "Casa",
-  "deck-card-form.save-button": "Guardar carta"
+  "deck-card-form.save-button": "Guardar carta",
+  "play-question.confirm": "Confirmar a seguinte resposta \"<0>{{answer}}</0>\"?",
+  "play-question.change-button": "Alterar resposta",
+  "play-question.confirm-button": "Confirmar resposta",
+  "play-question.rank": "Estás em {{rank}}º lugar",
+  "play-question.score": "Tens {{points}} ponto{{suffix}}"
 }
