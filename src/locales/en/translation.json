@@ -43,5 +43,12 @@
   "question-form.select-image": "Select image",
   "question-form.answer-option": "Answer {{index}}",
   "question-form.correct-answer": "Correct answer",
-  "question-form.save-button": "Save question"
+  "question-form.save-button": "Save question",
+  "store.title": "Badges",
+  "store.score": "You have {{points}} point{{suffix}}",
+  "store.multiplier": "Multiplier: <0>x{{multiplier}}</0>",
+  "store.price": "Price: <0>{{price}} point{{suffix}}</0>",
+  "store.purchased": "Purchased",
+  "store.buy": "Buy",
+  "store.back-button": "Back to game"
 }

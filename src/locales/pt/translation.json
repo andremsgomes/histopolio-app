@@ -44,5 +44,12 @@
   "question-form.select-image": "Selecionar imagem",
   "question-form.answer-option": "Resposta {{index}}",
   "question-form.correct-answer": "Resposta correta",
-  "question-form.save-button": "Guardar pergunta"
+  "question-form.save-button": "Guardar pergunta",
+  "store.title": "Troféus",
+  "store.score": "Tens {{points}} ponto{{suffix}}",
+  "store.multiplier": "Multiplicador: <0>x{{multiplier}}</0>",
+  "store.price": "Preço: <0>{{price}} ponto{{suffix}}</0>",
+  "store.purchased": "Adquirido",
+  "store.buy": "Comprar",
+  "store.back-button": "Voltar ao jogo"
 }

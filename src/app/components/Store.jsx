@@ -1,10 +1,18 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Store(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "store" });
+
   return (
     <div className="text-center store">
-      <h2 className="mt-4">Troféus</h2>
-      <h5>Tens {props.points} pontos</h5>
+      <h2 className="mt-4">{t("title")}</h2>
+      <h5>
+        {t("score", {
+          points: props.points,
+          suffix: props.points !== 1 ? "s" : "",
+        })}
+      </h5>
       <div className="row justify-content-center m-4">
         {props.badges.map((badge) => {
           return (
@@ -13,22 +21,38 @@ function Store(props) {
                 <img
                   src={badge.image}
                   className="card-img-top"
-                  style={{objectFit: "cover", width: "100%", height: "450px"}}
+                  style={{ objectFit: "cover", width: "100%", height: "450px" }}
                   alt={"badge" + badge._id}
                 />
                 <div className="card-body">
                   <h5 class="card-title">{badge.name}</h5>
                   <p className="card-text mb-1 mt-3">
-                    Multiplicador:{" "}
-                    <span className="fw-bold">x{badge.multiplier}</span>
+                    <Trans
+                      i18nKey="store.multiplier"
+                      values={{
+                        multiplier: badge.multiplier,
+                      }}
+                    >
+                      <b />
+                    </Trans>
                   </p>
                   <p className="card-text mb-0">
-                    Custo: <span className="fw-bold">{badge.cost} pontos</span>
+                    <Trans
+                      i18nKey="store.price"
+                      values={{
+                        price: badge.cost,
+                        suffix: badge.cost !== 1 ? "s" : "",
+                      }}
+                    >
+                      <b />
+                    </Trans>
                   </p>
                   {props.userBadges.find(
                     (userBadge) => userBadge === badge._id
                   ) ? (
-                    <p className="card-text mt-4 mb-4 fw-bold">Adquirido</p>
+                    <p className="card-text mt-4 mb-4 fw-bold">
+                      {t("purchased")}
+                    </p>
                   ) : (
                     <button
                       className="btn btn-primary mt-4 purchase-button"
@@ -37,7 +61,7 @@ function Store(props) {
                         props.onPurchaseClick(badge._id, badge.cost)
                       }
                     >
-                      Comprar
+                      {t("buy")}
                     </button>
                   )}
                 </div>
@@ -50,7 +74,7 @@ function Store(props) {
         className="btn btn-lg btn-primary my-4"
         onClick={props.onCloseClick}
       >
-        Voltar ao jogo
+        {t("back-button")}
       </button>
     </div>
   );
