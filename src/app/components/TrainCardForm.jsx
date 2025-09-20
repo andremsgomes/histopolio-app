@@ -1,12 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function TrainCardForm(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "train-card-form" });
+
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
           <label for="info" className="form-label">
-            Descrição
+            {t('description')}
           </label>
           <textarea
             className="form-control"
@@ -19,7 +22,7 @@ function TrainCardForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="content" className="form-label">
-            Link para o conteúdo
+            {t('content-link')}
           </label>
           <input
             type="text"
@@ -36,7 +39,7 @@ function TrainCardForm(props) {
           className="btn btn-lg btn-outline-success mt-3"
           onClick={props.onClick}
         >
-          Guardar carta
+          {t('save-button')}
         </button>
       </div>
     </div>

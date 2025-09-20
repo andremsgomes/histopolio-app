@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 function Store(props) {
   const { t } = useTranslation(undefined, { keyPrefix: "store" });

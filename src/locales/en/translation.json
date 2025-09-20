@@ -50,5 +50,8 @@
   "store.price": "Price: <0>{{price}} point{{suffix}}</0>",
   "store.purchased": "Purchased",
   "store.buy": "Buy",
-  "store.back-button": "Back to game"
+  "store.back-button": "Back to game",
+  "train-card-form.description": "Description",
+  "train-card-form.content-link": "Link to the content",
+  "train-card-form.save-button": "Save card"
 }
