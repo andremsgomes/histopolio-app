@@ -38,5 +38,11 @@
   "play-question.change-button": "Alterar resposta",
   "play-question.confirm-button": "Confirmar resposta",
   "play-question.rank": "Estás em {{rank}}º lugar",
-  "play-question.score": "Tens {{points}} ponto{{suffix}}"
+  "play-question.score": "Tens {{points}} ponto{{suffix}}",
+  "question-form.question": "Pergunta",
+  "question-form.question-image": "Imagem da pergunta",
+  "question-form.select-image": "Selecionar imagem",
+  "question-form.answer-option": "Resposta {{index}}",
+  "question-form.correct-answer": "Resposta correta",
+  "question-form.save-button": "Guardar pergunta"
 }

@@ -37,5 +37,11 @@
   "play-question.change-button": "Change answer",
   "play-question.confirm-button": "Confirm answer",
   "play-question.rank": "You are in {{rank}}{{suffix}} place",
-  "play-question.score": "You have {{points}} point{{suffix}}"
+  "play-question.score": "You have {{points}} point{{suffix}}",
+  "question-form.question": "Question",
+  "question-form.question-image": "Question image",
+  "question-form.select-image": "Select image",
+  "question-form.answer-option": "Answer {{index}}",
+  "question-form.correct-answer": "Correct answer",
+  "question-form.save-button": "Save question"
 }

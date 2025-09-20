@@ -2,6 +2,7 @@ import React from "react";
 
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const DropContainer = styled.div.attrs({
   className: "dropzone",
@@ -13,16 +14,18 @@ const DropContainer = styled.div.attrs({
   height: 2.8rem;
   font-size: 1rem;
   display: grid;
-	align-items: center;
+  align-items: center;
 `;
 
 function QuestionForm(props) {
+  const { t } = useTranslation(undefined, { keyPrefix: "question-form" });
+
   return (
     <div className="row mx-4 mt-3">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div className="text-start fw-bold">
           <label for="question" className="form-label">
-            Pergunta
+            {t("question")}
           </label>
           <input
             type="text"
@@ -35,7 +38,7 @@ function QuestionForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="image" className="form-label">
-            Imagem da pergunta
+            {t("question-image")}
           </label>
           <div className="col-6 mx-auto text-white text-center">
             <Dropzone
@@ -46,7 +49,7 @@ function QuestionForm(props) {
               {({ getRootProps, getInputProps }) => (
                 <DropContainer {...getRootProps()}>
                   <input {...getInputProps()} name="image" />
-                  Selecionar imagem
+                  {t("select-image")}
                 </DropContainer>
               )}
             </Dropzone>
@@ -67,7 +70,7 @@ function QuestionForm(props) {
             return (
               <div className="text-start fw-bold mt-3" key={i}>
                 <label for={"answer" + i} className="form-label">
-                  Resposta {i + 1}
+                  {t("answer-option", { index: i + 1 })}
                 </label>
                 <input
                   type="text"
@@ -82,7 +85,7 @@ function QuestionForm(props) {
         </div>
         <div className="text-start fw-bold mt-4">
           <label for="correctAnswer" className="form-label">
-            Resposta correta
+            {t("correct-answer")}
           </label>
           <select
             class="form-select"
@@ -92,7 +95,7 @@ function QuestionForm(props) {
             {props.answers.map((_, i) => {
               return (
                 <option selected={props.correctAnswer === i + 1} value={i + 1}>
-                  Resposta {i + 1}
+                  {t("answer-option", { index: i + 1 })}
                 </option>
               );
             })}
@@ -104,7 +107,7 @@ function QuestionForm(props) {
           className="btn btn-lg btn-outline-success mt-3"
           onClick={props.onClick}
         >
-          Guardar pergunta
+          {t("save-button")}
         </button>
       </div>
     </div>
