@@ -54,5 +54,8 @@
   "store.back-button": "Voltar ao jogo",
   "train-card-form.description": "Descrição",
   "train-card-form.content-link": "Link para o conteúdo",
-  "train-card-form.save-button": "Guardar carta"
+  "train-card-form.save-button": "Guardar carta",
+  "wait.rank": "Estás em {{rank}}º lugar",
+  "wait.score": "Tens {{points}} ponto{{suffix}}",
+  "wait.store-button": "Comprar troféus"
 }

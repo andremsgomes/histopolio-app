@@ -53,5 +53,8 @@
   "store.back-button": "Back to game",
   "train-card-form.description": "Description",
   "train-card-form.content-link": "Link to the content",
-  "train-card-form.save-button": "Save card"
+  "train-card-form.save-button": "Save card",
+  "wait.rank": "You are in {{rank}}{{suffix}} place",
+  "wait.score": "You have {{points}} point{{suffix}}",
+  "wait.store-button": "Buy badges"
 }
