@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Trans, useTranslation } from "react-i18next";
+import { getOrdinalSuffix } from "../utils/ranking"
 
 function PlayQuestion(props) {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState();

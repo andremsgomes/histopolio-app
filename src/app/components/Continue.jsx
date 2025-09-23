@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { getOrdinalSuffix } from "../utils/ranking"
 
 function Continue(props) {
   const { t } = useTranslation(undefined, { keyPrefix: "continue" });
