@@ -57,5 +57,6 @@
   "train-card-form.save-button": "Guardar carta",
   "wait.rank": "Estás em {{rank}}º lugar",
   "wait.score": "Tens {{points}} ponto{{suffix}}",
-  "wait.store-button": "Comprar troféus"
+  "wait.store-button": "Comprar troféus",
+  "email-validation.error-message": "Por favor introduz um email válido."
 }
