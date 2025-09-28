@@ -1,14 +1,14 @@
-import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 export const isValidEmail = (email, setEmailErrorMessage) => {
-  const { t } = useTranslation(undefined, { keyPrefix: "email-validation" });
+  const errorMsg = i18n.t("email-validation.error-message");
 
   if (email.length === 0) {
-    setEmailErrorMessage(t("error-message"));
+    setEmailErrorMessage(errorMsg);
     return false;
   }
   if (!/\w+@\w+.\w+/.test(email)) {
-    setEmailErrorMessage(t("error-message"));
+    setEmailErrorMessage(errorMsg);
     return false;
   }
 
