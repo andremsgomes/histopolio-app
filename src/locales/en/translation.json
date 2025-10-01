@@ -13,6 +13,7 @@
   "badge-form.save": "Save badge",
   "board-form.name": "Name",
   "board-form.description": "Description",
+  "board-form.image-link": "Image link",
   "content.card": "Look at the card that came up on the game screen",
   "content.button": "See content",
   "content.rank": "You are in {{rank}}{{suffix}} place",
