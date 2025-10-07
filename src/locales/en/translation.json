@@ -58,5 +58,9 @@
   "wait.rank": "You are in {{rank}}{{suffix}} place",
   "wait.score": "You have {{points}} point{{suffix}}",
   "wait.store-button": "Buy badges",
-  "email-validation.error-message": "Please enter a valid email address."
+  "email-validation.error-message": "Please enter a valid email address.",
+  "admin.title": "Menu",
+  "admin.game-boards.title": "Your game boards",
+  "admin.game-boards.open": "Open",
+  "admin.game-boards.create": "Create game board"
 }

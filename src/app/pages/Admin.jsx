@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
 function Admin() {
+  const { t } = useTranslation(undefined, { keyPrefix: "admin" });
+
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   const [boards, setBoards] = useState([]);
@@ -29,7 +32,7 @@ function Admin() {
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item active" aria-current="page">
-            Menu
+            {t("title")}
           </li>
         </ol>
         <div>
@@ -41,7 +44,7 @@ function Admin() {
         className={"text-center " + (boards.length === 1 ? "page-center" : "")}
       >
         <div className="row justify-content-center m-5">
-          <h1 className="mb-4">Os seus tabuleiros</h1>
+          <h1 className="mb-4">{t("game-boards.title")}</h1>
           {boards.map((board) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-3">
@@ -61,7 +64,7 @@ function Admin() {
                     <p className="card-text mb-1 mt-3">{board.description}</p>
                     <Link to={`/admin/${board.name}`}>
                       <button className="btn btn-primary btn-lg mt-4">
-                        Abrir
+                        {t("game-boards.open")}
                       </button>
                     </Link>
                   </div>
@@ -71,7 +74,7 @@ function Admin() {
           })}
           <Link to="/admin/boards/new">
             <button className="btn btn-lg btn-primary mt-4">
-              Criar tabuleiro
+              {t("game-boards.create")}
             </button>
           </Link>
         </div>

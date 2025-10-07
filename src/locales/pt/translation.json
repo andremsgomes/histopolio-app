@@ -58,5 +58,9 @@
   "wait.rank": "Estás em {{rank}}º lugar",
   "wait.score": "Tens {{points}} ponto{{suffix}}",
   "wait.store-button": "Comprar troféus",
-  "email-validation.error-message": "Por favor introduz um email válido."
+  "email-validation.error-message": "Por favor introduz um email válido.",
+  "admin.title": "Menu",
+  "admin.game-boards.title": "Os seus tabuleiros",
+  "admin.game-boards.open": "Abrir",
+  "admin.game-boards.create": "Criar tabuleiro"
 }
