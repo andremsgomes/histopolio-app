@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { getOrdinalSuffix } from "../utils/ranking"
+import { getOrdinalSuffix } from "../utils/ranking";
 
 function Content(props) {
   const { t } = useTranslation(undefined, { keyPrefix: "content" });
@@ -27,8 +27,7 @@ function Content(props) {
         )}
         <h5>
           {t("score", {
-            points: props.points,
-            suffix: props.points !== 1 ? "s" : "",
+            count: props.points,
           })}
         </h5>
       </div>

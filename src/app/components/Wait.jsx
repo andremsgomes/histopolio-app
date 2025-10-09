@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { getOrdinalSuffix } from "../utils/ranking"
+import { getOrdinalSuffix } from "../utils/ranking";
 
 function Wait(props) {
   const { t } = useTranslation(undefined, { keyPrefix: "wait" });
@@ -19,8 +19,7 @@ function Wait(props) {
         )}
         <h5>
           {t("score", {
-            points: props.points,
-            suffix: props.points !== 1 ? "s" : "",
+            count: props.points,
           })}
         </h5>
       </div>
@@ -29,7 +28,7 @@ function Wait(props) {
           className="btn btn-lg btn-primary mt-4"
           onClick={props.onStoreClick}
         >
-          {t('store-button')}
+          {t("store-button")}
         </button>
       )}
     </div>

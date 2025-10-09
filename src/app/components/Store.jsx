@@ -9,8 +9,7 @@ function Store(props) {
       <h2 className="mt-4">{t("title")}</h2>
       <h5>
         {t("score", {
-          points: props.points,
-          suffix: props.points !== 1 ? "s" : "",
+          count: props.points,
         })}
       </h5>
       <div className="row justify-content-center m-4">
@@ -40,8 +39,7 @@ function Store(props) {
                     <Trans
                       i18nKey="store.price"
                       values={{
-                        price: badge.cost,
-                        suffix: badge.cost !== 1 ? "s" : "",
+                        count: badge.cost,
                       }}
                     >
                       <b />

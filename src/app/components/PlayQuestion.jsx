@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Trans, useTranslation } from "react-i18next";
-import { getOrdinalSuffix } from "../utils/ranking"
+import { getOrdinalSuffix } from "../utils/ranking";
 
 function PlayQuestion(props) {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState();
@@ -77,8 +77,7 @@ function PlayQuestion(props) {
           )}
           <h5>
             {t("score", {
-              points: props.points,
-              suffix: props.points !== 1 ? "s" : "",
+              count: props.points,
             })}
           </h5>
         </div>

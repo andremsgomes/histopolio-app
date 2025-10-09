@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { getOrdinalSuffix } from "../utils/ranking"
+import { getOrdinalSuffix } from "../utils/ranking";
 
 function Continue(props) {
   const { t } = useTranslation(undefined, { keyPrefix: "continue" });
@@ -33,8 +33,7 @@ function Continue(props) {
         )}
         <h5 className={props.bodyColor !== "#f8f9fa" && "text-white"}>
           {t("score", {
-            points: props.points,
-            suffix: props.points !== 1 ? "s" : "",
+            count: props.points,
           })}
         </h5>
       </div>
