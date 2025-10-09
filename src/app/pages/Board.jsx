@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
@@ -27,6 +28,8 @@ class Board extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "board" });
+
     return (
       <div>
         <nav
@@ -35,7 +38,9 @@ class Board extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/admin" className="text-decoration-none">Menu</Link>
+              <Link to="/admin" className="text-decoration-none">
+                {t("breadcrumbs.menu")}
+              </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.board}
@@ -49,7 +54,7 @@ class Board extends Component {
           <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
             <h1 className="mb-5">{this.props.params.board}</h1>
             {this.state.saves.length > 0 && (
-              <h3 className="mb-3">Dados guardados</h3>
+              <h3 className="mb-3">{t("saved-data.title")}</h3>
             )}
             {this.state.saves.map((save) => {
               return (
@@ -62,7 +67,9 @@ class Board extends Component {
                     <div className="card-body">
                       <h4 className="card-title">{save.name}</h4>
                       <p className="card-text">
-                        {save.players} jogador{save.players !== 1 && "es"}
+                        {t("saved-data.players", {
+                          count: save.players,
+                        })}
                       </p>
                     </div>
                   </div>
@@ -74,7 +81,7 @@ class Board extends Component {
               style={{ textDecoration: "none" }}
             >
               <button className="btn btn-lg btn-primary mt-4 mb-5">
-                Editar tabuleiro
+                {t("edit")}
               </button>
             </Link>
           </div>

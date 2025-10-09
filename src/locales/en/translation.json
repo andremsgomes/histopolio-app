@@ -62,5 +62,10 @@
   "admin.title": "Menu",
   "admin.game-boards.title": "Your game boards",
   "admin.game-boards.open": "Open",
-  "admin.game-boards.create": "Create game board"
+  "admin.game-boards.create": "Create game board",
+  "board.breadcrumbs.menu": "Menu",
+  "board.saved-data.title": "Saved data",
+  "board.saved-data.players": "{{count}} player",
+  "board.saved-data.players_plural": "{{count}} players",
+  "board.edit": "Edit game board"
 }

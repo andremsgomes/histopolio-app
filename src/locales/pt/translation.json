@@ -62,5 +62,10 @@
   "admin.title": "Menu",
   "admin.game-boards.title": "Os seus tabuleiros",
   "admin.game-boards.open": "Abrir",
-  "admin.game-boards.create": "Criar tabuleiro"
+  "admin.game-boards.create": "Criar tabuleiro",
+  "board.breadcrumbs.menu": "Menu",
+  "board.saved-data.title": "Dados guardados",
+  "board.saved-data.players": "{{count}} jogador",
+  "board.saved-data.players_plural": "{{count}} jogadores",
+  "board.edit": "Editar tabuleiro"
 }
