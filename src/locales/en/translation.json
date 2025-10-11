@@ -87,5 +87,7 @@
   "edit-board.tile-type.chance": "Chance",
   "edit-board.tile-type.prison": "Library",
   "edit-board.tile-type.parking": "Student association",
-  "edit-board.tile-type.go-to-prison": "Go to the library"
+  "edit-board.tile-type.go-to-prison": "Go to the library",
+  "edit-board.breadcrumbs.menu": "Menu",
+  "edit-board.breadcrumbs.edit": "Edit"
 }

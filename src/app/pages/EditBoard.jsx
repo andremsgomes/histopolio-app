@@ -168,7 +168,7 @@ class EditBoard extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t('breadcrumbs.menu')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -180,7 +180,7 @@ class EditBoard extends Component {
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Editar
+              {t('breadcrumbs.edit')}
             </li>
           </ol>
           <div>
