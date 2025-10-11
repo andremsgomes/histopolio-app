@@ -100,5 +100,12 @@
   "edit-board.game-board-table.content-column.questions_plural": "{{count}} questions",
   "edit-board.game-board-table.content-column.cards": "{{count}} card",
   "edit-board.game-board-table.content-column.cards_plural": "{{count}} cards",
-  "edit-board.game-board-table.save-button": "Save changes"
+  "edit-board.game-board-table.save-button": "Save changes",
+  "edit-board.badges-table.title": "Badges",
+  "edit-board.badges-table.name-column.name": "Name",
+  "edit-board.badges-table.multiplier-column.name": "Multiplier",
+  "edit-board.badges-table.price-column.name": "Price",
+  "edit-board.badges-table.price-column.price": "{{count}} point",
+  "edit-board.badges-table.price-column.price_plural": "{{count}} points",
+  "edit-board.badges-table.add-button": "Create badge"
 }

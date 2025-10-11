@@ -100,5 +100,12 @@
   "edit-board.game-board-table.content-column.questions_plural": "{{count}} perguntas",
   "edit-board.game-board-table.content-column.cards": "{{count}} carta",
   "edit-board.game-board-table.content-column.cards_plural": "{{count}} cartas",
-  "edit-board.game-board-table.save-button": "Guardar alterações"
+  "edit-board.game-board-table.save-button": "Guardar alterações",
+  "edit-board.badges-table.title": "Troféus",
+  "edit-board.badges-table.name-column.name": "Nome",
+  "edit-board.badges-table.multiplier-column.name": "Multiplicador",
+  "edit-board.badges-table.price-column.name": "Custo",
+  "edit-board.badges-table.price-column.price": "{{count}} ponto",
+  "edit-board.badges-table.price-column.price_plural": "{{count}} pontos",
+  "edit-board.badges-table.add-button": "Adicionar troféu"
 }

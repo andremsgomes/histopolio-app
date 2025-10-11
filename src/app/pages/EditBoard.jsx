@@ -324,16 +324,22 @@ class EditBoard extends Component {
           )}
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Troféus</h3>
+              <h3 className="card-title">{t("badges-table.title")}</h3>
               {this.state.badges.length > 0 && (
                 <div className="table-responsive mt-3">
                   <table className="table table-hover">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Multiplicador</th>
-                        <th scope="col">Custo</th>
+                        <th scope="col">
+                          {t("badges-table.name-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("badges-table.multiplier-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("badges-table.price-column.name")}
+                        </th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                       </tr>
@@ -346,7 +352,9 @@ class EditBoard extends Component {
                             <td>{badge.name}</td>
                             <td>x{badge.multiplier}</td>
                             <td>
-                              {badge.cost} ponto{badge.cost !== 1 && "s"}
+                              {t("badges-table.price-column.price", {
+                                count: badge.cost,
+                              })}
                             </td>
                             <td>
                               <Link
@@ -376,7 +384,7 @@ class EditBoard extends Component {
                 style={{ textDecoration: "none" }}
               >
                 <button className="btn btn-lg btn-primary mt-3">
-                  Adicionar troféu
+                  {t("badges-table.add-button")}
                 </button>
               </Link>
             </div>
