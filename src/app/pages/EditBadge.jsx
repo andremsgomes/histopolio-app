@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import api from "../api";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import EditAndLogout from "../components/EditAndLogout";
 import BadgeForm from "../components/BadgeForm";
@@ -95,6 +96,8 @@ class EditBadge extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-badge" });
+
     return (
       <div>
         <nav
@@ -104,7 +107,7 @@ class EditBadge extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t('breadcrumbs.menu')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -120,14 +123,14 @@ class EditBadge extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t('breadcrumbs.edit')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Troféus
+              {t('breadcrumbs.badges')}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Editar troféu
+              {t('breadcrumbs.edit-badge')}
             </li>
           </ol>
           <div>
@@ -138,7 +141,7 @@ class EditBadge extends Component {
           <h1>{this.props.params.board}</h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Editar troféu</h3>
+              <h3 className="card-title">{t('title')}</h3>
               <BadgeForm
                 onNameChange={this.handleNameChange}
                 name={this.state.name}

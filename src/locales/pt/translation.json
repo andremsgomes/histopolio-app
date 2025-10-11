@@ -73,5 +73,10 @@
   "board.saved-data.title": "Dados guardados",
   "board.saved-data.players": "{{count}} jogador",
   "board.saved-data.players_plural": "{{count}} jogadores",
-  "board.edit": "Editar tabuleiro"
+  "board.edit": "Editar tabuleiro",
+  "edit-badge.breadcrumbs.menu": "Menu",
+  "edit-badge.breadcrumbs.edit": "Editar",
+  "edit-badge.breadcrumbs.badges": "Troféus",
+  "edit-badge.breadcrumbs.edit-badge": "Editar troféu",
+  "edit-badge.title": "Editar troféu"
 }

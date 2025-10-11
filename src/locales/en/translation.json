@@ -73,5 +73,10 @@
   "board.saved-data.title": "Saved data",
   "board.saved-data.players": "{{count}} player",
   "board.saved-data.players_plural": "{{count}} players",
-  "board.edit": "Edit game board"
+  "board.edit": "Edit game board",
+  "edit-badge.breadcrumbs.menu": "Menu",
+  "edit-badge.breadcrumbs.edit": "Edit",
+  "edit-badge.breadcrumbs.badges": "Badges",
+  "edit-badge.breadcrumbs.edit-badge": "Edit badge",
+  "edit-badge.title": "Edit badge"
 }
