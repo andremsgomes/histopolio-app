@@ -89,5 +89,16 @@
   "edit-board.tile-type.parking": "Associação de estudantes",
   "edit-board.tile-type.go-to-prison": "Vá para a biblioteca",
   "edit-board.breadcrumbs.menu": "Menu",
-  "edit-board.breadcrumbs.edit": "Editar"
+  "edit-board.breadcrumbs.edit": "Editar",
+  "edit-board.game-board-table.title": "Tabuleiro",
+  "edit-board.game-board-table.position-column.name": "Posição",
+  "edit-board.game-board-table.type-column.name": "Tipo",
+  "edit-board.game-board-table.name-column.name": "Nome",
+  "edit-board.game-board-table.points-column.name": "Pontos",
+  "edit-board.game-board-table.content-column.name": "Conteúdo",
+  "edit-board.game-board-table.content-column.questions": "{{count}} pergunta",
+  "edit-board.game-board-table.content-column.questions_plural": "{{count}} perguntas",
+  "edit-board.game-board-table.content-column.cards": "{{count}} carta",
+  "edit-board.game-board-table.content-column.cards_plural": "{{count}} cartas",
+  "edit-board.game-board-table.save-button": "Guardar alterações"
 }

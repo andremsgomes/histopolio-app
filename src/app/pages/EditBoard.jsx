@@ -168,7 +168,7 @@ class EditBoard extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                {t('breadcrumbs.menu')}
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -180,7 +180,7 @@ class EditBoard extends Component {
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              {t('breadcrumbs.edit')}
+              {t("breadcrumbs.edit")}
             </li>
           </ol>
           <div>
@@ -192,16 +192,26 @@ class EditBoard extends Component {
           {this.state.tiles.length > 0 && (
             <div className="card my-5 mx-md-5 py-2 px-0">
               <div className="card-body px-0">
-                <h3 className="card-title">Tabuleiro</h3>
+                <h3 className="card-title">{t("game-board-table.title")}</h3>
                 <div className="table-responsive mt-3">
                   <table className="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Posição</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Pontos</th>
-                        <th scope="col">Conteúdo</th>
+                        <th scope="col">
+                          {t("game-board-table.position-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("game-board-table.type-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("game-board-table.name-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("game-board-table.points-column.name")}
+                        </th>
+                        <th scope="col">
+                          {t("game-board-table.content-column.name")}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -246,13 +256,9 @@ class EditBoard extends Component {
                                   to={`/admin/${this.props.params.board}/${tile.boardPosition}/questions`}
                                   className="text-decoration-none"
                                 >
-                                  {tile.questions ? (
-                                    <>
-                                      {tile.questions} pergunta
-                                      {tile.questions !== 1 && "s"}
-                                    </>
-                                  ) : (
-                                    "0 perguntas"
+                                  {t(
+                                    "game-board-table.content-column.questions",
+                                    { count: tile.questions ?? 0 }
                                   )}
                                 </Link>
                               ) : (
@@ -262,13 +268,9 @@ class EditBoard extends Component {
                                       to={`/admin/${this.props.params.board}/deck_cards/community`}
                                       className="text-decoration-none"
                                     >
-                                      {tile.cards ? (
-                                        <>
-                                          {tile.cards} carta
-                                          {tile.cards !== 1 && "s"}
-                                        </>
-                                      ) : (
-                                        "0 cartas"
+                                      {t(
+                                        "game-board-table.content-column.cards",
+                                        { count: tile.cards ?? 0 }
                                       )}
                                     </Link>
                                   ) : (
@@ -278,13 +280,9 @@ class EditBoard extends Component {
                                           to={`/admin/${this.props.params.board}/deck_cards/chance`}
                                           className="text-decoration-none"
                                         >
-                                          {tile.cards ? (
-                                            <>
-                                              {tile.cards} carta
-                                              {tile.cards !== 1 && "s"}
-                                            </>
-                                          ) : (
-                                            "0 cartas"
+                                          {t(
+                                            "game-board-table.content-column.cards",
+                                            { count: tile.cards ?? 0 }
                                           )}
                                         </Link>
                                       ) : (
@@ -294,13 +292,9 @@ class EditBoard extends Component {
                                               to={`/admin/${this.props.params.board}/${tile.boardPosition}/train_cards`}
                                               className="text-decoration-none"
                                             >
-                                              {tile.cards ? (
-                                                <>
-                                                  {tile.cards} carta
-                                                  {tile.cards !== 1 && "s"}
-                                                </>
-                                              ) : (
-                                                "0 cartas"
+                                              {t(
+                                                "game-board-table.content-column.cards",
+                                                { count: tile.cards ?? 0 }
                                               )}
                                             </Link>
                                           ) : (
@@ -323,7 +317,7 @@ class EditBoard extends Component {
                   className="btn btn-lg btn-outline-success mt-3"
                   onClick={this.handleTilesSave}
                 >
-                  Guardar alterações
+                  {t("game-board-table.save-button")}
                 </button>
               </div>
             </div>
