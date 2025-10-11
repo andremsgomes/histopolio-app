@@ -78,5 +78,14 @@
   "edit-badge.breadcrumbs.edit": "Editar",
   "edit-badge.breadcrumbs.badges": "Troféus",
   "edit-badge.breadcrumbs.edit-badge": "Editar troféu",
-  "edit-badge.title": "Editar troféu"
+  "edit-badge.title": "Editar troféu",
+  "edit-board.tile-type.go": "Casa da partida",
+  "edit-board.tile-type.group-property": "Casa de perguntas",
+  "edit-board.tile-type.community": "Decisões do senado",
+  "edit-board.tile-type.pay": "Casa de azar",
+  "edit-board.tile-type.train": "Estação de treino",
+  "edit-board.tile-type.chance": "Sorte",
+  "edit-board.tile-type.prison": "Biblioteca",
+  "edit-board.tile-type.parking": "Associação de estudantes",
+  "edit-board.tile-type.go-to-prison": "Vá para a biblioteca"
 }

@@ -78,5 +78,14 @@
   "edit-badge.breadcrumbs.edit": "Edit",
   "edit-badge.breadcrumbs.badges": "Badges",
   "edit-badge.breadcrumbs.edit-badge": "Edit badge",
-  "edit-badge.title": "Edit badge"
+  "edit-badge.title": "Edit badge",
+  "edit-board.tile-type.go": "Go",
+  "edit-board.tile-type.group-property": "Questions tile",
+  "edit-board.tile-type.community": "Senate decisions",
+  "edit-board.tile-type.pay": "Unlucky tile",
+  "edit-board.tile-type.train": "Train station",
+  "edit-board.tile-type.chance": "Chance",
+  "edit-board.tile-type.prison": "Library",
+  "edit-board.tile-type.parking": "Student association",
+  "edit-board.tile-type.go-to-prison": "Go to the library"
 }

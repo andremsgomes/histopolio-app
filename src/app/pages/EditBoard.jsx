@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -34,16 +35,16 @@ class EditBoard extends Component {
     badges: [],
   };
 
-  types = {
-    go: "Casa da partida",
-    groupProperty: "Casa de perguntas",
-    community: "Decisões do senado",
-    pay: "Casa de azar",
-    train: "Estação de treino",
-    chance: "Sorte",
-    prison: "Biblioteca",
-    parking: "Associação de estudantes",
-    goToPrison: "Vá para a biblioteca",
+  typesTranslationMap = {
+    go: "tile-type.go",
+    groupProperty: "tile-type.group-property",
+    community: "tile-type.community",
+    pay: "tile-type.pay",
+    train: "tile-type.train",
+    chance: "tile-type.chance",
+    prison: "tile-type.prison",
+    parking: "tile-type.parking",
+    goToPrison: "tile-type.go-to-prison",
   };
 
   componentDidMount() {
@@ -156,6 +157,8 @@ class EditBoard extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-board" });
+
     return (
       <div>
         <nav
@@ -206,7 +209,7 @@ class EditBoard extends Component {
                         return (
                           <tr>
                             <th scope="row">{tile.boardPosition}</th>
-                            <td>{this.types[tile.type]}</td>
+                            <td>{t(this.typesTranslationMap[tile.type])}</td>
                             <td>
                               <input
                                 onChange={(e) =>
