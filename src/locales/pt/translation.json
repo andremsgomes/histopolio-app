@@ -109,5 +109,10 @@
   "edit-board.badges-table.price-column.price_plural": "{{count}} pontos",
   "edit-board.badges-table.add-button": "Adicionar troféu",
   "edit-board.board-form.title": "Outras definições",
-  "edit-board.board-form.save-button": "Guardar alteraçoẽs"
+  "edit-board.board-form.save-button": "Guardar alteraçoẽs",
+  "edit-deck-card.breadcrumbs.menu": "Menu",
+  "edit-deck-card.breadcrumbs.edit": "Editar",
+  "edit-deck-card.breadcrumbs.cards": "Cartas",
+  "edit-deck-card.breadcrumbs.edit-card": "Editar carta",
+  "edit-deck-card.title": "Editar carta"
 }

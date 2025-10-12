@@ -109,5 +109,9 @@
   "edit-board.badges-table.price-column.price_plural": "{{count}} points",
   "edit-board.badges-table.add-button": "Create badge",
   "edit-board.board-form.title": "Other settings",
-  "edit-board.board-form.save-button": "Save changes"
+  "edit-deck-card.breadcrumbs.menu": "Menu",
+  "edit-deck-card.breadcrumbs.edit": "Edit",
+  "edit-deck-card.breadcrumbs.cards": "Cards",
+  "edit-deck-card.breadcrumbs.edit-card": "Edit card",
+  "edit-deck-card.title": "Edit card"
 }
