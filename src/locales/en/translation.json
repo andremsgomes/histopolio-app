@@ -107,5 +107,7 @@
   "edit-board.badges-table.price-column.name": "Price",
   "edit-board.badges-table.price-column.price": "{{count}} point",
   "edit-board.badges-table.price-column.price_plural": "{{count}} points",
-  "edit-board.badges-table.add-button": "Create badge"
+  "edit-board.badges-table.add-button": "Create badge",
+  "edit-board.board-form.title": "Other settings",
+  "edit-board.board-form.save-button": "Save changes"
 }

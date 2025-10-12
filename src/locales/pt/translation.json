@@ -107,5 +107,7 @@
   "edit-board.badges-table.price-column.name": "Custo",
   "edit-board.badges-table.price-column.price": "{{count}} ponto",
   "edit-board.badges-table.price-column.price_plural": "{{count}} pontos",
-  "edit-board.badges-table.add-button": "Adicionar troféu"
+  "edit-board.badges-table.add-button": "Adicionar troféu",
+  "edit-board.board-form.title": "Outras definições",
+  "edit-board.board-form.save-button": "Guardar alteraçoẽs"
 }

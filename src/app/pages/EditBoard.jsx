@@ -391,7 +391,7 @@ class EditBoard extends Component {
           </div>
           {this.state.name.length > 0 && (
             <BoardForm
-              title="Outras definições"
+              title={t("board-form.title")}
               onNameChange={this.handleNameChange}
               name={this.state.name}
               onDescriptionChange={this.handleDescriptionChange}
@@ -399,7 +399,7 @@ class EditBoard extends Component {
               onImageChange={this.handleImageChange}
               image={this.state.image}
               onClick={this.handleBoardSave}
-              buttonText="Guardar alteraçoẽs"
+              buttonText={t("board-form.save-button")}
             />
           )}
         </div>
