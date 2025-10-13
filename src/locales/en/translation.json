@@ -117,5 +117,14 @@
   "edit-deck-cards.breadcrumbs.menu": "Menu",
   "edit-deck-cards.breadcrumbs.cards": "Cards",
   "edit-deck-cards.breadcrumbs.chance": "Chance",
-  "edit-deck-cards.breadcrumbs.senate-decisions": "Senate decisions"
+  "edit-deck-cards.breadcrumbs.senate-decisions": "Senate decisions",
+  "edit-deck-cards.title.chance": "Chance cards",
+  "edit-deck-cards.title.senate-decisions": "Senate decisions cards",
+  "edit-deck-cards.table.description-column.name": "Description",
+  "edit-deck-cards.table.immediate-points-column.name": "Immediate points",
+  "edit-deck-cards.table.action-column.name": "Action",
+  "edit-deck-cards.table.action-column.options.no-action": "No action",
+  "edit-deck-cards.table.action-column.options.move": "Move forward {{count}} space",
+  "edit-deck-cards.table.action-column.options.move_plural": "Move forward {{count}} spaces",
+  "edit-deck-cards.table.action-column.options.move-to": "Move to tile {{tile}}"
 }

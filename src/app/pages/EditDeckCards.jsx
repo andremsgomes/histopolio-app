@@ -55,7 +55,7 @@ class EditDeckCards extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                {t('breadcrumbs.menu')}
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -67,12 +67,12 @@ class EditDeckCards extends Component {
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              {t('breadcrumbs.cards')}
+              {t("breadcrumbs.cards")}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.deck === "chance"
-                ? t('breadcrumbs.chance')
-                : t('breadcrumbs.senate-decisions')}
+                ? t("breadcrumbs.chance")
+                : t("breadcrumbs.senate-decisions")}
             </li>
           </ol>
           <div>
@@ -85,17 +85,19 @@ class EditDeckCards extends Component {
             <div className="card-body px-0">
               <h3 className="card-title">
                 {this.props.params.deck === "chance"
-                  ? "Cartas da Sorte"
-                  : "Cartas de Decisões do Senado"}
+                  ? t("title.chance")
+                  : t("title.senate-decisions")}
               </h3>
               <div className="table-responsive mt-3">
                 <table className="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Descrição</th>
-                      <th scope="col">Pontos imediatos</th>
-                      <th scope="col">Ação</th>
+                      <th scope="col">{t("table.description-column.name")}</th>
+                      <th scope="col">
+                        {t("table.immediate-points-column.name")}
+                      </th>
+                      <th scope="col">{t("table.action-column.name")}</th>
                       <th scope="col"></th>
                       <th scope="col"></th>
                     </tr>
@@ -109,14 +111,16 @@ class EditDeckCards extends Component {
                           <td>{card.points}</td>
                           <td>
                             {card.action === "none" ? (
-                              "Sem ação"
+                              t("table.action-column.options.no-action")
                             ) : (
                               <>
                                 {card.action === "move"
-                                  ? `Avançar ${card.actionValue} casa${
-                                      card.actionValue !== "1" ? "s" : ""
-                                    }`
-                                  : `Mover para a casa ${card.actionValue}`}
+                                  ? t("table.action-column.options.move", {
+                                      count: card.actionValue,
+                                    })
+                                  : t("table.action-column.options.move-to", {
+                                      tile: card.actionValue,
+                                    })}
                               </>
                             )}
                           </td>
