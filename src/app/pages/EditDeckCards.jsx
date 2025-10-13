@@ -151,7 +151,7 @@ class EditDeckCards extends Component {
                 className="text-decoration-none"
               >
                 <button className="btn btn-lg btn-primary mt-3">
-                  Adicionar carta
+                  {t("add-button")}
                 </button>
               </Link>
             </div>

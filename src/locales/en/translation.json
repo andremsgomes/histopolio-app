@@ -126,5 +126,6 @@
   "edit-deck-cards.table.action-column.options.no-action": "No action",
   "edit-deck-cards.table.action-column.options.move": "Move forward {{count}} space",
   "edit-deck-cards.table.action-column.options.move_plural": "Move forward {{count}} spaces",
-  "edit-deck-cards.table.action-column.options.move-to": "Move to tile {{tile}}"
+  "edit-deck-cards.table.action-column.options.move-to": "Move to tile {{tile}}",
+  "edit-deck-cards.add-button": "Create card"
 }

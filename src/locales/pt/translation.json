@@ -127,5 +127,6 @@
   "edit-deck-cards.table.action-column.options.no-action": "Sem ação",
   "edit-deck-cards.table.action-column.options.move": "Avançar {{count}} casa",
   "edit-deck-cards.table.action-column.options.move_plural": "Avançar {{count}} casas",
-  "edit-deck-cards.table.action-column.options.move-to": "Mover para a casa {{tile}}"
+  "edit-deck-cards.table.action-column.options.move-to": "Mover para a casa {{tile}}",
+  "edit-deck-cards.add-button": "Adicionar carta"
 }
