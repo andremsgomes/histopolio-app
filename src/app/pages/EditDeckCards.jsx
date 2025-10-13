@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -43,6 +44,8 @@ class EditDeckCards extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-deck-cards" });
+
     return (
       <div>
         <nav
@@ -52,7 +55,7 @@ class EditDeckCards extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t('breadcrumbs.menu')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -64,12 +67,12 @@ class EditDeckCards extends Component {
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Cartas
+              {t('breadcrumbs.cards')}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               {this.props.params.deck === "chance"
-                ? "Sorte"
-                : "Decisões do Senado"}
+                ? t('breadcrumbs.chance')
+                : t('breadcrumbs.senate-decisions')}
             </li>
           </ol>
           <div>

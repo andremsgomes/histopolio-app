@@ -113,5 +113,9 @@
   "edit-deck-card.breadcrumbs.edit": "Edit",
   "edit-deck-card.breadcrumbs.cards": "Cards",
   "edit-deck-card.breadcrumbs.edit-card": "Edit card",
-  "edit-deck-card.title": "Edit card"
+  "edit-deck-card.title": "Edit card",
+  "edit-deck-cards.breadcrumbs.menu": "Menu",
+  "edit-deck-cards.breadcrumbs.cards": "Cards",
+  "edit-deck-cards.breadcrumbs.chance": "Chance",
+  "edit-deck-cards.breadcrumbs.senate-decisions": "Senate decisions"
 }
