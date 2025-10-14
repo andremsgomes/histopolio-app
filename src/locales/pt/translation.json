@@ -141,5 +141,12 @@
   "edit-profile.form.avatar-link.placeholder": "Link do Avatar",
   "edit-profile.form.email.label": "Email",
   "edit-profile.form.email.placeholder": "Email",
-  "edit-profile.form.save-button": "Guardar alterações"
+  "edit-profile.form.save-button": "Guardar alterações",
+  "edit-question.breadcrumbs.menu": "Menu",
+  "edit-question.breadcrumbs.edit": "Editar",
+  "edit-question.breadcrumbs.tile": "Casa {{tile}}",
+  "edit-question.breadcrumbs.questions": "Perguntas",
+  "edit-question.breadcrumbs.edit-question": "Editar pergunta",
+  "edit-question.tile": "{{board}} - Casa {{tile}}",
+  "edit-question.subtitle": "Editar pergunta"
 }

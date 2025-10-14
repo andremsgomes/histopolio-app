@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 import EditAndLogout from "../components/EditAndLogout";
 import QuestionForm from "../components/QuestionForm";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -102,9 +103,8 @@ class EditQuestion extends Component {
       const response = await fetch(this.state.preview, { mode: "no-cors" });
       const blob = await response.blob();
       payload.append("image", blob, image.name);
-    }
-    else {
-      payload.append("image", 'no-change');
+    } else {
+      payload.append("image", "no-change");
     }
 
     payload.append("id", id);
@@ -123,6 +123,8 @@ class EditQuestion extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-question" });
+
     return (
       <div>
         <nav
@@ -132,7 +134,7 @@ class EditQuestion extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -148,22 +150,24 @@ class EditQuestion extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t("breadcrumbs.edit")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Casa {this.props.params.tile}
+              {t("breadcrumbs.tile", {
+                tile: this.props.params.tile,
+              })}
             </li>
             <li className="breadcrumb-item" aria-current="page">
               <Link
                 to={`/admin/${this.props.params.board}/${this.props.params.tile}/questions`}
                 className="text-decoration-none"
               >
-                Perguntas
+                {t("breadcrumbs.questions")}
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Editar pergunta
+              {t("breadcrumbs.edit-question")}
             </li>
           </ol>
           <div>
@@ -172,11 +176,14 @@ class EditQuestion extends Component {
         </nav>
         <div className="text-center mt-5">
           <h1>
-            {this.props.params.board} - Casa {this.props.params.tile}
+            {t("tile", {
+              board: this.props.params.board,
+              tile: this.props.params.tile,
+            })}
           </h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Editar pergunta</h3>
+              <h3 className="card-title">{t("subtitle")}</h3>
               <QuestionForm
                 onQuestionChange={this.handleQuestionChange}
                 question={this.state.question}
