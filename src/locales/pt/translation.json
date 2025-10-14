@@ -128,5 +128,18 @@
   "edit-deck-cards.table.action-column.options.move": "Avançar {{count}} casa",
   "edit-deck-cards.table.action-column.options.move_plural": "Avançar {{count}} casas",
   "edit-deck-cards.table.action-column.options.move-to": "Mover para a casa {{tile}}",
-  "edit-deck-cards.add-button": "Adicionar carta"
+  "edit-deck-cards.add-button": "Adicionar carta",
+  "edit-profile.error-message.name-validation": "Por favor introduz o teu nome",
+  "edit-profile.breadcrumbs.menu": "Menu",
+  "edit-profile.breadcrumbs.profile": "Perfil",
+  "edit-profile.breadcrumbs.edit": "Editar",
+  "edit-profile.title": "Editar perfil",
+  "edit-profile.subtitle": "Edita os teus dados",
+  "edit-profile.form.name.label": "Nome",
+  "edit-profile.form.name.placeholder": "Nome",
+  "edit-profile.form.avatar-link.label": "Link do Avatar",
+  "edit-profile.form.avatar-link.placeholder": "Link do Avatar",
+  "edit-profile.form.email.label": "Email",
+  "edit-profile.form.email.placeholder": "Email",
+  "edit-profile.form.save-button": "Guardar alterações"
 }

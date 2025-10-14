@@ -127,5 +127,18 @@
   "edit-deck-cards.table.action-column.options.move": "Move forward {{count}} space",
   "edit-deck-cards.table.action-column.options.move_plural": "Move forward {{count}} spaces",
   "edit-deck-cards.table.action-column.options.move-to": "Move to tile {{tile}}",
-  "edit-deck-cards.add-button": "Create card"
+  "edit-deck-cards.add-button": "Create card",
+  "edit-profile.error-message.name-validation": "Please enter your name",
+  "edit-profile.breadcrumbs.menu": "Menu",
+  "edit-profile.breadcrumbs.profile": "Profile",
+  "edit-profile.breadcrumbs.edit": "Edit",
+  "edit-profile.title": "Edit profile",
+  "edit-profile.subtitle": "Edit your data",
+  "edit-profile.form.name.label": "Name",
+  "edit-profile.form.name.placeholder": "Name",
+  "edit-profile.form.avatar-link.label": "Avatar link",
+  "edit-profile.form.avatar-link.placeholder": "Avatar link",
+  "edit-profile.form.email.label": "Email",
+  "edit-profile.form.email.placeholder": "Email",
+  "edit-profile.form.save-button": "Save changes"
 }

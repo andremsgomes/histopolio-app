@@ -4,6 +4,7 @@ import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { isValidEmail } from "../utils/email-validation";
 
 function EditProfile() {
@@ -13,6 +14,8 @@ function EditProfile() {
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+
+  const { t } = useTranslation(undefined, { keyPrefix: "edit-profile" });
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
@@ -37,7 +40,7 @@ function EditProfile() {
     // name validation
     if (name.length === 0) {
       nameError = true;
-      setNameErrorMessage("Por favor introduz o teu nome.");
+      setNameErrorMessage(t('error-message.name-validation'));
     }
     // TODO: verificar tamanho máximo
 
@@ -102,14 +105,14 @@ function EditProfile() {
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item" aria-current="page">
             <Link to="/admin" className="text-decoration-none">
-              Menu
+              {t('breadcrumbs.menu')}
             </Link>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            Perfil
+            {t('breadcrumbs.profile')}
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Editar
+            {t('breadcrumbs.edit')}
           </li>
         </ol>
         <div>
@@ -126,11 +129,11 @@ function EditProfile() {
                     {alertMessage}
                   </div>
                 )}
-                <h2 class="fw-bold mb-2 text-uppercase">Editar perfil</h2>
-                <p class="text-black-50 mb-5">Edita os teus dados</p>
+                <h2 class="fw-bold mb-2 text-uppercase">{t('title')}</h2>
+                <p class="text-black-50 mb-5">{t('subtitle')}</p>
                 <div className="text-start fw-bold">
                   <label for="name" className="form-label">
-                    Nome
+                    {t('form.name.label')}
                   </label>
                   <input
                     type="text"
@@ -139,13 +142,13 @@ function EditProfile() {
                     name="name"
                     onChange={handleNameChange}
                     value={name}
-                    placeholder="Nome"
+                    placeholder={t('form.name.placeholder')}
                   />
                   <div className="text-danger">{nameErrorMessage}</div>
                 </div>
                 <div className="text-start fw-bold mt-3">
                   <label for="avatar" className="form-label">
-                    Link do Avatar
+                    {t('form.avatar-link.label')}
                   </label>
                   <input
                     type="text"
@@ -154,7 +157,7 @@ function EditProfile() {
                     name="avatar"
                     onChange={handleAvatarChange}
                     value={avatar}
-                    placeholder="Link do Avatar"
+                    placeholder={t('form.avatar-link.placeholder')}
                   />
                 </div>
                 <div className="text-center mt-3">
@@ -184,7 +187,7 @@ function EditProfile() {
                 </div>
                 <div className="text-start fw-bold mt-3">
                   <label for="email" className="form-label">
-                    Email
+                    {t('form.email.label')}
                   </label>
                   <input
                     type="email"
@@ -193,7 +196,7 @@ function EditProfile() {
                     name="email"
                     onChange={handleEmailChange}
                     value={email}
-                    placeholder="Email"
+                    placeholder={t('form.email.placeholder')}
                   />
                   <div className="text-danger">{emailErrorMessage}</div>
                 </div>
@@ -202,7 +205,7 @@ function EditProfile() {
                     className="btn btn-lg btn-outline-success mt-3"
                     onClick={handleClick}
                   >
-                    Guardar alterações
+                    {t('form.save-button')}
                   </button>
                 </div>
               </div>
