@@ -93,18 +93,21 @@ class EditQuestions extends Component {
         </nav>
         <div className="text-center mt-5">
           <h1>
-            {this.props.params.board} - Casa {this.props.params.tile}
+            {t("tile", {
+              board: this.props.params.board,
+              tile: this.props.params.tile,
+            })}
           </h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Perguntas</h3>
+              <h3 className="card-title">{t("subtitle")}</h3>
               <div className="table-responsive mt-3">
                 <table className="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Pergunta</th>
-                      <th scope="col">Opção Correta</th>
+                      <th scope="col">{t("table.question-column.name")}</th>
+                      <th scope="col">{t("table.correct-option-column.name")}</th>
                       <th scope="col"></th>
                       <th scope="col"></th>
                     </tr>
@@ -151,7 +154,7 @@ class EditQuestions extends Component {
                 className="text-decoration-none"
               >
                 <button className="btn btn-lg btn-primary mt-3">
-                  Adicionar pergunta
+                  {t("create-question-button")}
                 </button>
               </Link>
             </div>

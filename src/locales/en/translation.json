@@ -151,5 +151,10 @@
   "edit-questions.breadcrumbs.menu": "Menu",
   "edit-questions.breadcrumbs.edit": "Edit",
   "edit-questions.breadcrumbs.tile": "Tile {{tile}}",
-  "edit-questions.breadcrumbs.questions": "Questions"
+  "edit-questions.breadcrumbs.questions": "Questions",
+  "edit-questions.tile": "{{board}} - Tile {{tile}}",
+  "edit-questions.subtitle": "Questions",
+  "edit-questions.table.question-column.name": "Question",
+  "edit-questions.table.correct-option-column.name": "Correct option",
+  "edit-questions.create-question-button": "Create question"
 }

@@ -152,5 +152,10 @@
   "edit-questions.breadcrumbs.menu": "Menu",
   "edit-questions.breadcrumbs.edit": "Editar",
   "edit-questions.breadcrumbs.tile": "Casa {{tile}}",
-  "edit-questions.breadcrumbs.questions": "Perguntas"
+  "edit-questions.breadcrumbs.questions": "Perguntas",
+  "edit-questions.tile": "{{board}} - Casa {{tile}}",
+  "edit-questions.subtitle": "Perguntas",
+  "edit-questions.table.question-column.name": "Pergunta",
+  "edit-questions.table.correct-option-column.name": "Opção Correta",
+  "edit-questions.create-question-button": "Adicionar pergunta"
 }
