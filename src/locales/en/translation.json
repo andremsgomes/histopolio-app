@@ -147,5 +147,9 @@
   "edit-question.breadcrumbs.questions": "Questions",
   "edit-question.breadcrumbs.edit-question": "Edit question",
   "edit-question.tile": "{{board}} - Tile {{tile}}",
-  "edit-question.subtitle": "Edit question"
+  "edit-question.subtitle": "Edit question",
+  "edit-questions.breadcrumbs.menu": "Menu",
+  "edit-questions.breadcrumbs.edit": "Edit",
+  "edit-questions.breadcrumbs.tile": "Tile {{tile}}",
+  "edit-questions.breadcrumbs.questions": "Questions"
 }

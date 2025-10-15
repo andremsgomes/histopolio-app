@@ -148,5 +148,9 @@
   "edit-question.breadcrumbs.questions": "Perguntas",
   "edit-question.breadcrumbs.edit-question": "Editar pergunta",
   "edit-question.tile": "{{board}} - Casa {{tile}}",
-  "edit-question.subtitle": "Editar pergunta"
+  "edit-question.subtitle": "Editar pergunta",
+  "edit-questions.breadcrumbs.menu": "Menu",
+  "edit-questions.breadcrumbs.edit": "Editar",
+  "edit-questions.breadcrumbs.tile": "Casa {{tile}}",
+  "edit-questions.breadcrumbs.questions": "Perguntas"
 }

@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -49,6 +50,8 @@ class EditQuestions extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-questions" });
+
     return (
       <div>
         <nav
@@ -58,7 +61,7 @@ class EditQuestions extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -74,14 +77,14 @@ class EditQuestions extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t("breadcrumbs.edit")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Casa {this.props.params.tile}
+              {t("breadcrumbs.tile", { tile: this.props.params.tile })}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Perguntas
+              {t("breadcrumbs.questions")}
             </li>
           </ol>
           <div>
