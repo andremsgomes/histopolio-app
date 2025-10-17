@@ -158,5 +158,6 @@
   "edit-questions.table.question-column.name": "Pergunta",
   "edit-questions.table.correct-option-column.name": "Opção Correta",
   "edit-questions.create-question-button": "Adicionar pergunta",
-  "edit-save.handle-click.success": "Dados atualizados com sucesso"
+  "edit-save.handle-click.success": "Dados atualizados com sucesso",
+  "edit-save.breadcrumbs.menu": "Menu"
 }
