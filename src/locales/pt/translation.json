@@ -169,5 +169,12 @@
   "edit-save.table.total-answers-column.name": "Total de respostas",
   "edit-save.table.correct-answers-column.name": "Respostas corretas",
   "edit-save.table.correct-answers-percent-column.name": "% de respostas corretas",
-  "edit-save.save-button": "Guardar alterações"
+  "edit-save.save-button": "Guardar alterações",
+  "edit-train-card.breadcrumbs.menu": "Menu",
+  "edit-train-card.breadcrumbs.edit": "Editar",
+  "edit-train-card.breadcrumbs.tile": "Casa {{tile}}",
+  "edit-train-card.breadcrumbs.train-cards": "Cartas de treino",
+  "edit-train-card.breadcrumbs.edit-card": "Editar carta",
+  "edit-train-card.title": "{{board}} - Casa {{tile}}",
+  "edit-train-card.subtitle": "Editar carta"
 }
