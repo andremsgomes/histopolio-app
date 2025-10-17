@@ -159,5 +159,15 @@
   "edit-questions.table.correct-option-column.name": "Opção Correta",
   "edit-questions.create-question-button": "Adicionar pergunta",
   "edit-save.handle-click.success": "Dados atualizados com sucesso",
-  "edit-save.breadcrumbs.menu": "Menu"
+  "edit-save.breadcrumbs.menu": "Menu",
+  "edit-save.title": "Tabela de jogadores",
+  "edit-save.table.name-column.name": "Nome",
+  "edit-save.table.email-column.name": "Email",
+  "edit-save.table.position-column.name": "Posição no tabuleiro",
+  "edit-save.table.plays-column.name": "Número de jogadas",
+  "edit-save.table.score-column.name": "Pontuação",
+  "edit-save.table.total-answers-column.name": "Total de respostas",
+  "edit-save.table.correct-answers-column.name": "Respostas corretas",
+  "edit-save.table.correct-answers-percent-column.name": "% de respostas corretas",
+  "edit-save.save-button": "Guardar alterações"
 }

@@ -187,20 +187,26 @@ class EditSave extends Component {
                   {this.state.alertMessage}
                 </div>
               )}
-              <h3 className="card-title">Tabela de jogadores</h3>
+              <h3 className="card-title">{t("title")}</h3>
               <div className="table-responsive mt-3">
                 <table className="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Nome</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Posição no tabuleiro</th>
-                      <th scope="col">Número de jogadas</th>
-                      <th scope="col">Pontuação</th>
-                      <th scope="col">Total de respostas</th>
-                      <th scope="col">Respostas corretas</th>
-                      <th scope="col">% de respostas corretas</th>
+                      <th scope="col">{t("table.name-column.name")}</th>
+                      <th scope="col">{t("table.email-column.name")}</th>
+                      <th scope="col">{t("table.position-column.name")}</th>
+                      <th scope="col">{t("table.plays-column.name")}</th>
+                      <th scope="col">{t("table.score-column.name")}</th>
+                      <th scope="col">
+                        {t("table.total-answers-column.name")}
+                      </th>
+                      <th scope="col">
+                        {t("table.correct-answers-column.name")}
+                      </th>
+                      <th scope="col">
+                        {t("table.correct-answers-percent-column.name")}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -290,7 +296,7 @@ class EditSave extends Component {
                 className="btn btn-lg btn-outline-success mt-3"
                 onClick={() => this.handleClick(t)}
               >
-                Guardar alterações
+                {"save-button"}
               </button>
             </div>
           </div>

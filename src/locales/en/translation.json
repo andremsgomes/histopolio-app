@@ -158,5 +158,15 @@
   "edit-questions.table.correct-option-column.name": "Correct option",
   "edit-questions.create-question-button": "Create question",
   "edit-save.handle-click.success": "Data updated successfully",
-  "edit-save.breadcrumbs.menu": "Menu"
+  "edit-save.breadcrumbs.menu": "Menu",
+  "edit-save.title": "Players table",
+  "edit-save.table.name-column.name": "Name",
+  "edit-save.table.email-column.name": "Email",
+  "edit-save.table.position-column.name": "Position on the game board",
+  "edit-save.table.plays-column.name": "Number of plays",
+  "edit-save.table.score-column.name": "Score",
+  "edit-save.table.total-answers-column.name": "Total answers",
+  "edit-save.table.correct-answers-column.name": "Correct answers",
+  "edit-save.table.correct-answers-percent-column.name": "% of correct answers",
+  "edit-save.save-button": "Save changes"
 }
