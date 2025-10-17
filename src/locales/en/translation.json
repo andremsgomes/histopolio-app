@@ -156,5 +156,6 @@
   "edit-questions.subtitle": "Questions",
   "edit-questions.table.question-column.name": "Question",
   "edit-questions.table.correct-option-column.name": "Correct option",
-  "edit-questions.create-question-button": "Create question"
+  "edit-questions.create-question-button": "Create question",
+  "edit-save.handle-click.success": "Data updated successfully"
 }

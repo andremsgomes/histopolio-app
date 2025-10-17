@@ -4,6 +4,7 @@ import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -17,9 +18,8 @@ class EditSave extends Component {
     this.handlePointsChange = this.handlePointsChange.bind(this);
     this.handleNumTurnsChange = this.handleNumTurnsChange.bind(this);
     this.handleAnswersChange = this.handleAnswersChange.bind(this);
-    this.handleCorrectAnswersChange = this.handleCorrectAnswersChange.bind(
-      this
-    );
+    this.handleCorrectAnswersChange =
+      this.handleCorrectAnswersChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -116,7 +116,7 @@ class EditSave extends Component {
     });
   }
 
-  handleClick() {
+  handleClick(t) {
     const players = JSON.parse(JSON.stringify(this.state.players));
     players.forEach((player) => {
       delete player.name;
@@ -130,7 +130,7 @@ class EditSave extends Component {
       .then(() => {
         this.setState({
           alertType: "success",
-          alertMessage: "Dados atualizados com sucesso.",
+          alertMessage: t("handle-click.success"),
         });
       })
       .catch((error) => {
@@ -143,6 +143,8 @@ class EditSave extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-save" });
+
     return (
       <div>
         <nav
@@ -151,10 +153,15 @@ class EditSave extends Component {
         >
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
-              <Link to="/admin" className="text-decoration-none">Menu</Link>
+              <Link to="/admin" className="text-decoration-none">
+                Menu
+              </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              <Link to={`/admin/${this.props.params.board}`} className="text-decoration-none">
+              <Link
+                to={`/admin/${this.props.params.board}`}
+                className="text-decoration-none"
+              >
                 {this.props.params.board}
               </Link>
             </li>
@@ -281,7 +288,7 @@ class EditSave extends Component {
               </div>
               <button
                 className="btn btn-lg btn-outline-success mt-3"
-                onClick={this.handleClick}
+                onClick={() => this.handleClick(t)}
               >
                 Guardar alterações
               </button>
