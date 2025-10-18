@@ -181,5 +181,8 @@
   "edit-train-cards.breadcrumbs.tile": "Tile {{tile}}",
   "edit-train-cards.breadcrumbs.train-cards": "Train cards",
   "edit-train-cards.title": "{{board}} - Tile {{tile}}",
-  "edit-train-cards.subtitle": "Train cards"
+  "edit-train-cards.subtitle": "Train cards",
+  "edit-train-cards.table.description-column.name": "Description",
+  "edit-train-cards.table.content-column.name": "Content",
+  "edit-train-cards.save-button": "Create card"
 }

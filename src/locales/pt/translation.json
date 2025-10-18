@@ -182,5 +182,8 @@
   "edit-train-cards.breadcrumbs.tile": "Casa {{tile}}",
   "edit-train-cards.breadcrumbs.train-cards": "Cartas de treino",
   "edit-train-cards.title": "{{board}} - Casa {{tile}}",
-  "edit-train-cards.subtitle": "Cartas de treino"
+  "edit-train-cards.subtitle": "Cartas de treino",
+  "edit-train-cards.table.description-column.name": "Descrição",
+  "edit-train-cards.table.content-column.name": "Conteúdo",
+  "edit-train-cards.save-button": "Adicionar carta"
 }

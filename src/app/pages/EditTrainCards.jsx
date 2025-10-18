@@ -101,8 +101,8 @@ class EditTrainCards extends Component {
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Descrição</th>
-                      <th scope="col">Conteúdo</th>
+                      <th scope="col">{t("table.description-column.name")}</th>
+                      <th scope="col">{t("table.content-column.name")}</th>
                       <th scope="col"></th>
                       <th scope="col"></th>
                     </tr>
@@ -147,7 +147,7 @@ class EditTrainCards extends Component {
                 className="text-decoration-none"
               >
                 <button className="btn btn-lg btn-primary mt-3">
-                  Adicionar carta
+                  {t("save-button")}
                 </button>
               </Link>
             </div>
