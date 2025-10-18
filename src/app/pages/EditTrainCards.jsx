@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -44,6 +45,8 @@ class EditTrainCards extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "edit-train-cards" });
+
     return (
       <div>
         <nav
@@ -53,7 +56,7 @@ class EditTrainCards extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -69,14 +72,14 @@ class EditTrainCards extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t("breadcrumbs.edit")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Casa {this.props.params.tile}
+              {t("breadcrumbs.tile", { tile: this.props.params.tile })}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Cartas de treino
+              {t("breadcrumbs.train-cards")}
             </li>
           </ol>
           <div>
@@ -85,11 +88,14 @@ class EditTrainCards extends Component {
         </nav>
         <div className="text-center mt-5">
           <h1>
-            {this.props.params.board} - Casa {this.props.params.tile}
+            {t("title", {
+              board: this.props.params.board,
+              tile: this.props.params.tile,
+            })}
           </h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Cartas de treino</h3>
+              <h3 className="card-title">{t("subtitle")}</h3>
               <div className="table-responsive mt-3">
                 <table className="table table-hover">
                   <thead>

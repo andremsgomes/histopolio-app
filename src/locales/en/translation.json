@@ -175,5 +175,11 @@
   "edit-train-card.breadcrumbs.train-cards": "Train cards",
   "edit-train-card.breadcrumbs.edit-card": "Edit card",
   "edit-train-card.title": "{{board}} - Tile {{tile}}",
-  "edit-train-card.subtitle": "Edit card"
+  "edit-train-card.subtitle": "Edit card",
+  "edit-train-cards.breadcrumbs.menu": "Menu",
+  "edit-train-cards.breadcrumbs.edit": "Edit",
+  "edit-train-cards.breadcrumbs.tile": "Tile {{tile}}",
+  "edit-train-cards.breadcrumbs.train-cards": "Train cards",
+  "edit-train-cards.title": "{{board}} - Tile {{tile}}",
+  "edit-train-cards.subtitle": "Train cards"
 }

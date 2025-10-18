@@ -176,5 +176,11 @@
   "edit-train-card.breadcrumbs.train-cards": "Cartas de treino",
   "edit-train-card.breadcrumbs.edit-card": "Editar carta",
   "edit-train-card.title": "{{board}} - Casa {{tile}}",
-  "edit-train-card.subtitle": "Editar carta"
+  "edit-train-card.subtitle": "Editar carta",
+  "edit-train-cards.breadcrumbs.menu": "Menu",
+  "edit-train-cards.breadcrumbs.edit": "Editar",
+  "edit-train-cards.breadcrumbs.tile": "Casa {{tile}}",
+  "edit-train-cards.breadcrumbs.train-cards": "Cartas de treino",
+  "edit-train-cards.title": "{{board}} - Casa {{tile}}",
+  "edit-train-cards.subtitle": "Cartas de treino"
 }
