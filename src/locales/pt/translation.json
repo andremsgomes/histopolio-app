@@ -185,5 +185,9 @@
   "edit-train-cards.subtitle": "Cartas de treino",
   "edit-train-cards.table.description-column.name": "Descrição",
   "edit-train-cards.table.content-column.name": "Conteúdo",
-  "edit-train-cards.save-button": "Adicionar carta"
+  "edit-train-cards.save-button": "Adicionar carta",
+  "enter-game-session.breadcrumbs.menu": "Menu",
+  "enter-game-session.title": "Introduz o código de acesso apresentado no ecrã de jogo",
+  "enter-game-session.code-input.placeholder": "Código de acesso",
+  "enter-game-session.enter-button": "Entrar"
 }

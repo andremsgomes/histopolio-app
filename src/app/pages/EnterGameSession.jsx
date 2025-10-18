@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
 function EnterGameSession() {
+  const { t } = useTranslation(undefined, { keyPrefix: "enter-game-session" });
+
   const { board } = useParams();
   const [code, setCode] = useState("");
 
@@ -48,7 +51,9 @@ function EnterGameSession() {
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item" aria-current="page">
-            <Link to="/" className="text-decoration-none">Menu</Link>
+            <Link to="/" className="text-decoration-none">
+              {t("breadcrumbs.menu")}
+            </Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             {board}
@@ -59,9 +64,7 @@ function EnterGameSession() {
         </div>
       </nav>
       <div className="text-center page-center">
-        <h2 className="m-4">
-          Introduz o código de acesso apresentado no ecrã de jogo
-        </h2>
+        <h2 className="m-4">{t("title")}</h2>
         <div className="row m-4">
           <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto">
             <div className="form-group row">
@@ -71,14 +74,14 @@ function EnterGameSession() {
                 name="code"
                 onChange={handleCodeChange}
                 value={code}
-                placeholder="Código de acesso"
+                placeholder={t("code-input.placeholder")}
               />
             </div>
             <button
               className="btn btn-primary btn-lg mt-4 px-5"
               onClick={handleClick}
             >
-              Entrar
+              {t("enter-button")}
             </button>
           </div>
         </div>

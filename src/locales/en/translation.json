@@ -184,5 +184,9 @@
   "edit-train-cards.subtitle": "Train cards",
   "edit-train-cards.table.description-column.name": "Description",
   "edit-train-cards.table.content-column.name": "Content",
-  "edit-train-cards.save-button": "Create card"
+  "edit-train-cards.save-button": "Create card",
+  "enter-game-session.breadcrumbs.menu": "Menu",
+  "enter-game-session.title": "Enter the access code displayed in the game screen",
+  "enter-game-session.code-input.placeholder": "Access code",
+  "enter-game-session.enter-button": "Enter"
 }
