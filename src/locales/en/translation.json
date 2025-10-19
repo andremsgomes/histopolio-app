@@ -195,5 +195,8 @@
   "game-controller.rank": "You are in {{rank}}{{suffix}} place",
   "game-controller.score": "You have {{count}} point",
   "game-controller.score_plural": "You have {{count}} points",
-  "game-controller.store-button": "Purchase badges"
+  "game-controller.store-button": "Purchase badges",
+  "game-controller.wait.end-turn": "Wait for the end of the turn!",
+  "game-controller.wait.your-turn": "Wait for your turn!",
+  "game-controller.wait.start-game": "Wait for the game to start!"
 }

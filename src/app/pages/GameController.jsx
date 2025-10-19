@@ -568,7 +568,7 @@ class GameController extends Component {
                                   />
                                 ) : (
                                   <Wait
-                                    title="Espera pelo fim da jogada!"
+                                    title={t("wait.end-turn")}
                                     points={this.state.points}
                                     rank={this.state.rank}
                                     storeButton={false}
@@ -596,7 +596,7 @@ class GameController extends Component {
                   />
                 ) : (
                   <Wait
-                    title="Espera pela tua vez!"
+                    title={t("wait.your-turn")}
                     points={this.state.points}
                     rank={this.state.rank}
                     storeButton={true}
@@ -618,7 +618,7 @@ class GameController extends Component {
               />
             ) : (
               <Wait
-                title="Espera pelo início do jogo!"
+                title={t("wait.start-game")}
                 points={this.state.points}
                 rank={this.state.rank}
                 storeButton={true}

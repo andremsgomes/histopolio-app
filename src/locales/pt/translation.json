@@ -196,5 +196,8 @@
   "game-controller.rank": "Estás em {{rank}}º lugar",
   "game-controller.score": "Tens {{count}} ponto",
   "game-controller.score_plural": "Tens {{count}} pontos",
-  "game-controller.store-button": "Comprar troféus"
+  "game-controller.store-button": "Comprar troféus",
+  "game-controller.wait.end-turn": "Espera pelo fim da jogada!",
+  "game-controller.wait.your-turn": "Espera pela tua vez!",
+  "game-controller.wait.start-game": "Espera pelo início do jogo!"
 }
