@@ -4,6 +4,7 @@ import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
 import { Link, useParams } from "react-router-dom";
 import "react-dice-complete/dist/react-dice-complete.css";
+import { useTranslation } from "react-i18next";
 
 import Wait from "../components/Wait";
 import PlayQuestion from "../components/PlayQuestion";
@@ -427,6 +428,8 @@ class GameController extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "game-controller" });
+
     return (
       <div>
         <nav
@@ -436,7 +439,7 @@ class GameController extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item">{this.props.params.board}</li>
@@ -444,7 +447,7 @@ class GameController extends Component {
               {this.state.save.length > 0 ? (
                 <>{this.state.save}</>
               ) : (
-                <>Novo jogo</>
+                <>{t("breadcrumbs.new-game")}</>
               )}
             </li>
           </ol>

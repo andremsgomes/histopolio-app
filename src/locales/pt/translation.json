@@ -189,5 +189,7 @@
   "enter-game-session.breadcrumbs.menu": "Menu",
   "enter-game-session.title": "Introduz o código de acesso apresentado no ecrã de jogo",
   "enter-game-session.code-input.placeholder": "Código de acesso",
-  "enter-game-session.enter-button": "Entrar"
+  "enter-game-session.enter-button": "Entrar",
+  "game-controller.breadcrumbs.menu": "Menu",
+  "game-controller.breadcrumbs.new-game": "Novo jogo"
 }

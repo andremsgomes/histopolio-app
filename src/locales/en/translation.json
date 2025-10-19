@@ -188,5 +188,7 @@
   "enter-game-session.breadcrumbs.menu": "Menu",
   "enter-game-session.title": "Enter the access code displayed in the game screen",
   "enter-game-session.code-input.placeholder": "Access code",
-  "enter-game-session.enter-button": "Enter"
+  "enter-game-session.enter-button": "Enter",
+  "game-controller.breadcrumbs.menu": "Menu",
+  "game-controller.breadcrumbs.new-game": "New game"
 }
