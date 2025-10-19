@@ -191,5 +191,10 @@
   "enter-game-session.code-input.placeholder": "Código de acesso",
   "enter-game-session.enter-button": "Entrar",
   "game-controller.breadcrumbs.menu": "Menu",
-  "game-controller.breadcrumbs.new-game": "Novo jogo"
+  "game-controller.breadcrumbs.new-game": "Novo jogo",
+  "game-controller.roll-dice": "Lança o dado!",
+  "game-controller.rank": "Estás em {{rank}}º lugar",
+  "game-controller.score": "Tens {{count}} ponto",
+  "game-controller.score_plural": "Tens {{count}} pontos",
+  "game-controller.store-button": "Comprar troféus"
 }

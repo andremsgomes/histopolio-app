@@ -190,5 +190,10 @@
   "enter-game-session.code-input.placeholder": "Access code",
   "enter-game-session.enter-button": "Enter",
   "game-controller.breadcrumbs.menu": "Menu",
-  "game-controller.breadcrumbs.new-game": "New game"
+  "game-controller.breadcrumbs.new-game": "New game",
+  "game-controller.roll-dice": "Roll the dice!",
+  "game-controller.rank": "You are in {{rank}}{{suffix}} place",
+  "game-controller.score": "You have {{count}} point",
+  "game-controller.score_plural": "You have {{count}} points",
+  "game-controller.store-button": "Purchase badges"
 }

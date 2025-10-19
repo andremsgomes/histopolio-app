@@ -12,6 +12,7 @@ import Store from "../components/Store";
 import Content from "../components/Content";
 import Continue from "../components/Continue";
 import EditAndLogout from "../components/EditAndLogout";
+import { getOrdinalSuffix } from "../utils/ranking";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -86,16 +87,16 @@ class GameController extends Component {
 
         this.client.onopen = () => {
           console.log("WebSocket Client Connected");
-    
+
           this.sendIdentificationMessage();
           this.loadBadges();
           this.sendRequestGameStatusMessage();
         };
-    
+
         this.client.onmessage = (message) => {
           console.log(message.data);
           const dataReceived = JSON.parse(message.data);
-    
+
           this.processDataReceived(dataReceived);
         };
       }
@@ -471,7 +472,7 @@ class GameController extends Component {
                       />
                     ) : (
                       <div className="text-center page-center">
-                        <h2>Lança o dado!</h2>
+                        <h2>{t("roll-dice")}</h2>
                         <div className="mt-4" onClick={this.handleDiceClick}>
                           <ReactDice
                             numDice={1}
@@ -487,11 +488,17 @@ class GameController extends Component {
                         </div>
                         <div className="mt-4">
                           {this.state.rank !== 0 && (
-                            <h4>Estás em {this.state.rank}º lugar</h4>
+                            <h4>
+                              {t("rank", {
+                                rank: this.state.rank,
+                                suffix: getOrdinalSuffix(props.rank),
+                              })}
+                            </h4>
                           )}
                           <h5>
-                            Tens {this.state.points} ponto
-                            {this.state.points !== 1 && "s"}
+                            {t("score", {
+                              count: this.state.points,
+                            })}
                           </h5>
                         </div>
                         <button
@@ -499,7 +506,7 @@ class GameController extends Component {
                           onClick={this.handleStoreClick}
                           disabled={this.state.diceRolled}
                         >
-                          Comprar troféus
+                          {t("store-button")}
                         </button>
                       </div>
                     )}
