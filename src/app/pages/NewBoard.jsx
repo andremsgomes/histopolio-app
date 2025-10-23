@@ -5,6 +5,7 @@ import EditAndLogout from "../components/EditAndLogout";
 import BoardForm from "../components/BoardForm";
 
 import { Link } from "react-router-dom";
+import { useTranslation  } from "react-i18next";
 
 class NewBoard extends Component {
   constructor(props) {
@@ -61,6 +62,8 @@ class NewBoard extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "new-board" });
+
     return (
       <div>
         <nav
@@ -70,11 +73,11 @@ class NewBoard extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t('breadcrumbs.menu')}
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Novo tabuleiro
+              {t('breadcrumbs.new-game-board')}
             </li>
           </ol>
           <div>

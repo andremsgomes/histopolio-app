@@ -204,5 +204,7 @@
   "new-badge.breadcrumbs.edit": "Editar",
   "new-badge.breadcrumbs.badges": "Troféus",
   "new-badge.breadcrumbs.new-badge": "Novo troféu",
-  "new-badge.title": "Novo troféu"
+  "new-badge.title": "Novo troféu",
+  "new-board.breadcrumbs.menu": "Menu",
+  "new-board.breadcrumbs.new-game-board": "Novo tabuleiro"
 }
