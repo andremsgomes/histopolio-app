@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import api from "../api";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation  } from "react-i18next";
 
 import EditAndLogout from "../components/EditAndLogout";
 import BadgeForm from "../components/BadgeForm";
@@ -79,6 +80,8 @@ class NewBadge extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "new-badge" });
+
     return (
       <div>
         <nav
@@ -88,7 +91,7 @@ class NewBadge extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t('breadcrumbs.menu')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -104,14 +107,14 @@ class NewBadge extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t('breadcrumbs.edit')}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Troféus
+              {t('breadcrumbs.badges')}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Novo troféu
+              {t('breadcrumbs.new-badge')}
             </li>
           </ol>
           <div>
@@ -124,7 +127,7 @@ class NewBadge extends Component {
           </h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Novo troféu</h3>
+              <h3 className="card-title">{t('title')}</h3>
               <BadgeForm
                 onNameChange={this.handleNameChange}
                 name={this.state.name}

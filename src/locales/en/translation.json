@@ -198,5 +198,10 @@
   "game-controller.store-button": "Purchase badges",
   "game-controller.wait.end-turn": "Wait for the end of the turn!",
   "game-controller.wait.your-turn": "Wait for your turn!",
-  "game-controller.wait.start-game": "Wait for the game to start!"
+  "game-controller.wait.start-game": "Wait for the game to start!",
+  "new-badge.breadcrumbs.menu": "Menu",
+  "new-badge.breadcrumbs.edit": "Edit",
+  "new-badge.breadcrumbs.badges": "Badges",
+  "new-badge.breadcrumbs.new-badge": "New badge",
+  "new-badge.title": "New badge"
 }

@@ -199,5 +199,10 @@
   "game-controller.store-button": "Comprar troféus",
   "game-controller.wait.end-turn": "Espera pelo fim da jogada!",
   "game-controller.wait.your-turn": "Espera pela tua vez!",
-  "game-controller.wait.start-game": "Espera pelo início do jogo!"
+  "game-controller.wait.start-game": "Espera pelo início do jogo!",
+  "new-badge.breadcrumbs.menu": "Menu",
+  "new-badge.breadcrumbs.edit": "Editar",
+  "new-badge.breadcrumbs.badges": "Troféus",
+  "new-badge.breadcrumbs.new-badge": "Novo troféu",
+  "new-badge.title": "Novo troféu"
 }
