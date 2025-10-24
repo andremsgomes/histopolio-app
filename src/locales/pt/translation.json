@@ -206,5 +206,7 @@
   "new-badge.breadcrumbs.new-badge": "Novo troféu",
   "new-badge.title": "Novo troféu",
   "new-board.breadcrumbs.menu": "Menu",
-  "new-board.breadcrumbs.new-game-board": "Novo tabuleiro"
+  "new-board.breadcrumbs.new-game-board": "Novo tabuleiro",
+  "new-board.board-form.title": "Novo tabuleiro",
+  "new-board.board-form.button": "Criar tabuleiro"
 }

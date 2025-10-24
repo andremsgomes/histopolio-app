@@ -86,7 +86,7 @@ class NewBoard extends Component {
         </nav>
         <div className="text-center mt-5">
           <BoardForm
-            title="Novo tabuleiro"
+            title={t('board-form.title')}
             onNameChange={this.handleNameChange}
             name={this.state.name}
             onDescriptionChange={this.handleDescriptionChange}
@@ -94,7 +94,7 @@ class NewBoard extends Component {
             onImageChange={this.handleImageChange}
             image={this.state.image}
             onClick={this.handleClick}
-            buttonText="Criar tabuleiro"
+            buttonText={t('board-form.button')}
           />
         </div>
       </div>

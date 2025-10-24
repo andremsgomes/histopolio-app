@@ -205,5 +205,7 @@
   "new-badge.breadcrumbs.new-badge": "New badge",
   "new-badge.title": "New badge",
   "new-board.breadcrumbs.menu": "Menu",
-  "new-board.breadcrumbs.new-game-board": "New game board"
+  "new-board.breadcrumbs.new-game-board": "New game board",
+  "new-board.board-form.title": "New game board",
+  "new-board.board-form.button": "Create game board"
 }
