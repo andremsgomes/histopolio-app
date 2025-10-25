@@ -208,5 +208,10 @@
   "new-board.breadcrumbs.menu": "Menu",
   "new-board.breadcrumbs.new-game-board": "Novo tabuleiro",
   "new-board.board-form.title": "Novo tabuleiro",
-  "new-board.board-form.button": "Criar tabuleiro"
+  "new-board.board-form.button": "Criar tabuleiro",
+  "new-deck-card.breadcrumbs.menu": "Menu",
+  "new-deck-card.breadcrumbs.edit": "Editar",
+  "new-deck-card.breadcrumbs.cards": "Cartas",
+  "new-deck-card.breadcrumbs.new-card": "Nova carta",
+  "new-deck-card.title": "Nova carta"
 }

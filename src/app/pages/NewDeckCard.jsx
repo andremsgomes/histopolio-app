@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import api from "../api";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import EditAndLogout from "../components/EditAndLogout";
 import DeckCardForm from "../components/DeckCardForm";
@@ -87,6 +88,8 @@ class NewDeckCard extends Component {
   }
 
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "new-deck-card" });
+
     return (
       <div>
         <nav
@@ -96,7 +99,7 @@ class NewDeckCard extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/admin" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
@@ -112,14 +115,14 @@ class NewDeckCard extends Component {
                 to={`/admin/${this.props.params.board}/edit`}
                 className="text-decoration-none"
               >
-                Editar
+                {t("breadcrumbs.edit")}
               </Link>
             </li>
             <li className="breadcrumb-item" aria-current="page">
-              Cartas
+              {t("breadcrumbs.cards")}
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Nova carta
+              {t("breadcrumbs.new-card")}
             </li>
           </ol>
           <div>
@@ -127,12 +130,10 @@ class NewDeckCard extends Component {
           </div>
         </nav>
         <div className="text-center mt-5">
-          <h1>
-            {this.props.params.board}
-          </h1>
+          <h1>{this.props.params.board}</h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-0">
-              <h3 className="card-title">Nova carta</h3>
+              <h3 className="card-title">{t("breadcrumbs.title")}</h3>
               <DeckCardForm
                 onDeckChange={this.handleDeckChange}
                 deck={this.state.deck}
