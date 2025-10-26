@@ -212,5 +212,12 @@
   "new-deck-card.breadcrumbs.edit": "Edit",
   "new-deck-card.breadcrumbs.cards": "Cards",
   "new-deck-card.breadcrumbs.new-card": "New card",
-  "new-deck-card.title": "New card"
+  "new-deck-card.title": "New card",
+  "new-question.breadcrumbs.menu": "Menu",
+  "new-question.breadcrumbs.edit": "Edit",
+  "new-question.breadcrumbs.tile": "Tile {{tile}}",
+  "new-question.breadcrumbs.questions": "Questions",
+  "new-question.breadcrumbs.new-question": "New question",
+  "new-question.title": "{{board}} - Tile {{tile}}",
+  "new-question.subtitle": "New question"
 }

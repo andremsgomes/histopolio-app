@@ -213,5 +213,12 @@
   "new-deck-card.breadcrumbs.edit": "Editar",
   "new-deck-card.breadcrumbs.cards": "Cartas",
   "new-deck-card.breadcrumbs.new-card": "Nova carta",
-  "new-deck-card.title": "Nova carta"
+  "new-deck-card.title": "Nova carta",
+  "new-question.breadcrumbs.menu": "Menu",
+  "new-question.breadcrumbs.edit": "Editar",
+  "new-question.breadcrumbs.tile": "Casa {{tile}}",
+  "new-question.breadcrumbs.questions": "Perguntas",
+  "new-question.breadcrumbs.new-question": "Nova pergunta",
+  "new-question.title": "{{board}} - Casa {{tile}}",
+  "new-question.subtitle": "Nova pergunta"
 }
