@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
 function PlayerMenu() {
   const user = JSON.parse(sessionStorage.getItem("user"));
+  const { t } = useTranslation(undefined, { keyPrefix: "player-menu" });
 
   const [boards, setBoards] = useState([]);
 
@@ -39,7 +41,7 @@ function PlayerMenu() {
       >
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item active" aria-current="page">
-            Menu
+            {t("breadcrumbs.menu")}
           </li>
         </ol>
         <div>
@@ -51,7 +53,7 @@ function PlayerMenu() {
         className={"text-center " + (boards.length === 1 ? "page-center" : "")}
       >
         <div className="row justify-content-center m-4">
-          <h2 className="mb-4">Os teus tabuleiros</h2>
+          <h2 className="mb-4">{t("title")}</h2>
           {boards.map((board) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-3">
@@ -73,7 +75,7 @@ function PlayerMenu() {
                       className="btn btn-primary btn-lg mt-4"
                       onClick={() => startGame(board.name)}
                     >
-                      Jogar
+                      {t("play-button")}
                     </button>
                   </div>
                 </div>
@@ -82,7 +84,7 @@ function PlayerMenu() {
           })}
           <Link to="/rules">
             <button className="btn btn-lg btn-primary mt-4">
-              Consultar as regras
+              {t("rules-button")}
             </button>
           </Link>
         </div>

@@ -227,5 +227,9 @@
   "new-train-card.breadcrumbs.train-cards": "Cartas de treino",
   "new-train-card.breadcrumbs.new-card": "Nova carta",
   "new-train-card.title": "{{board}} - Casa {{tile}}",
-  "new-train-card.subtitle": "Nova carta"
+  "new-train-card.subtitle": "Nova carta",
+  "player-menu.breadcrumbs.menu": "Menu",
+  "player-menu.title": "Os teus tabuleiros",
+  "player-menu.play-button": "Jogar",
+  "player-menu.rules-button": "Consultar as regras"
 }

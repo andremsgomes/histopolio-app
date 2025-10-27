@@ -226,5 +226,9 @@
   "new-train-card.breadcrumbs.train-cards": "Train cards",
   "new-train-card.breadcrumbs.new-card": "New card",
   "new-train-card.title": "{{board}} - Tile {{tile}}",
-  "new-train-card.subtitle": "New card"
+  "new-train-card.subtitle": "New card",
+  "player-menu.breadcrumbs.menu": "Menu",
+  "player-menu.title": "Your game boards",
+  "player-menu.play-button": "Play",
+  "player-menu.rules-button": "View the rules"
 }
