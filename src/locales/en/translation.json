@@ -219,5 +219,12 @@
   "new-question.breadcrumbs.questions": "Questions",
   "new-question.breadcrumbs.new-question": "New question",
   "new-question.title": "{{board}} - Tile {{tile}}",
-  "new-question.subtitle": "New question"
+  "new-question.subtitle": "New question",
+  "new-train-card.breadcrumbs.menu": "Menu",
+  "new-train-card.breadcrumbs.edit": "Edit",
+  "new-train-card.breadcrumbs.tile": "Tile {{tile}}",
+  "new-train-card.breadcrumbs.train-cards": "Train cards",
+  "new-train-card.breadcrumbs.new-card": "New card",
+  "new-train-card.title": "{{board}} - Tile {{tile}}",
+  "new-train-card.subtitle": "New card"
 }

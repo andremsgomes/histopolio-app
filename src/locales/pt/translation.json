@@ -220,5 +220,12 @@
   "new-question.breadcrumbs.questions": "Perguntas",
   "new-question.breadcrumbs.new-question": "Nova pergunta",
   "new-question.title": "{{board}} - Casa {{tile}}",
-  "new-question.subtitle": "Nova pergunta"
+  "new-question.subtitle": "Nova pergunta",
+  "new-train-card.breadcrumbs.menu": "Menu",
+  "new-train-card.breadcrumbs.edit": "Editar",
+  "new-train-card.breadcrumbs.tile": "Casa {{tile}}",
+  "new-train-card.breadcrumbs.train-cards": "Cartas de treino",
+  "new-train-card.breadcrumbs.new-card": "Nova carta",
+  "new-train-card.title": "{{board}} - Casa {{tile}}",
+  "new-train-card.subtitle": "Nova carta"
 }
