@@ -230,5 +230,7 @@
   "player-menu.breadcrumbs.menu": "Menu",
   "player-menu.title": "Your game boards",
   "player-menu.play-button": "Play",
-  "player-menu.rules-button": "View the rules"
+  "player-menu.rules-button": "View the rules",
+  "rules.breadcrumbs.menu": "Menu",
+  "rules.breadcrumbs.rules": "Rules"
 }

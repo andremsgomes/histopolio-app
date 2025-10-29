@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import EditAndLogout from "../components/EditAndLogout";
 
 class Rules extends Component {
   render() {
+    const { t } = useTranslation(undefined, { keyPrefix: "rules" });
+
     return (
       <div>
         <nav
@@ -15,11 +18,11 @@ class Rules extends Component {
           <ol className="breadcrumb m-0">
             <li className="breadcrumb-item" aria-current="page">
               <Link to="/" className="text-decoration-none">
-                Menu
+                {t("breadcrumbs.menu")}
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Regras
+              {t("breadcrumbs.rules")}
             </li>
           </ol>
           <div>
@@ -38,9 +41,9 @@ class Rules extends Component {
                 termos de jogadas.
               </p>
               <p className="card-text text-start mb-0">
-                Se dois ou mais jogadores tiverem o mesmo número de jogadas,
-                a ordem para jogar é definida pela ordem de entrada dos
-                jogadores na sessão de jogo ativa.
+                Se dois ou mais jogadores tiverem o mesmo número de jogadas, a
+                ordem para jogar é definida pela ordem de entrada dos jogadores
+                na sessão de jogo ativa.
               </p>
             </div>
           </div>

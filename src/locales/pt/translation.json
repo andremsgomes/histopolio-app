@@ -231,5 +231,7 @@
   "player-menu.breadcrumbs.menu": "Menu",
   "player-menu.title": "Os teus tabuleiros",
   "player-menu.play-button": "Jogar",
-  "player-menu.rules-button": "Consultar as regras"
+  "player-menu.rules-button": "Consultar as regras",
+  "rules.breadcrumbs.menu": "Menu",
+  "rules.breadcrumbs.rules": "Regras"
 }
