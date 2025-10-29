@@ -30,7 +30,7 @@ class Rules extends Component {
           </div>
         </nav>
         <div className="text-center mt-5">
-          <h1>Regras do jogo</h1>
+          <h1>{t("title")}</h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-5">
               <h3 className="card-title mb-3">Sistema de jogadas</h3>

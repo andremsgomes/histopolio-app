@@ -232,5 +232,6 @@
   "player-menu.play-button": "Play",
   "player-menu.rules-button": "View the rules",
   "rules.breadcrumbs.menu": "Menu",
-  "rules.breadcrumbs.rules": "Rules"
+  "rules.breadcrumbs.rules": "Rules",
+  "rules.title": "Game rules"
 }

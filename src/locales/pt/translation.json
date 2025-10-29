@@ -233,5 +233,6 @@
   "player-menu.play-button": "Jogar",
   "player-menu.rules-button": "Consultar as regras",
   "rules.breadcrumbs.menu": "Menu",
-  "rules.breadcrumbs.rules": "Regras"
+  "rules.breadcrumbs.rules": "Regras",
+  "rules.title": "Regras do jogo"
 }
