@@ -33,17 +33,12 @@ class Rules extends Component {
           <h1>{t("title")}</h1>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-5">
-              <h3 className="card-title mb-3">Sistema de jogadas</h3>
+              <h3 className="card-title mb-3">{t("turn-system.title")}</h3>
               <p className="card-text text-start mb-1">
-                Os jogadores que efetuaram um menor número de jogadas têm
-                prioridade para jogar. Isto permite aos jogadores com menos
-                jogadas efetuadas conseguirem igualar os restantes jogadores, em
-                termos de jogadas.
+                {t("turn-system.paragraph-1")}
               </p>
               <p className="card-text text-start mb-0">
-                Se dois ou mais jogadores tiverem o mesmo número de jogadas, a
-                ordem para jogar é definida pela ordem de entrada dos jogadores
-                na sessão de jogo ativa.
+                {t("turn-system.paragraph-2")}
               </p>
             </div>
           </div>

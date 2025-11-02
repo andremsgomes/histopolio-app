@@ -233,5 +233,8 @@
   "player-menu.rules-button": "View the rules",
   "rules.breadcrumbs.menu": "Menu",
   "rules.breadcrumbs.rules": "Rules",
-  "rules.title": "Game rules"
+  "rules.title": "Game rules",
+  "rules.turn-system.title": "Turn system",
+  "rules.turn-system.paragraph-1": "Players who have made fewer moves have priority to play. This allows players with fewer moves to catch up with the others in terms of turns.",
+  "rules.turn-system.paragraph-2": "If two or more players have the same number of turns, the playing order is determined by the order in which they joined the active game session."
 }
