@@ -236,5 +236,9 @@
   "rules.title": "Game rules",
   "rules.turn-system.title": "Turn system",
   "rules.turn-system.paragraph-1": "Players who have made fewer moves have priority to play. This allows players with fewer moves to catch up with the others in terms of turns.",
-  "rules.turn-system.paragraph-2": "If two or more players have the same number of turns, the playing order is determined by the order in which they joined the active game session."
+  "rules.turn-system.paragraph-2": "If two or more players have the same number of turns, the playing order is determined by the order in which they joined the active game session.",
+  "rules.your-turn.title": "Your turn",
+  "rules.your-turn.paragraph-1": "If you haven't reached the Start tile for the second time yet, your turn begins with a dice roll.",
+  "rules.your-turn.paragraph-2": "After rolling the dice, you will move forward the number of spaces shown.",
+  "rules.your-turn.paragraph-3": "Next, you will complete an activity depending on the tile you landed on."
 }

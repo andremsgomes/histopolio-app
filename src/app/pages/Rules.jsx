@@ -44,18 +44,15 @@ class Rules extends Component {
           </div>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-5">
-              <h3 className="card-title mb-3">A tua jogada</h3>
+              <h3 className="card-title mb-3">{t("your-turn.title")}</h3>
               <p className="card-text text-start mb-2">
-                Se ainda não alcançaste a casa da Partida pela segunda vez, a
-                tua jogada começa com o lançamento do dado.
+                {t("your-turn.paragraph-1")}
               </p>
               <p className="card-text text-start mb-1">
-                Após lançares o dado, irás avançar o número de casas que te
-                saíu.
+                {t("your-turn.paragraph-2")}
               </p>
               <p className="card-text text-start mb-0">
-                De seguida irás fazer uma atividade, dependendo da casa onde
-                chegaste.
+                {t("your-turn.paragraph-3")}
               </p>
               <div className="my-3 mx-md-5">
                 <img

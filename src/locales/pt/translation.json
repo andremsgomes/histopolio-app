@@ -237,5 +237,9 @@
   "rules.title": "Regras do jogo",
   "rules.turn-system.title": "Sistema de jogadas",
   "rules.turn-system.paragraph-1": "Os jogadores que efetuaram um menor número de jogadas têm prioridade para jogar. Isto permite aos jogadores com menos jogadas efetuadas conseguirem igualar os restantes jogadores, em termos de jogadas.",
-  "rules.turn-system.paragraph-2": "Se dois ou mais jogadores tiverem o mesmo número de jogadas, a ordem para jogar é definida pela ordem de entrada dos jogadores na sessão de jogo ativa."
+  "rules.turn-system.paragraph-2": "Se dois ou mais jogadores tiverem o mesmo número de jogadas, a ordem para jogar é definida pela ordem de entrada dos jogadores na sessão de jogo ativa.",
+  "rules.your-turn.title": "A tua jogada",
+  "rules.your-turn.paragraph-1": "Se ainda não alcançaste a casa da Partida pela segunda vez, a tua jogada começa com o lançamento do dado.",
+  "rules.your-turn.paragraph-2": "Após lançares o dado, irás avançar o número de casas que te saíu.",
+  "rules.your-turn.paragraph-3": "De seguida irás fazer uma atividade, dependendo da casa onde chegaste."
 }
