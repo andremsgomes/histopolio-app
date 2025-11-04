@@ -241,5 +241,6 @@
   "rules.your-turn.title": "A tua jogada",
   "rules.your-turn.paragraph-1": "Se ainda não alcançaste a casa da Partida pela segunda vez, a tua jogada começa com o lançamento do dado.",
   "rules.your-turn.paragraph-2": "Após lançares o dado, irás avançar o número de casas que te saíu.",
-  "rules.your-turn.paragraph-3": "De seguida irás fazer uma atividade, dependendo da casa onde chegaste."
+  "rules.your-turn.paragraph-3": "De seguida irás fazer uma atividade, dependendo da casa onde chegaste.",
+  "rules.go": "Após alcançares a casa da Partida pela segunda vez, nas próximas jogadas não irás lançar mais o dado. Irás apenas responder a uma pergunta aleatória do tabuleiro em cada jogada para tentares receber os pontos indicados."
 }

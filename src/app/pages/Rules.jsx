@@ -106,10 +106,7 @@ class Rules extends Component {
                 </li>
               </ul>
               <p className="card-text text-start mb-0">
-                Após alcançares a casa da Partida pela segunda vez, nas próximas
-                jogadas não irás lançar mais o dado. Irás apenas responder a uma
-                pergunta aleatória do tabuleiro em cada jogada para tentares
-                receber os pontos indicados.
+                {t("go")}
               </p>
             </div>
           </div>
