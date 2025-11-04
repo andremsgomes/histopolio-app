@@ -112,21 +112,15 @@ class Rules extends Component {
           </div>
           <div className="card my-5 mx-md-5 py-2 px-0">
             <div className="card-body px-5">
-              <h3 className="card-title mb-3">Troféus</h3>
+              <h3 className="card-title mb-3">{t("badges.title")}</h3>
               <p className="card-text text-start mb-1">
-                Ao longo do jogo vais ter a possibilidade de comprares troféus.
-                Cada troféu tem um custo e um multiplicador associado.
+                {t("badges.paragraph-1")}
               </p>
               <p className="card-text text-start mb-1">
-                Se tiveres pontos suficientes e comprares um troféu, o valor do
-                custo do troféu é retirado dos teus pontos. Porém, a partir
-                desse momento, sempre que o jogo te atribuir pontos irás receber
-                os pontos multiplicados pelo valor do multiplicador associado ao
-                troféu.
+                {t("badges.paragraph-2")}
               </p>
               <p className="card-text text-start mb-0">
-                Se tiveres mais que um troféu, apenas será considerado o
-                multiplicador mais alto para multiplicar os pontos que recebes.
+                {t("badges.paragraph-3")}
               </p>
             </div>
           </div>

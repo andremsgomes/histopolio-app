@@ -242,5 +242,9 @@
   "rules.your-turn.paragraph-1": "Se ainda não alcançaste a casa da Partida pela segunda vez, a tua jogada começa com o lançamento do dado.",
   "rules.your-turn.paragraph-2": "Após lançares o dado, irás avançar o número de casas que te saíu.",
   "rules.your-turn.paragraph-3": "De seguida irás fazer uma atividade, dependendo da casa onde chegaste.",
-  "rules.go": "Após alcançares a casa da Partida pela segunda vez, nas próximas jogadas não irás lançar mais o dado. Irás apenas responder a uma pergunta aleatória do tabuleiro em cada jogada para tentares receber os pontos indicados."
+  "rules.go": "Após alcançares a casa da Partida pela segunda vez, nas próximas jogadas não irás lançar mais o dado. Irás apenas responder a uma pergunta aleatória do tabuleiro em cada jogada para tentares receber os pontos indicados.",
+  "rules.badges.title": "Troféus",
+  "rules.badges.paragraph-1": "Ao longo do jogo vais ter a possibilidade de comprares troféus. Cada troféu tem um custo e um multiplicador associado.",
+  "rules.badges.paragraph-2": "Se tiveres pontos suficientes e comprares um troféu, o valor do custo do troféu é retirado dos teus pontos. Porém, a partir desse momento, sempre que o jogo te atribuir pontos irás receber os pontos multiplicados pelo valor do multiplicador associado ao troféu.",
+  "rules.badges.paragraph-3": "Se tiveres mais que um troféu, apenas será considerado o multiplicador mais alto para multiplicar os pontos que recebes."
 }
