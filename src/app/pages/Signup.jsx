@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next";
 
 import api from "../api";
 import { isValidEmail } from "../utils/email-validation";
@@ -17,10 +18,12 @@ const DropContainer = styled.div.attrs({
   height: 2.8rem;
   font-size: 1rem;
   display: grid;
-	align-items: center;
+  align-items: center;
 `;
 
 function Signup() {
+  const { t } = useTranslation(undefined, { keyPrefix: "signup" });
+
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -62,7 +65,7 @@ function Signup() {
     // name validation
     if (name.length === 0) {
       nameError = true;
-      setNameErrorMessage("Por favor introduz o teu nome.");
+      setNameErrorMessage(t("validation.name.error"));
     }
     // TODO: verificar tamanho máximo
 
@@ -80,7 +83,7 @@ function Signup() {
     // password validation
     if (password.length === 0) {
       passwordError = true;
-      setPasswordErrorMessage("Por favor introduz uma password.");
+      setPasswordErrorMessage(t("validation.password.error"));
     }
 
     if (passwordError) {
@@ -90,10 +93,14 @@ function Signup() {
     // confirm password validation
     if (confirmPassword.length === 0) {
       confirmPasswordError = true;
-      setConfirmPasswordErrorMessage("Confirma a tua password.");
+      setConfirmPasswordErrorMessage(
+        t("validation.password-confirm.empty-error")
+      );
     } else if (password !== confirmPassword) {
       confirmPasswordError = true;
-      setConfirmPasswordErrorMessage("As passwords não são iguais.");
+      setConfirmPasswordErrorMessage(
+        t("validation.password-confirm.equal-error")
+      );
     }
 
     if (confirmPasswordError) {
@@ -104,12 +111,11 @@ function Signup() {
       const response = await fetch(preview);
       const blob = await response.blob();
 
-
       const payload = new FormData();
-      payload.append('avatar', blob, avatar.name);
-      payload.append('name', name);
-      payload.append('email', email);
-      payload.append('password', password);
+      payload.append("avatar", blob, avatar.name);
+      payload.append("name", name);
+      payload.append("email", email);
+      payload.append("password", password);
 
       api
         .signup(payload)
@@ -189,7 +195,11 @@ function Signup() {
               </div>
               <div className="form-group row mt-3 text-white">
                 <div className="col-6 mx-auto">
-                  <Dropzone accept="image/*" multiple={false} onDropAccepted={handleAvatarChange}>
+                  <Dropzone
+                    accept="image/*"
+                    multiple={false}
+                    onDropAccepted={handleAvatarChange}
+                  >
                     {({ getRootProps, getInputProps }) => (
                       <DropContainer {...getRootProps()}>
                         <input {...getInputProps()} />

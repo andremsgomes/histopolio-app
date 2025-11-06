@@ -254,5 +254,9 @@
   "rules.badges.title": "Badges",
   "rules.badges.paragraph-1": "Throughout the game, you will have the opportunity to buy badges. Each badge has a cost and an associated multiplier.",
   "rules.badges.paragraph-2": "If you have enough points and buy a badge, the badge's cost will be deducted from your points. However, from that moment on, whenever the game awards you points, you'll receive them multiplied by the badge's multiplier value.",
-  "rules.badges.paragraph-3": "If you have more than one badge, only the highest multiplier will be applied to the points you earn."
+  "rules.badges.paragraph-3": "If you have more than one badge, only the highest multiplier will be applied to the points you earn.",
+  "signup.validation.name.error": "Please enter your name.",
+  "signup.validation.password.error": "Please enter a password.",
+  "signup.validation.password-confirm.empty-error": "Confirm your password.",
+  "signup.validation.password-confirm.equal-error": "The passwords are not the same"
 }

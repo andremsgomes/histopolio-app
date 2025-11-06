@@ -255,5 +255,9 @@
   "rules.badges.title": "Troféus",
   "rules.badges.paragraph-1": "Ao longo do jogo vais ter a possibilidade de comprares troféus. Cada troféu tem um custo e um multiplicador associado.",
   "rules.badges.paragraph-2": "Se tiveres pontos suficientes e comprares um troféu, o valor do custo do troféu é retirado dos teus pontos. Porém, a partir desse momento, sempre que o jogo te atribuir pontos irás receber os pontos multiplicados pelo valor do multiplicador associado ao troféu.",
-  "rules.badges.paragraph-3": "Se tiveres mais que um troféu, apenas será considerado o multiplicador mais alto para multiplicar os pontos que recebes."
+  "rules.badges.paragraph-3": "Se tiveres mais que um troféu, apenas será considerado o multiplicador mais alto para multiplicar os pontos que recebes.",
+  "signup.validation.name.error": "Por favor introduz o teu nome.",
+  "signup.validation.password.error": "Por favor introduz uma password.",
+  "signup.validation.password-confirm.empty-error": "Confirma a tua password.",
+  "signup.validation.password-confirm.equal-error": "As passwords não são iguais."
 }
