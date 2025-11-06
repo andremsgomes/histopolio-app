@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import EditAndLogout from "../components/EditAndLogout";
 
@@ -66,48 +66,52 @@ class Rules extends Component {
               </div>
               <ul>
                 <li className="text-start">
-                  <span className="fw-bold">Casa de perguntas: </span>Responde a
-                  uma pergunta para tentares receber os pontos indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.question-tile">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Decisões do senado: </span>Faz a
-                  atividade que te foi indicada na carta de Decisões do senado.
+                  <Trans i18nKey="rules.your-turn.tiles.senate-decisions">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Casa de azar: </span>Responde a uma
-                  pergunta para tentares evitares perder os pontos indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.unlucky-tile">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Estação de treino: </span>Vê o
-                  conteúdo indicado para receberes os pontos indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.train-station">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Sorte: </span>Faz a atividade que te
-                  foi indicada na carta da Sorte.
+                  <Trans i18nKey="rules.your-turn.tiles.chance">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Biblioteca: </span>Responde a uma
-                  pergunta da linha anterior para tentares receber os pontos
-                  indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.library">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Associação de estudantes: </span>
-                  Responde a uma pergunta da linha anterior para tentares
-                  receber os pontos indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.student-association">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Vá para a biblioteca: </span>
-                  Responde a uma pergunta para tentares evitar voltar para a
-                  biblioteca.
+                  <Trans i18nKey="rules.your-turn.tiles.go-to-library">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
                 <li className="text-start">
-                  <span className="fw-bold">Partida: </span>Recebe os pontos
-                  indicados.
+                  <Trans i18nKey="rules.your-turn.tiles.go">
+                    <span className="fw-bold"></span>
+                  </Trans>
                 </li>
               </ul>
-              <p className="card-text text-start mb-0">
-                {t("go")}
-              </p>
+              <p className="card-text text-start mb-0">{t("your-turn.go")}</p>
             </div>
           </div>
           <div className="card my-5 mx-md-5 py-2 px-0">
