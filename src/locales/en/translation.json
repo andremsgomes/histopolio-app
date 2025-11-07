@@ -258,5 +258,7 @@
   "signup.validation.name.error": "Please enter your name.",
   "signup.validation.password.error": "Please enter a password.",
   "signup.validation.password-confirm.empty-error": "Confirm your password.",
-  "signup.validation.password-confirm.equal-error": "The passwords are not the same"
+  "signup.validation.password-confirm.equal-error": "The passwords are not the same",
+  "signup.title": "Signup",
+  "signup.subtitle": "Enter your data"
 }

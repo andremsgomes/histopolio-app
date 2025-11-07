@@ -164,8 +164,8 @@ function Signup() {
                   {alertMessage}
                 </div>
               )}
-              <h2 class="fw-bold mb-2 text-uppercase">Registar</h2>
-              <p class="text-black-50 mb-5">Introduz os teus dados</p>
+              <h2 class="fw-bold mb-2 text-uppercase">{t('title')}</h2>
+              <p class="text-black-50 mb-5">{t('subtitle')}s</p>
               <div className="form-group row">
                 <input
                   type="text"

@@ -259,5 +259,7 @@
   "signup.validation.name.error": "Por favor introduz o teu nome.",
   "signup.validation.password.error": "Por favor introduz uma password.",
   "signup.validation.password-confirm.empty-error": "Confirma a tua password.",
-  "signup.validation.password-confirm.equal-error": "As passwords não são iguais."
+  "signup.validation.password-confirm.equal-error": "As passwords não são iguais.",
+  "signup.title": "Registar",
+  "signup.subtitle": "Introduz os teus dados"
 }
