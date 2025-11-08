@@ -250,7 +250,7 @@ function Signup() {
                   className="btn btn-primary btn-lg mt-4 px-5"
                   onClick={handleClick}
                 >
-                  Criar conta
+                  {t("signup.create-account-button")}
                 </button>
               </div>
               <p className="mt-5">

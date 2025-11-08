@@ -266,5 +266,6 @@
   "signup.form.avatar.input": "Select image",
   "signup.form.email.placeholder": "Email",
   "signup.form.password.placeholder": "Password",
-  "signup.form.confirm-password.placeholder": "Confirm your password"
+  "signup.form.confirm-password.placeholder": "Confirm your password",
+  "signup.create-account-button": "Create account"
 }
