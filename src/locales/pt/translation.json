@@ -268,5 +268,6 @@
   "signup.form.email.placeholder": "Email",
   "signup.form.password.placeholder": "Password",
   "signup.form.confirm-password.placeholder": "Confirma a password",
-  "signup.create-account-button": "Criar conta"
+  "signup.create-account-button": "Criar conta",
+  "signup.login": "Já tens uma conta? Faz o login <0>aqui</0>."
 }

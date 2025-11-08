@@ -254,14 +254,12 @@ function Signup() {
                 </button>
               </div>
               <p className="mt-5">
-                Já tens uma conta? Faz o login{" "}
-                <Link
-                  to="/login"
-                  className="text-black text-decoration-none fw-bold"
-                >
-                  aqui
-                </Link>
-                .
+                <Trans i18nKey="signup.login">
+                  <Link
+                    to="/login"
+                    className="text-black text-decoration-none fw-bold"
+                  />
+                </Trans>
               </p>
             </div>
           </div>
