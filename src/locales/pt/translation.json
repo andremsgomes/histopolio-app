@@ -261,5 +261,11 @@
   "signup.validation.password-confirm.empty-error": "Confirma a tua password.",
   "signup.validation.password-confirm.equal-error": "As passwords não são iguais.",
   "signup.title": "Registar",
-  "signup.subtitle": "Introduz os teus dados"
+  "signup.subtitle": "Introduz os teus dados",
+  "signup.form.name.placeholder": "Nome",
+  "signup.form.avatar.label": "Imagem de perfil/avatar:",
+  "signup.form.avatar.input": "Selecionar imagem",
+  "signup.form.email.placeholder": "Email",
+  "signup.form.password.placeholder": "Password",
+  "signup.form.confirm-password.placeholder": "Confirma a password"
 }

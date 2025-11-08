@@ -260,5 +260,11 @@
   "signup.validation.password-confirm.empty-error": "Confirm your password.",
   "signup.validation.password-confirm.equal-error": "The passwords are not the same",
   "signup.title": "Signup",
-  "signup.subtitle": "Enter your data"
+  "signup.subtitle": "Enter your data",
+  "signup.form.name.placeholder": "Name",
+  "signup.form.avatar.label": "Profile picture/avatar:",
+  "signup.form.avatar.input": "Select image",
+  "signup.form.email.placeholder": "Email",
+  "signup.form.password.placeholder": "Password",
+  "signup.form.confirm-password.placeholder": "Confirm your password"
 }

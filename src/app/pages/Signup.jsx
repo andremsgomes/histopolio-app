@@ -164,8 +164,8 @@ function Signup() {
                   {alertMessage}
                 </div>
               )}
-              <h2 class="fw-bold mb-2 text-uppercase">{t('title')}</h2>
-              <p class="text-black-50 mb-5">{t('subtitle')}s</p>
+              <h2 class="fw-bold mb-2 text-uppercase">{t("title")}</h2>
+              <p class="text-black-50 mb-5">{t("subtitle")}s</p>
               <div className="form-group row">
                 <input
                   type="text"
@@ -174,11 +174,11 @@ function Signup() {
                   name="name"
                   onChange={handleNameChange}
                   value={name}
-                  placeholder="Nome"
+                  placeholder={t("form.name.placeholder")}
                 />
                 <div className="text-danger">{nameErrorMessage}</div>
               </div>
-              <div className="row mt-3">Imagem de perfil/avatar:</div>
+              <div className="row mt-3">{t("form.avatar.label")}</div>
               <div className="text-center mt-2">
                 {avatar && preview.length && (
                   <img
@@ -203,7 +203,7 @@ function Signup() {
                     {({ getRootProps, getInputProps }) => (
                       <DropContainer {...getRootProps()}>
                         <input {...getInputProps()} />
-                        Selecionar imagem
+                        {t("form.avatar.input")}
                       </DropContainer>
                     )}
                   </Dropzone>
@@ -217,7 +217,7 @@ function Signup() {
                   name="email"
                   onChange={handleEmailChange}
                   value={email}
-                  placeholder="Email"
+                  placeholder={t("form.email.placeholder")}
                 />
                 <div className="text-danger">{emailErrorMessage}</div>
               </div>
@@ -229,7 +229,7 @@ function Signup() {
                   name="password"
                   onChange={handlePasswordChange}
                   value={password}
-                  placeholder="Password"
+                  placeholder={t("form.password.placeholder")}
                 />
                 <div className="text-danger">{passwordErrorMessage}</div>
               </div>
@@ -241,7 +241,7 @@ function Signup() {
                   name="confirmPassword"
                   onChange={handleConfirmPasswordChange}
                   value={confirmPassword}
-                  placeholder="Confirma a password"
+                  placeholder={t("form.confirm-password.placeholder")}
                 />
                 <div className="text-danger">{confirmPasswordErrorMessage}</div>
               </div>
