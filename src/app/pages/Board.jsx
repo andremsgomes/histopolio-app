@@ -17,7 +17,7 @@ function Board() {
     api
       .saves(this.props.params.board)
       .then((res) => {
-        this.setSaves(res.data);
+        setSaves(res.data);
       })
       .catch((error) => {
         console.log(error.message);
