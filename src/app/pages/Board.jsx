@@ -5,17 +5,14 @@ import { useTranslation } from "react-i18next";
 import api from "../api";
 import EditAndLogout from "../components/EditAndLogout";
 
-function withParams(Component) {
-  return (props) => <Component {...props} params={useParams()} />;
-}
-
 function Board() {
   const { t } = useTranslation(undefined, { keyPrefix: "board" });
+  const { board } = useParams();
   const [saves, setSaves] = useState([]);
 
   useEffect(() => {
     api
-      .saves(this.props.params.board)
+      .saves(board)
       .then((res) => {
         setSaves(res.data);
       })
@@ -37,7 +34,7 @@ function Board() {
             </Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            {this.props.params.board}
+            {board}
           </li>
         </ol>
         <div>
@@ -46,14 +43,14 @@ function Board() {
       </nav>
       <div className="row text-center m-5">
         <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-          <h1 className="mb-5">{this.props.params.board}</h1>
+          <h1 className="mb-5">{board}</h1>
           {saves.length > 0 && (
             <h3 className="mb-3">{t("saved-data.title")}</h3>
           )}
           {saves.map((save) => {
             return (
               <Link
-                to={`/admin/${this.props.params.board}/${save.name}`}
+                to={`/admin/${board}/${save.name}`}
                 style={{ textDecoration: "none" }}
                 key={save._id}
               >
@@ -71,7 +68,7 @@ function Board() {
             );
           })}
           <Link
-            to={`/admin/${this.props.params.board}/edit`}
+            to={`/admin/${board}/edit`}
             style={{ textDecoration: "none" }}
           >
             <button className="btn btn-lg btn-primary mt-4 mb-5">
@@ -84,4 +81,4 @@ function Board() {
   );
 }
 
-export default withParams(Board);
+export default Board;
