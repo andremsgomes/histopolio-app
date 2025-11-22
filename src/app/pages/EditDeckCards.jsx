@@ -103,7 +103,7 @@ function EditDeckCards() {
                             <>
                               {card.action === "move"
                                 ? t("table.action-column.options.move", {
-                                    count: card.actionValue,
+                                    count: parseInt(card.actionValue),
                                   })
                                 : t("table.action-column.options.move-to", {
                                     tile: card.actionValue,
