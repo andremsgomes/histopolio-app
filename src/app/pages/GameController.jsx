@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
@@ -39,7 +39,7 @@ function GameController() {
   const [rank, setRank] = useState(0);
   const [userBadges, setUserBadges] = useState([]);
 
-  const client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+  let client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
 
   const sendToServer = (message) => {
     client.send(message);
@@ -181,67 +181,67 @@ function GameController() {
     hideDice();
   };
 
-  const processDataReceived = (dataReceived) => {
-    const command = dataReceived["type"];
-
-    switch (command) {
-      case "game status":
-        handleGameStatusReceived(dataReceived);
-        return;
-      case "badges":
-        handleBadgesReceived(dataReceived);
-        return;
-      case "turn":
-        handleTurnReceived();
-        return;
-      case "dice":
-        handleDiceReceived();
-        return;
-      case "info shown":
-        handleInfoShownReceived(dataReceived);
-        return;
-      case "question":
-        handleQuestionReceived(dataReceived);
-        return;
-      case "update":
-        handleUpdate(dataReceived);
-        return;
-      case "content":
-        handleContentReceived(dataReceived);
-        return;
-      case "finish turn":
-        handleFinishTurnReceived(dataReceived);
-        return;
-      default:
-        console.log("Unknown message: " + dataReceived);
-    }
-  };
-
-  const checkWebSocktetState = async () => {
-    setInterval(async () => {
-      if (client.readyState !== client.OPEN) {
-        client.close();
-        client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
-
-        client.onopen = () => {
-          console.log("WebSocket Client Connected");
-
-          sendIdentificationMessage();
-          loadBadges();
-          sendRequestGameStatusMessage();
-        };
-
-        client.onmessage = (message) => {
-          console.log(message.data);
-          const dataReceived = JSON.parse(message.data);
-
-          processDataReceived(dataReceived);
-        };
-      }
-    }, 1000);
-  };
-
   useEffect(() => {
+    const processDataReceived = (dataReceived) => {
+      const command = dataReceived["type"];
+
+      switch (command) {
+        case "game status":
+          handleGameStatusReceived(dataReceived);
+          return;
+        case "badges":
+          handleBadgesReceived(dataReceived);
+          return;
+        case "turn":
+          handleTurnReceived();
+          return;
+        case "dice":
+          handleDiceReceived();
+          return;
+        case "info shown":
+          handleInfoShownReceived(dataReceived);
+          return;
+        case "question":
+          handleQuestionReceived(dataReceived);
+          return;
+        case "update":
+          handleUpdate(dataReceived);
+          return;
+        case "content":
+          handleContentReceived(dataReceived);
+          return;
+        case "finish turn":
+          handleFinishTurnReceived(dataReceived);
+          return;
+        default:
+          console.log("Unknown message: " + dataReceived);
+      }
+    };
+
+    const checkWebSocktetState = async () => {
+      setInterval(async () => {
+        if (client.readyState !== client.OPEN) {
+          client.close();
+          client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+
+          client.onopen = () => {
+            console.log("WebSocket Client Connected");
+
+            sendIdentificationMessage();
+            loadBadges();
+            sendRequestGameStatusMessage();
+          };
+
+          client.onmessage = (message) => {
+            console.log(message.data);
+            const dataReceived = JSON.parse(message.data);
+
+            processDataReceived(dataReceived);
+          };
+        }
+      }, 1000);
+    };
+
     client.onopen = () => {
       console.log("WebSocket Client Connected");
 
@@ -258,7 +258,12 @@ function GameController() {
     };
 
     checkWebSocktetState();
-  }, [client]);
+  }, [
+    client,
+    sendIdentificationMessage,
+    loadBadges,
+    sendRequestGameStatusMessage,
+  ]);
 
   const handleAnswer = (answerIndex) => {
     setQuestion(null);
@@ -383,11 +388,7 @@ function GameController() {
           </li>
           <li className="breadcrumb-item">{board}</li>
           <li className="breadcrumb-item active" aria-current="page">
-            {save.length > 0 ? (
-              <>{save}</>
-            ) : (
-              <>{t("breadcrumbs.new-game")}</>
-            )}
+            {save.length > 0 ? <>{save}</> : <>{t("breadcrumbs.new-game")}</>}
           </li>
         </ol>
         <div>
