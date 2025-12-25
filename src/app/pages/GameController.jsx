@@ -79,7 +79,7 @@ function GameController() {
     sendToServer(JSON.stringify(dataToSend));
   };
 
-  const sendJoinGameMessage = () => {
+  const sendJoinGameMessage = (receivedAdminId) => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
@@ -89,7 +89,7 @@ function GameController() {
       name: user.name,
       email: user.email,
       avatar: user.avatar,
-      adminId,
+      adminId: receivedAdminId,
     };
 
     sendToServer(JSON.stringify(dataToSend));
@@ -112,7 +112,7 @@ function GameController() {
 
       if (gameStarted) {
         setAdminId(dataReceived["adminId"]);
-        sendJoinGameMessage();
+        sendJoinGameMessage(dataReceived["adminId"]);
       }
     }
   };
