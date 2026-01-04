@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
@@ -39,13 +39,16 @@ function GameController() {
   const [rank, setRank] = useState(0);
   const [userBadges, setUserBadges] = useState([]);
 
-  let client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+  const clientRef = useRef(null);
+  const reactDiceRef = useRef(null);
 
   const sendToServer = (message) => {
-    client.send(message);
+    if (clientRef.current && clientRef.current.send) {
+      clientRef.current.send(message);
+    }
   };
 
-  const sendIdentificationMessage = () => {
+  const sendIdentificationMessage = useCallback(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
@@ -55,18 +58,18 @@ function GameController() {
     };
 
     sendToServer(JSON.stringify(dataToSend));
-  };
+  }, []);
 
-  const loadBadges = () => {
+  const loadBadges = useCallback(() => {
     const dataToSend = {
       type: "load badges",
       board,
     };
 
     sendToServer(JSON.stringify(dataToSend));
-  };
+  }, [board]);
 
-  const sendRequestGameStatusMessage = () => {
+  const sendRequestGameStatusMessage = useCallback(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
@@ -77,9 +80,9 @@ function GameController() {
     };
 
     sendToServer(JSON.stringify(dataToSend));
-  };
+  }, [board, save]);
 
-  const sendJoinGameMessage = (receivedAdminId) => {
+  const sendJoinGameMessage = useCallback((receivedAdminId) => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
@@ -93,9 +96,9 @@ function GameController() {
     };
 
     sendToServer(JSON.stringify(dataToSend));
-  };
+  }, [board]);
 
-  const handleGameStatusReceived = (dataReceived) => {
+  const handleGameStatusReceived = useCallback((dataReceived) => {
     if (
       dataReceived["board"] === board &&
       (save === "" || dataReceived["save"] === save)
@@ -110,33 +113,33 @@ function GameController() {
         setUserBadges(dataReceived["playerData"]["badges"]);
       }
 
-      if (gameStarted) {
+      if (dataReceived["gameStarted"]) {
         setAdminId(dataReceived["adminId"]);
         sendJoinGameMessage(dataReceived["adminId"]);
       }
     }
-  };
+  }, [board, save, sendJoinGameMessage]);
 
-  const handleBadgesReceived = (dataReceived) => {
+  const handleBadgesReceived = useCallback((dataReceived) => {
     setBadges(dataReceived["badges"]);
-  };
+  }, []);
 
-  const handleTurnReceived = () => {
+  const handleTurnReceived = useCallback(() => {
     setPlayerTurn(true);
-  };
+  }, []);
 
-  const handleDiceReceived = () => {
+  const handleDiceReceived = useCallback(() => {
     setPlayerTurn(true);
     setShowDice(true);
-  };
+  }, []);
 
-  const hideDice = () => {
+  const hideDice = useCallback(() => {
     setShowDice(false);
     setRollTime(0);
     setDiceRolled(false);
-  };
+  }, []);
 
-  const handleInfoShownReceived = (dataReceived) => {
+  const handleInfoShownReceived = useCallback((dataReceived) => {
     setPlayerTurn(true);
     setShowContinue(true);
     setContinueInfo(dataReceived["info"]);
@@ -146,30 +149,30 @@ function GameController() {
     }
 
     hideDice();
-  };
+  }, [hideDice]);
 
-  const handleQuestionReceived = (dataReceived) => {
+  const handleQuestionReceived = useCallback((dataReceived) => {
     setPlayerTurn(true);
     setQuestion(dataReceived["questionData"]);
     setTile(dataReceived["tile"]);
 
     hideDice();
-  };
+  }, [hideDice]);
 
-  const handleUpdate = (dataReceived) => {
+  const handleUpdate = useCallback((dataReceived) => {
     setPoints(dataReceived["points"]);
     setPosition(dataReceived["position"]);
     setRank(dataReceived["rank"]);
-  };
+  }, []);
 
-  const handleContentReceived = (dataReceived) => {
+  const handleContentReceived = useCallback((dataReceived) => {
     setPlayerTurn(true);
     setContent(dataReceived["content"]);
 
     hideDice();
-  };
+  }, [hideDice]);
 
-  const handleFinishTurnReceived = (dataReceived) => {
+  const handleFinishTurnReceived = useCallback((dataReceived) => {
     setPlayerTurn(true);
     setFinishTurn(true);
     setContinueInfo(dataReceived["info"]);
@@ -179,7 +182,7 @@ function GameController() {
     }
 
     hideDice();
-  };
+  }, [hideDice]);
 
   useEffect(() => {
     const processDataReceived = (dataReceived) => {
@@ -219,30 +222,43 @@ function GameController() {
     };
 
     const checkWebSocktetState = async () => {
-      setInterval(async () => {
-        if (client.readyState !== client.OPEN) {
-          client.close();
-          client = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+      const intervalId = setInterval(async () => {
+        try {
+          if (
+            !clientRef.current ||
+            clientRef.current.readyState !== clientRef.current.OPEN
+          ) {
+            if (clientRef.current) clientRef.current.close();
+            clientRef.current = new w3cwebsocket(
+              process.env.REACT_APP_WS_URL
+            );
 
-          client.onopen = () => {
-            console.log("WebSocket Client Connected");
+            clientRef.current.onopen = () => {
+              console.log("WebSocket Client Connected");
 
-            sendIdentificationMessage();
-            loadBadges();
-            sendRequestGameStatusMessage();
-          };
+              sendIdentificationMessage();
+              loadBadges();
+              sendRequestGameStatusMessage();
+            };
 
-          client.onmessage = (message) => {
-            console.log(message.data);
-            const dataReceived = JSON.parse(message.data);
+            clientRef.current.onmessage = (message) => {
+              console.log(message.data);
+              const dataReceived = JSON.parse(message.data);
 
-            processDataReceived(dataReceived);
-          };
+              processDataReceived(dataReceived);
+            };
+          }
+        } catch (e) {
+          console.error(e);
         }
       }, 1000);
+
+      return intervalId;
     };
 
-    client.onopen = () => {
+    clientRef.current = new w3cwebsocket(process.env.REACT_APP_WS_URL);
+
+    clientRef.current.onopen = () => {
       console.log("WebSocket Client Connected");
 
       sendIdentificationMessage();
@@ -250,19 +266,35 @@ function GameController() {
       sendRequestGameStatusMessage();
     };
 
-    client.onmessage = (message) => {
+    clientRef.current.onmessage = (message) => {
       console.log(message.data);
       const dataReceived = JSON.parse(message.data);
 
       processDataReceived(dataReceived);
     };
 
-    checkWebSocktetState();
+    let intervalId;
+    (async () => {
+      intervalId = await checkWebSocktetState();
+    })();
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+      if (clientRef.current) clientRef.current.close();
+    };
   }, [
-    client,
     sendIdentificationMessage,
     loadBadges,
     sendRequestGameStatusMessage,
+    handleGameStatusReceived,
+    handleBadgesReceived,
+    handleTurnReceived,
+    handleDiceReceived,
+    handleInfoShownReceived,
+    handleQuestionReceived,
+    handleUpdate,
+    handleContentReceived,
+    handleFinishTurnReceived,
   ]);
 
   const handleAnswer = (answerIndex) => {
@@ -308,7 +340,9 @@ function GameController() {
       setRollTime(newRollTime);
       setDiceRolled(true);
 
-      this.reactDice.rollAll();
+      if (reactDiceRef && reactDiceRef.current && typeof reactDiceRef.current.rollAll === 'function') {
+        reactDiceRef.current.rollAll();
+      }
     }
   };
 
@@ -422,7 +456,7 @@ function GameController() {
                           rollTime={rollTime}
                           rollDone={(num) => rollDoneCallback(num)}
                           disableIndividual={true}
-                          ref={(dice) => (this.reactDice = dice)}
+                          ref={reactDiceRef}
                         />
                       </div>
                       <div className="mt-4">
