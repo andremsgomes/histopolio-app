@@ -32,7 +32,7 @@ function QuestionForm(props) {
             className="form-control"
             id="questionInput"
             name="question"
-            onChange={props.onQuestionChange}
+            onChange={(e) => props.onQuestionChange(e.target.value)}
             value={props.question}
           />
         </div>

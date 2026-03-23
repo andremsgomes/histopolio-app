@@ -39,17 +39,12 @@ function EditQuestion() {
           setPreview(res.data.image);
         }
 
-        let savedAnswers = [...answers];
-        for (let i = 0; i < res.data.answers.length; i++) {
-          savedAnswers[i] = res.data.answers[i];
-        }
-
-        setAnswers(savedAnswers);
+        setAnswers(res.data.answers);
       })
       .catch((error) => {
         console.log(error.message);
       });
-  }, [id, answers]);
+  }, [id]);
 
   console.log(answers);
 
