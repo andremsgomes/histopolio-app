@@ -28,7 +28,7 @@ function DeckCardForm(props) {
             className="form-control"
             id="infoInput"
             name="info"
-            onChange={props.onInfoChange}
+            onChange={(e) => props.onInfoChange(e.target.value)}
             value={props.info}
             rows="3"
           />
@@ -42,7 +42,7 @@ function DeckCardForm(props) {
             className="form-control"
             id="pointsInput"
             name="points"
-            onChange={props.onPointsChange}
+            onChange={(e) => props.onPointsChange(e.target.value)}
             value={props.points}
           />
         </div>
@@ -80,7 +80,7 @@ function DeckCardForm(props) {
               className="form-control"
               id="actionValueInput"
               name="actionValue"
-              onChange={props.onActionValueChange}
+              onChange={(e) => props.onActionValueChange(e.target.value)}
               value={props.actionValue}
             />
           </div>

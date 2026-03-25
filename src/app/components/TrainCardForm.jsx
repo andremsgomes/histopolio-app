@@ -15,7 +15,7 @@ function TrainCardForm(props) {
             className="form-control"
             id="infoInput"
             name="info"
-            onChange={props.onInfoChange}
+            onChange={(e) => props.onInfoChange(e.target.value)}
             value={props.info}
             rows="3"
           />
@@ -29,7 +29,7 @@ function TrainCardForm(props) {
             className="form-control"
             id="contentInput"
             name="content"
-            onChange={props.onContentChange}
+            onChange={(e) => props.onContentChange(e.target.value)}
             value={props.content}
           />
         </div>
