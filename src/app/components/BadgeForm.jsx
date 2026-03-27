@@ -16,7 +16,7 @@ function BadgeForm(props) {
             className="form-control"
             id="nameInput"
             name="name"
-            onChange={props.onNameChange}
+            onChange={(e) => props.onNameChange(e.target.value)}
             value={props.name}
           />
         </div>
@@ -29,7 +29,7 @@ function BadgeForm(props) {
             className="form-control"
             id="imageInput"
             name="image"
-            onChange={props.onImageChange}
+            onChange={(e) => props.onImageChange(e.target.value)}
             value={props.image}
           />
         </div>
@@ -43,7 +43,7 @@ function BadgeForm(props) {
             />
           ) : (
             <img
-              src="https://www.linkpicture.com/q/badge_9.png"
+              src="https://img.freepik.com/free-vector/trophy_78370-345.jpg?semt=ais_incoming&w=740&q=80"
               alt="Badge"
               className="rounded-circle border"
               style={{ objectFit: "cover", width: "250px", height: "250px" }}
@@ -59,7 +59,7 @@ function BadgeForm(props) {
             className="form-control"
             id="multiplierInput"
             name="multiplier"
-            onChange={props.onMultiplierChange}
+            onChange={(e) => props.onMultiplierChange(e.target.value)}
             value={props.multiplier}
           />
         </div>
@@ -72,7 +72,7 @@ function BadgeForm(props) {
             className="form-control"
             id="costInput"
             name="cost"
-            onChange={props.onCostChange}
+            onChange={(e) => props.onCostChange(e.target.value)}
             value={props.cost}
           />
         </div>

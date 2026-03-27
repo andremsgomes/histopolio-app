@@ -100,7 +100,7 @@ function EditBadge() {
                 name={name}
                 onImageChange={setImage}
                 image={image}
-                onMultiplierChange={multiplier}
+                onMultiplierChange={setMultiplier}
                 multiplier={multiplier}
                 onCostChange={setCost}
                 cost={cost}

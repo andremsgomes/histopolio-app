@@ -18,7 +18,7 @@ function BoardForm(props) {
                 type="text"
                 className="form-control"
                 name="name"
-                onChange={props.onNameChange}
+                onChange={(e) => props.onNameChange(e.target.value)}
                 value={props.name}
                 placeholder={t('name')}
               />
@@ -31,7 +31,7 @@ function BoardForm(props) {
                 type="text"
                 className="form-control"
                 name="description"
-                onChange={props.onDescriptionChange}
+                onChange={(e) => props.onDescriptionChange(e.target.value)}
                 value={props.description}
                 placeholder={t('description')}
               />
@@ -44,7 +44,7 @@ function BoardForm(props) {
                 type="text"
                 className="form-control"
                 name="image"
-                onChange={props.onImageChange}
+                onChange={(e) => props.onImageChange(e.target.value)}
                 value={props.image}
                 placeholder={t('image-link')}
               />
