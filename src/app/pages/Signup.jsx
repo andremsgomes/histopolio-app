@@ -22,7 +22,7 @@ const DropContainer = styled.div.attrs({
 `;
 
 function Signup() {
-  const { t } = useTranslation(undefined, { keyPrefix: "signup" });
+  const { t, i18n } = useTranslation(undefined, { keyPrefix: "signup" });
 
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
@@ -36,6 +36,7 @@ function Signup() {
     useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [preview, setPreview] = useState("");
+  const [language, setLanguage] = useState(i18n.language.split("-")[0]);
 
   const handleClick = async () => {
     let nameError = false;
@@ -58,7 +59,7 @@ function Signup() {
     passwordInput.style.borderColor = "#ced4da";
 
     const confirmPasswordInput = document.getElementById(
-      "confirmPasswordInput"
+      "confirmPasswordInput",
     );
     confirmPasswordInput.style.borderColor = "#ced4da";
 
@@ -94,12 +95,12 @@ function Signup() {
     if (confirmPassword.length === 0) {
       confirmPasswordError = true;
       setConfirmPasswordErrorMessage(
-        t("validation.password-confirm.empty-error")
+        t("validation.password-confirm.empty-error"),
       );
     } else if (password !== confirmPassword) {
       confirmPasswordError = true;
       setConfirmPasswordErrorMessage(
-        t("validation.password-confirm.equal-error")
+        t("validation.password-confirm.equal-error"),
       );
     }
 
@@ -116,11 +117,13 @@ function Signup() {
       payload.append("name", name);
       payload.append("email", email);
       payload.append("password", password);
+      payload.append("language", language);
 
       api
         .signup(payload)
         .then((res) => {
           sessionStorage.setItem("user", JSON.stringify(res.data));
+          i18n.changeLanguage(res.data.language);
           window.location.href = "/";
         })
         .catch((error) => {
@@ -151,6 +154,12 @@ function Signup() {
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
+  };
+
+  const handleLanguageChange = (e) => {
+    const language = e.target.value;
+    setLanguage(language);
+    i18n.changeLanguage(language);
   };
 
   return (
@@ -244,6 +253,19 @@ function Signup() {
                   placeholder={t("form.confirm-password.placeholder")}
                 />
                 <div className="text-danger">{confirmPasswordErrorMessage}</div>
+              </div>
+              <div className="form-group row mt-3">
+                <label className="mb-2 text-start p-0">
+                  {t("form.language.label")}
+                </label>
+                <select
+                  className="form-select"
+                  value={language}
+                  onChange={handleLanguageChange}
+                >
+                  <option value="en">🇬🇧 English</option>
+                  <option value="pt">🇵🇹 Português</option>
+                </select>
               </div>
               <div className="text-center">
                 <button
