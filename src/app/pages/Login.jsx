@@ -6,7 +6,7 @@ import api from "../api";
 import { isValidEmail } from "../utils/email-validation";
 
 function Login() {
-  const { t } = useTranslation(undefined, { keyPrefix: "login" });
+  const { t, i18n } = useTranslation(undefined, { keyPrefix: "login" });
 
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
