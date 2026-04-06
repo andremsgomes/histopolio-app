@@ -51,6 +51,7 @@ function Login() {
         .login(payload)
         .then((res) => {
           sessionStorage.setItem("user", JSON.stringify(res.data));
+          i18n.changeLanguage(res.data.language);
           window.location.href = "/";
         })
         .catch((error) => {
