@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { isValidEmail } from "../utils/email-validation";
 
 function EditProfile() {
+  const { t, i18n } = useTranslation(undefined, { keyPrefix: "edit-profile" });
+
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -15,8 +17,6 @@ function EditProfile() {
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [language, setLanguage] = useState(i18n.language.split("-")[0]);
-
-  const { t } = useTranslation(undefined, { keyPrefix: "edit-profile" });
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
@@ -76,7 +76,7 @@ function EditProfile() {
       api
         .updateProfile(payload)
         .then(() => {
-          i18n.changeLanguage(res.data.language);
+          i18n.changeLanguage(language);
           window.location.href = "/";
         })
         .catch((error) => {
@@ -208,8 +208,8 @@ function EditProfile() {
                   />
                   <div className="text-danger">{emailErrorMessage}</div>
                 </div>
-                <div className="form-group row mt-3">
-                  <label className="mb-2 text-start p-0">
+                <div className="text-start fw-bold mt-3">
+                  <label for="email" className="form-label">
                     {t("form.language.label")}
                   </label>
                   <select
