@@ -92,6 +92,7 @@ function GameController() {
       name: user.name,
       email: user.email,
       avatar: user.avatar,
+      language: user.language,
       adminId: receivedAdminId,
     };
 
