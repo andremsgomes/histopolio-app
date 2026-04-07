@@ -141,6 +141,7 @@
   "edit-profile.form.avatar-link.placeholder": "Avatar link",
   "edit-profile.form.email.label": "Email",
   "edit-profile.form.email.placeholder": "Email",
+  "edit-profile.form.language.label": "Language",
   "edit-profile.form.save-button": "Save changes",
   "edit-question.breadcrumbs.menu": "Menu",
   "edit-question.breadcrumbs.edit": "Edit",

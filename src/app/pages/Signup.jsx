@@ -157,9 +157,9 @@ function Signup() {
   };
 
   const handleLanguageChange = (e) => {
-    const language = e.target.value;
-    setLanguage(language);
-    i18n.changeLanguage(language);
+    const lang = e.target.value;
+    setLanguage(lang);
+    i18n.changeLanguage(lang);
   };
 
   return (

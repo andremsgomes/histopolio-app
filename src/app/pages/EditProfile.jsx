@@ -14,6 +14,7 @@ function EditProfile() {
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [language, setLanguage] = useState(i18n.language.split("-")[0]);
 
   const { t } = useTranslation(undefined, { keyPrefix: "edit-profile" });
 
@@ -40,7 +41,7 @@ function EditProfile() {
     // name validation
     if (name.length === 0) {
       nameError = true;
-      setNameErrorMessage(t('error-message.name-validation'));
+      setNameErrorMessage(t("error-message.name-validation"));
     }
     // TODO: verificar tamanho máximo
 
@@ -64,16 +65,18 @@ function EditProfile() {
       user.name = name;
       user.avatar = avatarToSend;
       user.email = email;
+      user.language = language;
 
       sessionStorage.setItem("user", JSON.stringify(user));
 
       const userId = user.id;
 
-      const payload = { userId, name, avatarToSend, email };
+      const payload = { userId, name, avatarToSend, email, language };
 
       api
         .updateProfile(payload)
         .then(() => {
+          i18n.changeLanguage(res.data.language);
           window.location.href = "/";
         })
         .catch((error) => {
@@ -96,6 +99,11 @@ function EditProfile() {
     setEmail(e.target.value);
   };
 
+  const handleLanguageChange = (e) => {
+    const lang = e.target.value;
+    setLanguage(lang);
+  };
+
   return (
     <div>
       <nav
@@ -105,14 +113,14 @@ function EditProfile() {
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item" aria-current="page">
             <Link to="/admin" className="text-decoration-none">
-              {t('breadcrumbs.menu')}
+              {t("breadcrumbs.menu")}
             </Link>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            {t('breadcrumbs.profile')}
+            {t("breadcrumbs.profile")}
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            {t('breadcrumbs.edit')}
+            {t("breadcrumbs.edit")}
           </li>
         </ol>
         <div>
@@ -129,11 +137,11 @@ function EditProfile() {
                     {alertMessage}
                   </div>
                 )}
-                <h2 class="fw-bold mb-2 text-uppercase">{t('title')}</h2>
-                <p class="text-black-50 mb-5">{t('subtitle')}</p>
+                <h2 class="fw-bold mb-2 text-uppercase">{t("title")}</h2>
+                <p class="text-black-50 mb-5">{t("subtitle")}</p>
                 <div className="text-start fw-bold">
                   <label for="name" className="form-label">
-                    {t('form.name.label')}
+                    {t("form.name.label")}
                   </label>
                   <input
                     type="text"
@@ -142,13 +150,13 @@ function EditProfile() {
                     name="name"
                     onChange={handleNameChange}
                     value={name}
-                    placeholder={t('form.name.placeholder')}
+                    placeholder={t("form.name.placeholder")}
                   />
                   <div className="text-danger">{nameErrorMessage}</div>
                 </div>
                 <div className="text-start fw-bold mt-3">
                   <label for="avatar" className="form-label">
-                    {t('form.avatar-link.label')}
+                    {t("form.avatar-link.label")}
                   </label>
                   <input
                     type="text"
@@ -157,7 +165,7 @@ function EditProfile() {
                     name="avatar"
                     onChange={handleAvatarChange}
                     value={avatar}
-                    placeholder={t('form.avatar-link.placeholder')}
+                    placeholder={t("form.avatar-link.placeholder")}
                   />
                 </div>
                 <div className="text-center mt-3">
@@ -187,7 +195,7 @@ function EditProfile() {
                 </div>
                 <div className="text-start fw-bold mt-3">
                   <label for="email" className="form-label">
-                    {t('form.email.label')}
+                    {t("form.email.label")}
                   </label>
                   <input
                     type="email"
@@ -196,16 +204,29 @@ function EditProfile() {
                     name="email"
                     onChange={handleEmailChange}
                     value={email}
-                    placeholder={t('form.email.placeholder')}
+                    placeholder={t("form.email.placeholder")}
                   />
                   <div className="text-danger">{emailErrorMessage}</div>
+                </div>
+                <div className="form-group row mt-3">
+                  <label className="mb-2 text-start p-0">
+                    {t("form.language.label")}
+                  </label>
+                  <select
+                    className="form-select"
+                    value={language}
+                    onChange={handleLanguageChange}
+                  >
+                    <option value="en">🇬🇧 English</option>
+                    <option value="pt">🇵🇹 Português</option>
+                  </select>
                 </div>
                 <div className="text-center">
                   <button
                     className="btn btn-lg btn-outline-success mt-3"
                     onClick={handleClick}
                   >
-                    {t('form.save-button')}
+                    {t("form.save-button")}
                   </button>
                 </div>
               </div>
