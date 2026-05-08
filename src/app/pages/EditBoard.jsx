@@ -53,14 +53,14 @@ function EditBoard() {
   }, []);
 
   const handleTileNameChange = (e, boardPosition) => {
-    const newTiles = tiles;
+    const newTiles = [...tiles];
     newTiles[boardPosition].name = e.target.value;
 
     setTiles(newTiles);
   };
 
   const handlePointsChange = (e, boardPosition) => {
-    const newTiles = tiles;
+    const newTiles = [...tiles];
     newTiles[boardPosition].points = parseInt(e.target.value);
 
     setTiles(newTiles);
